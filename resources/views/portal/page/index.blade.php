@@ -1,7 +1,7 @@
 @extends('portal.layout.main')
 
 @section('page_title')
-    Koi Lover Makassar 2020
+    Koi Lover Makassar Project
 @endsection
 
 @section('meta_link_css_etc')
@@ -49,8 +49,8 @@
 @section('logo')
     <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <h1 class="text-light"><a href="#intro" class="scrollto"><span>KOI Lovers</span></a></h1>
-        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+        <h2 class="text-light"><a href="#intro" class="scrollto"><span>KLM PROJECT</span></a></h2>
+        {{-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> --}}
     </div>
 @endsection
 
@@ -81,6 +81,7 @@
             </ul>
         </li> --}}
         <li><a href="#footer">Contact Us</a></li>
+        <li><a href="#">Login</a></li>
         </ul>
     </nav><!-- .main-nav -->
 @endsection
@@ -97,7 +98,7 @@
             </div>
     
             <div class="col-md-6 intro-img order-md-last order-first">
-            <img src="{{asset('/dist/img/intro-img.svg')}}" alt="" class="img-fluid">
+            <img src="{{asset('/dist/img/intro-kl.svg')}}" alt="" class="img-fluid">
             </div>
         </div>
 
@@ -147,81 +148,185 @@
         <div class="container">
           <div class="section-header">
             <h3>Variety</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            <p>Varietas yang diperlombakan : </p>
           </div>
   
           <div class="row">
   
             <div class="col-lg-3 col-md-6 wow fadeInUp">
               <div class="member">
-                <img src="{{asset('/dist/img/team-1.jpg')}}" class="img-fluid" alt="">
-                <div class="member-info">
+                <img src="{{asset('/dist/img/varietas/kohaku.png')}}" class="img-fluid" alt="">
+                <div class="member-info text-center">
                   <div class="member-info-content">
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
+                    <h4>KOHAKU KOI</h4>
                   </div>
                 </div>
               </div>
             </div>
-  
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="member">
-                <img src="{{asset('/dist/img/team-2.jpg')}}" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Sarah Jhonson</h4>
-                    <span>Product Manager</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
+            
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/taiso_sanshoku.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>TAISHO SANSHOKU</h4>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
             </div>
-  
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="member">
-                <img src="{{asset('/dist/img/team-3.jpg')}}" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/showa_sansohaku.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>SHOWA SANSHOKU</h4>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
             </div>
-  
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="member">
-                <img src="{{asset('/dist/img/team-4.jpg')}}" class="img-fluid" alt="">
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/shiro_utsuri.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>SHIRO UTSURI</h4>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/koromo.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>KOROMO</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/goshiki.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>GOSHIKI</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/hikari_moyomono.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>HIKARI MUJIMONO</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/ginrin_a.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>GIRIN A</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/doitsu.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>DOITSU</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/kawarimono.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>KAWARIMONO</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/hi_ki_utsuri.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>HI KI UTSURI</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/bekko.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>BEKKO</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/asagi.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>ASAGI</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/hikari_mujimono.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>HIKARI MUJIMONO</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/girin_b.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>GIRIN B</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                    <img src="{{asset('/dist/img/varietas/tancho.png')}}" class="img-fluid" alt="">
+                    <div class="member-info text-center">
+                    <div class="member-info-content">
+                        <h4>TANCHO</h4>
+                    </div>
+                    </div>
+                </div>
             </div>
   
           </div>

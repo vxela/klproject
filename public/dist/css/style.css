@@ -190,8 +190,8 @@ h6 {
   text-transform: uppercase;
 }
 
-#header .logo h1 a,
-#header .logo h1 a:hover {
+#header .logo h2 a,
+#header .logo h2 a:hover {
   color: #413e66;
   text-decoration: none;
 }
