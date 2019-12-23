@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('portal.page.index');
 });
+
+Route::get('/login', 'LoginController@login')->name('login');
+Route::get('/register', 'LoginController@register')->name('register');

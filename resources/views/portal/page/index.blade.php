@@ -81,7 +81,7 @@
             </ul>
         </li> --}}
         <li><a href="#footer">Contact Us</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="{{route('login')}}">Login</a></li>
         </ul>
     </nav><!-- .main-nav -->
 @endsection
@@ -93,7 +93,7 @@
             <div class="col-md-6 intro-info order-md-first order-last">
             <h2>Makassar<br>Junior Koi Contest<br><span>2020</span></h2>
             <div>
-                <a href="#about" class="btn-get-started scrollto">Daftar disini</a>
+                <a href="{{route('register')}}" class="btn-get-started scrollto">Daftar disini</a>
             </div>
             </div>
     
