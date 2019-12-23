@@ -17,8 +17,9 @@
 @endsection
 
 @section('pagemenu')
-    <li><a href="#"><i class="fa fa-fw fa-flag"></i> Icons</a></li>
-    <li><a href="#"><i class="fa fa-fw fa-toggle-on"></i> Buttons</a></li>
+    <li><a href="#"><i class="fa fa-fw fa-users"></i> Data Pendaftar</a></li>
+    <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Tambah Peserta</a></li>
+    <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Keluar</a></li>
 @endsection
 
 @section('pagebreadcrumb')
@@ -27,7 +28,7 @@
 
 @section('pagecontent')
     <div class="card-body">
-        This is a blank page you can use as a starting point.
+        Dashboard
     </div>
 @endsection
 

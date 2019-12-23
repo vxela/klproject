@@ -13,7 +13,7 @@ class LoginController extends Controller
     }
 
     public function register() {
-        return view('login.register');
+        return view('portal.page.form_register');
     }
     
     public function auth(Request $request) {
