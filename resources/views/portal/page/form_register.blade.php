@@ -33,19 +33,6 @@
     ======================================================= -->
 @endsection
 
-@section('topbar_header')
-    <div id="topbar">
-        <div class="container">
-        <div class="social-links">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-        </div>
-        </div>
-    </div>
-@endsection
-
 @section('logo')
     <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
@@ -57,29 +44,11 @@
 @section('navigation')
     <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-        <li class="active"><a href="#intro">Home</a></li>
+        <li class=""><a href="#intro">Home</a></li>
         <li><a href="#information">Information</a></li>
         <li><a href="#varietas">Variety</a></li>
         <li><a href="#awards">Awards</a></li>
         <li><a href="#faq">FAQ</a></li>
-        {{-- <li><a href="#team">Team</a></li>
-        <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-            <li><a href="#">Drop Down 5</a></li>
-            </ul>
-        </li> --}}
         <li><a href="#footer">Contact Us</a></li>
         <li><a href="{{route('login')}}">Login</a></li>
         </ul>
@@ -90,11 +59,11 @@
     <!--==========================
       Frequently Asked Questions Section
     ============================-->
-    <section id="faq">
-        <div class="container mt-5 pt-5">
-          <header class="section-header pt-5 mt-5">
+    <section id="faq" class="pb-2">
+        <div class="container">
+          <header class="section-header mt-3">
             <h3>Form Pendaftaran Peserta</h3>
-            <p>Isi form dibawah ini untuk mendapatkan akun dan ikut berpartisipasi</p>
+            <p class="pb-1">Isi form dibawah ini untuk mendapatkan akun dan ikut berpartisipasi</p>
           </header>
   
         </div>
@@ -106,45 +75,101 @@
     Footer
     ============================-->
     <footer id="footer" class="section-bg">
-        <div class="footer-top">
+        <div class="footer-top pt-5">
         <div class="container">
 
             <div class="row justify-content-md-center">
 
-            <div class="col-lg-6 ">
-
-                <div class="form">
-
-                <form action="" method="post" role="form" class="contactForm">
-                    <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
+            <div class="col-lg-6">
+                
+                <form action="">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Pemilik</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Pemilik">
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Daerah Pemilik</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Asal Daerah Pemilik">
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                    <div class="validation"></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Handling</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling">
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Daerah Handling</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Asal Daerah Handling">
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nomor Telpon / WA</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nomor Telpon / WA">
+                        </div>
                     </div>
-                    <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                    <div class="validation"></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Jenis/Variety Ikan</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Pemilik"> --}}
+                        </div>
                     </div>
-
-                    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-
-                    <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Size Variety</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Jenis Kelamin</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Foto Ikan</label>
+                        <div class="col-sm-8 col-xs-12 pt-1">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Biaya Pendaftaran</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" id="owner_name" value="200000" placeholder="Nama Pemilik" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-xs-12 text-right">
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-sm-8 col-xs-12">
+                            <button type="submit" class="btn btn-primary">Daftar</button>
+                        </div>
+                    </div>                                                                                                                                                                                                                        
                 </form>
                 </div>
 
