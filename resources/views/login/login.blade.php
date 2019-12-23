@@ -21,26 +21,32 @@
                 <h1 class="text-center mb-4">BootAdmin</h1>
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        @if (Session::has('alert'))
+                        @if (Session::get('alert.type') == 'danger')
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                        @else
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                        @endif
+                            {{Session::get('alert.msg')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
+                        <form action="{{'/login/auth'}}" method="post">
+                            @csrf
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input type="text" class="form-control" name="name" placeholder="Username">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password">
-                            </div>
-
-                            <div class="form-check mb-3">
-                                <label class="form-check-label">
-                                    <input type="checkbox" name="remember" class="form-check-input">
-                                    Remember Me
-                                </label>
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
 
                             <div class="row">
@@ -48,7 +54,7 @@
                                     <button type="submit" class="btn btn-block btn-primary">Login</button>
                                 </div>
                                 <div class="col pl-2">
-                                    <a class="btn btn-block btn-link" href="#">Forgot Password</a>
+                                    <a href="{{route('register')}}" class="btn btn-block btn-secondary">Daftar</a>
                                 </div>
                             </div>
                         </form>
