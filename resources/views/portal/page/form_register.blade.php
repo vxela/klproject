@@ -82,92 +82,75 @@
 
             <div class="col-lg-6">
                 
-                <form action="">
+                <form action="{{route('user_register')}}" method="post">
+                    @csrf
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Pemilik</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Lengkap</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Pemilik">
+                            <input type="text" class="form-control nama_lengkap" id="nama_lengkap" name="nama_lengkap" value="" placeholder="Nama Lengkap">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Daerah Pemilik</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">No. Telpon</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Asal Daerah Pemilik">
+                            <input type="number" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Handling</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat Email</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling">
+                            <input type="text" class="form-control email" name="email" id="email" value="" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Daerah Handling</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Asal Daerah Handling">
+                            <input type="text" class="form-control alamat" name="alamat" id="alamat" value="" placeholder="Asal Daerah Pemilik">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Nomor Telpon / WA</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Provinsi</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="" placeholder="Nomor Telpon / WA">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Jenis/Variety Ikan</label>
-                        <div class="col-sm-8 col-xs-12">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control m-b" name="provinsi" id="propinsi">
+                                <option selected value=""> Pilih Provinsi </option>
                             </select>
-                            {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Pemilik"> --}}
+                            <input type="hidden" name="prov" id="prov" value="">
+                            {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Size Variety</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Kota</label>
                         <div class="col-sm-8 col-xs-12">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control m-b" name="kabupaten" id="kabupaten">
+                                <option selected value=""> Pilih Kabupaten </option>
                             </select>
                         </div>
                     </div>
+                    <hr>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Jenis Kelamin</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Username</label>
                         <div class="col-sm-8 col-xs-12">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Foto Ikan</label>
-                        <div class="col-sm-8 col-xs-12 pt-1">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Biaya Pendaftaran</label>
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Password</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" id="owner_name" value="200000" placeholder="Nama Pemilik" disabled>
+                            <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-xs-12 col-form-label">Ulangi Password</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="password" class="form-control" name="password2" id="password2" value="" placeholder="Ulangi Password">
+                        </div>
+                    </div>                                                            
                     <div class="form-group row">
                         <div class="col-sm-4 col-xs-12 text-right">
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                         <div class="col-sm-8 col-xs-12">
-                            <button type="submit" class="btn btn-primary">Daftar</button>
+                            <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button>
                         </div>
                     </div>                                                                                                                                                                                                                        
                 </form>
@@ -187,12 +170,6 @@
             &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
         </div>
         <div class="credits">
-            <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
-            -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
         </div>
@@ -216,4 +193,95 @@
 
     <!-- Template Main Javascript File -->
     <script src="{{asset('/dist/js/main.js')}}"></script>
+    <script>
+        var return_first = function() {
+        var tmp = null;
+        $.ajax({
+                'async': false,
+                'type': "get",
+                'global': false,
+                'dataType': 'json',
+                'url': 'https://x.rajaapi.com/poe',
+                'success': function(data) {
+                    tmp = data.token;
+                }
+            });
+            return tmp;
+        }();
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
+                type: 'GET',
+                dataType: 'json',
+                success: function(json) {
+                    if (json.code == 200) {
+                        for (i = 0; i < Object.keys(json.data).length; i++) {
+                            if(json.data[i].name == 'SULAWESI SELATAN') {
+                                $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id).attr('data-prov', json.data[i].name).attr('selected', true));
+                                var propinsi = $("#propinsi").val();
+                                $.ajax({
+                                    url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                                    data: "idpropinsi=" + propinsi,
+                                    type: 'GET',
+                                    cache: false,
+                                    dataType: 'json',
+                                    success: function(json) {
+                                        $("#kabupaten").html('');
+                                        if (json.code == 200) {
+                                            for (i = 0; i < Object.keys(json.data).length; i++) {
+                                                $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                                            }
+                                        } else {
+                                            $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                                        }
+                                        $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                                    }
+                                });
+                            } else {
+                                $('#propinsi').append($('<option>').text(json.data[i].name).attr('data-prov', json.data[i].name).attr('value', json.data[i].id));
+                            }
+                        }
+                    } else {
+                        $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                    }
+                }
+            });
+            $("#propinsi").change(function() {
+                var propinsi = $("#propinsi").val();
+                $("#prov_name").val($("#propinsi").text());
+                $.ajax({
+                    url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                    data: "idpropinsi=" + propinsi,
+                    type: 'GET',
+                    cache: false,
+                    dataType: 'json',
+                    success: function(json) {
+                        $("#kabupaten").html('');
+                        if (json.code == 200) {
+                            for (i = 0; i < Object.keys(json.data).length; i++) {
+                                $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                            }
+                        } else {
+                            $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                        }
+                        $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                    }
+                });
+            });
+            $("#nama_lengkap").keyup(function(){
+                var v = this.value.toUpperCase();
+                $("#nama_lengkap").val(v);
+            });
+            $("#alamat").keyup(function(){
+                var v = this.value.toUpperCase();
+                $("#alamat").val(v);
+            });
+            $("#username").keypress(function(e){
+                var v = String.fromCharCode(e.which);
+                if(!v.match(/[a-zA-Z0-9]/)) {
+                    return false;
+                }
+            });            
+        });
+    </script>
 @endsection

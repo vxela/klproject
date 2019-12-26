@@ -27,11 +27,11 @@
                     <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-bell"></i> 3</a></li> --}}
                     @yield('topnav')
                     <li class="nav-item dropdown">
-                        <a href="#" id="dd_user" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Doe</a>
+                        <a href="#" id="dd_user" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{auth()->user()->name}}</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd_user">
                             {{-- <a href="#" class="dropdown-item">Profile</a> --}}
                             @yield('usertopnav')
-                            <a href="#" class="dropdown-item">Logout</a>
+                            <a href="{{route('logout')}}" class="dropdown-item">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -43,6 +43,8 @@
                 <ul class="list-unstyled">
                     <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li>
                     @yield('pagemenu')
+                    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+
                 </ul>
             </div>
 

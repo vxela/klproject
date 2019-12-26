@@ -26,12 +26,20 @@ class LoginController extends Controller
             return back();
         } else {
             if(Auth::attempt($request->only('name', 'password'))) {
-                return redirect()->route('admin.dashboard');
+                $role_id = auth()->user()->role_id;
+                $role = \App\Models\Tbl_role::find($role_id);
+                
+                return redirect()->route($role->route);
             }
             else {
                 Session::flash('alert', ['type' => 'danger', 'msg' => 'username atau password salah!!']);
                 return redirect()->route('login');
             }
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
