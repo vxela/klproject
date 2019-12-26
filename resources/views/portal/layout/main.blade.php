@@ -17,6 +17,9 @@
 </head>
 
 <body>
+  @if (Session::has('notif.type') && Session::has('notif.msg'))
+      <div id="flash_data" data-type="{{Session::get('notif.type')}}" data-msg="{{Session::get('notif.msg')}}"></div>
+  @endif
   <!--==========================
   Header
   ============================-->

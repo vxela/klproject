@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('portal.page.index');
-});
+Route::get('/', 'PortalController@index')->name('/');
 
 Route::get('/login', 'LoginController@login')->name('login');
-Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/login/auth', 'LoginController@auth');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::get('/register', 'LoginController@register')->name('register');
 
 Route::post('/guest/register', 'RegisterController@register')->name('user_register');
