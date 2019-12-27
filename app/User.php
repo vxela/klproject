@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bio()
+    {
+    	return $this->hasOne('App\Models\Tbl_bio');
+    }
 }

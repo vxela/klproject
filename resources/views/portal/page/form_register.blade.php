@@ -219,11 +219,7 @@
                         $(location).attr('href', url);
                     });
             };
-            // if($('#tnotif').data('type') != '' && $('#tnotif').data('msg') != '') {
-
- 
-            // }
-
+            
             $.ajax({
                 url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
                 type: 'GET',

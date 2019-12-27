@@ -19,5 +19,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::get('/register', 'LoginController@register')->name('register');
 
 Route::post('/guest/register', 'RegisterController@register')->name('user_register');
+Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('user.personal');
+Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');

@@ -41,7 +41,7 @@
         <div class="d-flex">
             <div class="sidebar sidebar-dark bg-dark">
                 <ul class="list-unstyled">
-                    <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li>
+                    {{-- <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li> --}}
                     @yield('pagemenu')
                     <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
 
@@ -54,9 +54,7 @@
                         @yield('pagebreadcrumb')
                     </h5>
 
-        <div class="card mb-4">
-            @yield('pagecontent')
-        </div>
+                    @yield('pagecontent')
             </div>
         </div>
 
