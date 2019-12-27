@@ -32,12 +32,55 @@
 
 @section('pagecontent')
     <div class="row">
-        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-lg-8 col-sm-12 col-xs-12">
             <div class="card mb-4">
                 <div class="card-header bg-white font-weight-bold">
                     Data Ikan
                 </div>
                 <div class="card-body">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+
+                                <th>
+                                    Jenis Ikan
+                                </th>
+                                <th>
+                                    Ukuran
+                                </th>
+                                <th>
+                                    Kelas
+                                </th>
+                                <th>
+                                    Grade
+                                </th>
+                                <th>
+    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data_fish as $fish)
+                                <tr>
+                                    <td>
+                                        {{$fish->bio_id}}
+                                    </td>
+                                    <td>
+                                        {{$fish->bio_id}}
+                                    </td>
+                                    <td>
+                                        {{$fish->bio_id}}
+                                    </td>
+                                    <td>
+                                        {{$fish->bio_id}}
+                                    </td>
+                                    <td>
+                                        {{$fish->bio_id}}
+                                    </td>
+                                </tr>    
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

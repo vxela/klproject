@@ -19,6 +19,19 @@ class UserController extends Controller
     }
 
     public function fishData($id) {
-        return view('backend.user.fish');
+        $ufish = \App\Models\Tbl_user_fish::with([
+            'user' => function($query) use ($id) {
+                $query->where('id', '=', $id);
+                },
+            'bio' => function($query) use ($id) {
+                $query->where('user_id', '=', $id);
+                },
+            'fish', 'cat'    
+        ])->get();
+
+        // $ufish = \App\User::where('id', $id)->with('user_fish')->get();
+        // $ufish = \App\Models\Tbl_user_fish::with('fish')->get();    
+        // dd($ufish);
+        return view('backend.user.fish', ['data_fish' => $ufish]);
     }
 }
