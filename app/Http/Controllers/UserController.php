@@ -27,11 +27,33 @@ class UserController extends Controller
                 $query->where('user_id', '=', $id);
                 },
             'fish', 'cat'    
-        ])->get();
+        ])->where('user_id', $id)->get();
 
         // $ufish = \App\User::where('id', $id)->with('user_fish')->get();
         // $ufish = \App\Models\Tbl_user_fish::with('fish')->get();    
         // dd($ufish);
-        return view('backend.user.fish', ['data_fish' => $ufish]);
+        // echo count($ufish);
+        return view('backend.user.fish', ['user_id' => $id, 'data_fish' => $ufish]);
+    }
+
+    public function userRegisterFish($id) {
+        $user_id = $id;
+        $user = \App\User::with('bio')->find($user_id);
+
+        $varietas = \App\Models\Tbl_fish::all();
+
+        $cat = \App\Models\Tbl_cat::all();
+
+        // dd($user);
+
+        return view('backend.user.create_fish', [
+            'user' => $user,
+            'data_varietas' => $varietas,
+            'data_cat' => $cat,
+        ]);
+    }
+
+    public function userStoreFish(Request $r) {
+        dd($r->all());
     }
 }

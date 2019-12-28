@@ -32,55 +32,82 @@
 
 @section('pagecontent')
     <div class="row">
-        <div class="col-md-6 col-lg-8 col-sm-12 col-xs-12">
+        <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header bg-white font-weight-bold">
-                    Data Ikan
+                    <div class="row">
+                        <div class="col-6">
+                            Data Ikan
+                        </div>
+                        <div class="col-6 text-right">
+                            @if (count($data_fish) != 0)
+                                <a href="{{route('user.regis_ikan', ['id' => $user_id])}}" class="btn btn-sm btn-success">Tambah Ikan</a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-hover">
-                        <thead class="thead-light">
-                            <tr>
-
-                                <th>
-                                    Jenis Ikan
-                                </th>
-                                <th>
-                                    Ukuran
-                                </th>
-                                <th>
-                                    Kelas
-                                </th>
-                                <th>
-                                    Grade
-                                </th>
-                                <th>
-    
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data_fish as $fish)
+                    @if (count($data_fish) != 0)
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-light">
                                 <tr>
-                                    <td>
-                                        {{$fish->bio_id}}
-                                    </td>
-                                    <td>
-                                        {{$fish->bio_id}}
-                                    </td>
-                                    <td>
-                                        {{$fish->bio_id}}
-                                    </td>
-                                    <td>
-                                        {{$fish->bio_id}}
-                                    </td>
-                                    <td>
-                                        {{$fish->bio_id}}
-                                    </td>
-                                </tr>    
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    <th>
+                                        Jenis Ikan
+                                    </th>
+                                    <th>
+                                        Ukuran
+                                    </th>
+                                    <th>
+                                        Kelas
+                                    </th>
+                                    <th>
+                                        Grade
+                                    </th>
+                                    <th>
+                                        Biaya
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+        
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data_fish as $fish)
+                                    <tr>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                        <td>
+                                            {{$fish->bio_id}}
+                                        </td>
+                                    </tr>    
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                    <div class="col-12 text-center">
+                            <h3>Belum ada ikan terdaftar</h3>
+                            <a href="{{route('user.regis_ikan', ['id' => $user_id])}}" class="btn btn-lg btn-success">Daftar Ikan</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
