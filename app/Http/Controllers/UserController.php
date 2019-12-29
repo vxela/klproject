@@ -62,29 +62,19 @@ class UserController extends Controller
     public function userStoreFish(Request $r) {
 
         if($r->hasFile('fish_pict')) {
-            $vld = Validator::make($r->all(), [
-                'fish_pict' => 'image|mimes:png,jpg|max:300'
-            ]);
-            if ($vld->fails()) {
-                // echo "validate fail";
-                Session::flash('notif', ['type' => 'error', 'msg' => 'Foto bertype png atau jpg maksimal 300Kb']);
-                return redirect(route('user.regis_ikan', ['id' => auth()->user()->id]));
-                
-            } else {
-                $filename_ext = $r->file('fish_pict')->getClientOriginalName();
-                $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
-                $extension = $r->file('fish_pict')->getClientOriginalExtension();
-                $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
-                $r->file('fish_pict')->storeAs('public/fish', $filenametostore);
-                $r->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
-                $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
-                $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $img->save($thumbnailpath);
+            $filename_ext = $r->file('fish_pict')->getClientOriginalName();
+            $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+            $extension = $r->file('fish_pict')->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+            $r->file('fish_pict')->storeAs('public/fish', $filenametostore);
+            $r->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
+            $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
+            $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($thumbnailpath);
 
-                $img_path = '/storage/fish/'.$filenametostore;
-            }
+            $img_path = '/storage/fish/'.$filenametostore;
         } else {
             $img_path = '/storage/fish/default_fish.jpg';
         }
