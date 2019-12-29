@@ -25,6 +25,29 @@ class UserController extends Controller
         return view('backend.user.personal', ['user' => $bio]);
     }
 
+    public function personalUpdateData(Request $req) {
+        $bio_id = $req->bio_id;
+
+        $bio = \App\Models\Tbl_bio::find($bio_id);
+
+        $bio->nama = $req->full_name;
+        $bio->no_hp = $req->no_hp;
+        $bio->alamat = $req->address;
+        $bio->prov = $req->prov;
+        $bio->kota = $req->kabupaten;
+        $bio->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
+        $update = $bio->save();
+        
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Update Data Gagal, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Personal Berhasil Di Update']);
+        }
+
+        return redirect()->back();
+    }
+
     public function fishData($id) {
         $ufish = \App\Models\Tbl_user_fish::with([
             'user' => function($query) use ($id) {
