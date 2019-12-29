@@ -42,12 +42,14 @@
                     Form registrasi ikan
                 </div>
                 <div class="card-body">
-                    <form action="{{route('user.store_ikan')}}" method="post">
+                    <form action="{{route('user.store_ikan')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="" class="col-4 col-form-label">Nama Owner <small class="reqq">*</small></label>
                             <div class="col-8">
                                 <input type="text" class="form-control-plaintext" name="owner_name" id="owner_name" value="{{$user->bio->nama}}">
+                                <input type="hidden" class="" name="user_id" id="user_id" value="{{$user->id}}">
+                                <input type="hidden" class="" name="bio_id" id="bio_id" value="{{$user->bio->id}}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -59,7 +61,7 @@
                         <div class="form-group row">
                             <label for="" class="col-4 col-form-label">Alamat Handler <small class="reqq">*</small></label>
                             <div class="col-8">
-                                <input type="text" class="form-control" name="handler_address" id="handler_address" placeholder="Provinsi dan Kota" required>
+                                <input type="text" class="form-control" name="handler_address" id="handler_address" placeholder="Provinsi, Kota" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -117,8 +119,20 @@
 @endsection
 
 @section('pagejs')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $(document).ready(function(){
+            if($('#flash_data').length) {
+                let type = $('#flash_data').data('type');
+                let msg = $('#flash_data').data('msg');
+            
+                Swal.fire({
+                    icon: type,
+                    text: msg,
+                    showConfirmButton: true,
+                });
+            };
+
             $('#type_ukuran').change(function(){
                 var data_grade = $('option:selected',this).data("grade");
                 $('#grade').val(data_grade);

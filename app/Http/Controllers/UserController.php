@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon as Carbon;
+use Illuminate\Support\Facades\Validator;
+use Session;
+use Image;
+use File;
+use DB;
 
 class UserController extends Controller
 {
@@ -45,7 +51,6 @@ class UserController extends Controller
         $cat = \App\Models\Tbl_cat::all();
 
         // dd($user);
-
         return view('backend.user.create_fish', [
             'user' => $user,
             'data_varietas' => $varietas,
@@ -54,6 +59,62 @@ class UserController extends Controller
     }
 
     public function userStoreFish(Request $r) {
-        dd($r->all());
+
+        if($r->hasFile('fish_pict')) {
+            $vld = Validator::make($r->all(), [
+                'fish_pict' => 'image|mimes:png,jpg|max:300'
+            ]);
+            if ($vld->fails()) {
+                // echo "validate fail";
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Foto bertype png atau jpg maksimal 300Kb']);
+                return redirect(route('user.regis_ikan', ['id' => auth()->user()->id]));
+                
+            } else {
+                $filename_ext = $r->file('fish_pict')->getClientOriginalName();
+                $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+                $extension = $r->file('fish_pict')->getClientOriginalExtension();
+                $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+                $r->file('fish_pict')->storeAs('public/fish', $filenametostore);
+                $r->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
+                $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
+                $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($thumbnailpath);
+
+                $img_path = '/storage/fish/'.$filenametostore;
+            }
+        } else {
+            $img_path = '/storage/fish/default_fish.jpg';
+        }
+
+        DB::beginTransaction();
+
+        $user_fish = [
+            'user_id'            => $r->user_id,
+            'handler_name'       => $r->handler_name,
+            'handler_address'    => $r->handler_address,
+            'bio_id'             => $r->bio_id,
+            'fish_id'            => $r->varietas,
+            'cat_id'             => $r->type_ukuran,
+            'fish_picture'       => $img_path,
+            'status'             => 'BELUM LUNAS',
+            'date_reg'           => Carbon::now()->format('Y-m-d'),
+            'time_reg'           => Carbon::now()->format('H:i:s')
+        ];
+
+        $fish = \App\Models\Tbl_user_fish::create($user_fish);
+
+        if(!$fish) {
+            DB::rollBack();
+        }
+        else {
+            DB::commit();
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Ikan Berhasil Di daftarkan']);
+    
+            return redirect()->route('user.fish', ['id'=> auth()->user()->id]);
+        }
+        
+
     }
 }

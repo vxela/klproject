@@ -115,6 +115,20 @@
 @endsection
 
 @section('pagejs')
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+    $(document).ready(function(){
+        if($('#flash_data').length) {
+                let type = $('#flash_data').data('type');
+                let msg = $('#flash_data').data('msg');
+            
+                Swal.fire({
+                    icon: type,
+                    text: msg,
+                    showConfirmButton: false
+                });
+        };
+    });
+    </script>
 @endsection
 

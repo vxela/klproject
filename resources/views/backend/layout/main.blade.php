@@ -10,13 +10,16 @@
         <link rel="stylesheet" href="{{asset('/bootadmin/css/datatables.min.css')}}">
         <link rel="stylesheet" href="{{asset('/bootadmin/css/fullcalendar.min.css')}}">
         <link rel="stylesheet" href="{{asset('/bootadmin/css/bootadmin.min.css')}}">
+        
         @yield('pagecss')
         <title>
         @yield('pagetitle')            
         </title>
     </head>
     <body class="bg-light">
-
+        @if (Session::has('notif.type') && Session::has('notif.msg'))
+            <div id="flash_data" data-type="{{Session::get('notif.type')}}" data-msg="{{Session::get('notif.msg')}}"></div>
+        @endif
         <nav class="navbar navbar-expand navbar-dark bg-primary">
             <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
             <a class="navbar-brand" href="https://bootadmin.net">BootAdmin</a>

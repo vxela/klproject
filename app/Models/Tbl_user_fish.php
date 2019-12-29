@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Tbl_user_fish extends Model
 {
     //
+
     protected $table = 'tbl_user_fishs';
+    
+    protected $fillable = [
+        'user_id', 'handler_name', 'handler_address', 'bio_id', 'fish_id', 'cat_id', 'fish_picture', 'status', 'date_reg', 'time_reg',
+    ];
 
     public function user() {
         return $this->belongsTo('App\User');
