@@ -62,12 +62,12 @@ class UserController extends Controller
     public function userStoreFish(Request $r) {
 
         if($r->hasFile('fish_pict')) {
-            $filename_ext = $req->file('fish_pict')->getClientOriginalName();
+            $filename_ext = $r->file('fish_pict')->getClientOriginalName();
             $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
-            $extension = $req->file('fish_pict')->getClientOriginalExtension();
+            $extension = $r->file('fish_pict')->getClientOriginalExtension();
             $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
-            $req->file('fish_pict')->storeAs('public/fish', $filenametostore);
-            $req->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
+            $r->file('fish_pict')->storeAs('public/fish', $filenametostore);
+            $r->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
             $oripath = public_path('storage/fish/'.$filenametostore);
             $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
             $img = Image::make($oripath)->resize(500, null, function($constraint) {
