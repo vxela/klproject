@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon as Carbon;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 use Session;
 use Image;
 use File;
@@ -160,39 +161,39 @@ class UserController extends Controller
 
     public function updateFishPicture(Request $req) {
         if($req->hasFile('fish_pict')) {
-            $vld = Validator::make($req->all(), [
-                'fish_pict' => 'image|mimes:png,jpg|max:300'
-            ]);
-            if ($vld->fails()) {
-                // echo "validate fail";
-                Session::flash('notif', ['type' => 'error', 'msg' => 'Foto bertype png atau jpg maksimal 300Kb']);
-                return redirect()->back();
-                
-            } else {
-                $filename_ext = $req->file('fish_pict')->getClientOriginalName();
-                $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
-                $extension = $req->file('fish_pict')->getClientOriginalExtension();
-                $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
-                $req->file('fish_pict')->storeAs('public/fish', $filenametostore);
-                $req->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
-                $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
-                $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $img->save($thumbnailpath);
+            $filename_ext = $req->file('fish_pict')->getClientOriginalName();
+            $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+            $extension = $req->file('fish_pict')->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+            $req->file('fish_pict')->storeAs('public/fish', $filenametostore);
+            $req->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
+            $oripath = public_path('storage/fish/'.$filenametostore);
+            $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
+            $img = Image::make($oripath)->resize(500, null, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($oripath);
+            $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($thumbnailpath);
 
-                $img_path = '/storage/fish/'.$filenametostore;
-            }
+            $img_path = '/storage/fish/'.$filenametostore;
         } else {
             $img_path = '/storage/fish/default_fish.jpg';
         }
 
         $ufish_id = $req->fish_id;
         $ufish = \App\Models\Tbl_user_fish::find($ufish_id);
-
+        $oldimg = preg_replace("#/storage/fish/#", "", $ufish->fish_picture);
+        // echo $oldimg;
+        //delete old fish
+        // echo base_path('/'.$oldimg);
+        Storage::delete(base_path($oldimg));
+        Storage::delete(base_path('/thumbnail'.$oldimg));
         $ufish->fish_picture = $img_path;
-
         $update = $ufish->save();
+
 
         if(!$update) {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Update Gambar Gagal, Ulangi Lagi']);
