@@ -11,7 +11,7 @@ class Tbl_user_fish extends Model
     protected $table = 'tbl_user_fishs';
     
     protected $fillable = [
-        'user_id', 'handler_name', 'handler_address', 'bio_id', 'fish_id', 'cat_id', 'fish_picture', 'status', 'date_reg', 'time_reg',
+        'user_id', 'handler_name', 'handler_address', 'bio_id', 'fish_id', 'cat_id', 'fish_size', 'fish_picture', 'status', 'date_reg', 'time_reg',
     ];
 
     public function user() {

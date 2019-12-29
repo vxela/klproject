@@ -97,6 +97,7 @@ class UserController extends Controller
             'bio_id'             => $r->bio_id,
             'fish_id'            => $r->varietas,
             'cat_id'             => $r->type_ukuran,
+            'fish_size'          => $r->fish_size,
             'fish_picture'       => $img_path,
             'status'             => 'BELUM LUNAS',
             'date_reg'           => Carbon::now()->format('Y-m-d'),
@@ -106,6 +107,7 @@ class UserController extends Controller
         $fish = \App\Models\Tbl_user_fish::create($user_fish);
 
         if(!$fish) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Daftar, Ulangi Lagi']);
             DB::rollBack();
         }
         else {
@@ -115,6 +117,90 @@ class UserController extends Controller
             return redirect()->route('user.fish', ['id'=> auth()->user()->id]);
         }
         
+
+    }
+
+    public function showDetailFish($id) {
+        // $fish = \App\Models\Tbl_user_fish::find($id);
+        $ufish = \App\Models\Tbl_user_fish::with([
+            'user',
+            'bio',
+            'fish',
+            'cat'
+        ])->find($id);
+
+        $cat = \App\Models\Tbl_cat::all();
+        $var = \App\Models\Tbl_fish::all();
+
+        return view('backend.user.show_fish', ['fish' => $ufish, 'data_cat' => $cat, 'data_var' => $var]);
+    }
+
+    public function updateFish(Request $req) {
+        $ufish_id = $req->fish_id;
+
+        $ufish = \App\Models\Tbl_user_fish::find($ufish_id);
+
+        $ufish->handler_name = $req->handler_name;
+        $ufish->handler_address = $req->handler_address;
+        $ufish->fish_id = $req->varietas;
+        $ufish->cat_id = $req->type_ukuran;
+        $ufish->fish_size = $req->fish_size;
+
+        $update = $ufish->save();
+
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Update Data Gagal, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Ikan Berhasil Di Update']);
+        }
+
+        return redirect()->back();
+
+    }
+
+    public function updateFishPicture(Request $req) {
+        if($req->hasFile('fish_pict')) {
+            $vld = Validator::make($req->all(), [
+                'fish_pict' => 'image|mimes:png,jpg|max:300'
+            ]);
+            if ($vld->fails()) {
+                // echo "validate fail";
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Foto bertype png atau jpg maksimal 300Kb']);
+                return redirect()->back();
+                
+            } else {
+                $filename_ext = $req->file('fish_pict')->getClientOriginalName();
+                $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+                $extension = $req->file('fish_pict')->getClientOriginalExtension();
+                $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+                $req->file('fish_pict')->storeAs('public/fish', $filenametostore);
+                $req->file('fish_pict')->storeAs('public/fish/thumbnail', $filenametostore);
+                $thumbnailpath = public_path('storage/fish/thumbnail/'.$filenametostore);
+                $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($thumbnailpath);
+
+                $img_path = '/storage/fish/'.$filenametostore;
+            }
+        } else {
+            $img_path = '/storage/fish/default_fish.jpg';
+        }
+
+        $ufish_id = $req->fish_id;
+        $ufish = \App\Models\Tbl_user_fish::find($ufish_id);
+
+        $ufish->fish_picture = $img_path;
+
+        $update = $ufish->save();
+
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Update Gambar Gagal, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Gambar Ikan Berhasil Di Update']);
+        }
+
+        return redirect()->back();
 
     }
 }

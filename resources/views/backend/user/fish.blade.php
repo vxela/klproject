@@ -52,6 +52,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>
+                                        Handler
+                                    </th>
+                                    <th>
                                         Jenis Ikan
                                     </th>
                                     <th>
@@ -78,25 +81,29 @@
                                 @foreach ($data_fish as $fish)
                                     <tr>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{$fish->handler_name}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{$fish->fish->name}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{$fish->fish_size}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{$fish->cat->min_size.' - '.$fish->cat->max_size.' cm'}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{$fish->cat->grade}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            {{number_format($fish->cat->reg_price)}}
                                         </td>
                                         <td>
-                                            {{$fish->bio_id}}
+                                            <span class="badge badge-warning">{{$fish->status}}</span>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('user.detail_fish', ['id' => $fish->id])}}" class="btn btn-primary">Detail</a>
+                                            
                                         </td>
                                     </tr>    
                                 @endforeach
