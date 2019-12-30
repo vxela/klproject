@@ -52,7 +52,7 @@
                                             @php
                                                 $date = Carbon\Carbon::parse($fbl->created_at);
                                             @endphp
-                                            <button type="button" target="_blank" data-route_url="{{route('user.detail_fish', ['id' => $fbl->id])}}" class="btn btn-sm btn-primary" 
+                                            <button type="button" data-route_url="{{route('user.detail_fish', ['id' => $fbl->id])}}" class="btn btn-sm btn-primary" 
                                                 data-toggle="modal" 
                                                 data-target="#data_ikan"
                                                 data-no_bill="{{'#'.$date->format('Ymd').'/'.$fbl->id.'/'.$fbl->user_id.'/'.$fbl->fish_id.'/'.$fbl->cat_id}}"
