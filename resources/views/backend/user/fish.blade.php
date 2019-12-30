@@ -112,7 +112,7 @@
                         </table>
                     </div>
                     @else
-                    <div class="col-12 text-center">
+                        <div class="col-12 text-center">
                             <h3>Belum ada ikan terdaftar</h3>
                             <a href="{{route('user.regis_ikan', ['id' => $user_id])}}" class="btn btn-lg btn-success">Daftar Ikan</a>
                         </div>

@@ -103,8 +103,10 @@ class UserController extends Controller
             $img->save($thumbnailpath);
 
             $img_path = '/storage/fish/'.$filenametostore;
+            $img_thumb_path = '/storage/fish/thumbnail/'.$filenametostore;
         } else {
             $img_path = '/storage/fish/default_fish.jpg';
+            $img_thumb_path = '/storage/fish/thumbnail/default_fish.jpg';
         }
 
         DB::beginTransaction();
@@ -118,6 +120,7 @@ class UserController extends Controller
             'cat_id'             => $r->type_ukuran,
             'fish_size'          => $r->fish_size,
             'fish_picture'       => $img_path,
+            'fish_picture_thumb' => $r->img_thumb_path,
             'status'             => 'BELUM LUNAS',
             'date_reg'           => Carbon::now()->format('Y-m-d'),
             'time_reg'           => Carbon::now()->format('H:i:s')
@@ -197,8 +200,10 @@ class UserController extends Controller
             $img->save($thumbnailpath);
 
             $img_path = '/storage/fish/'.$filenametostore;
+            $img_thumb_path = '/storage/fish/thumbnail/'.$filenametostore;
         } else {
             $img_path = '/storage/fish/default_fish.jpg';
+            $img_thumb_path = '/storage/fish/thumbnail/default_fish.jpg';
         }
 
         $ufish_id = $req->fish_id;
@@ -210,6 +215,7 @@ class UserController extends Controller
         Storage::delete(base_path($oldimg));
         Storage::delete(base_path('/thumbnail'.$oldimg));
         $ufish->fish_picture = $img_path;
+        $ufish->fish_picture_thumb = $img_thumb_path;
         $update = $ufish->save();
 
 
@@ -247,7 +253,7 @@ class UserController extends Controller
                         },
                     'fish', 'cat'    
                     ])->where('user_id', $user_id)
-                      ->where('status', 'BELUM LUNAS')
+                      ->where('status', 'LUNAS')
                       ->get();                      
         
         // dd($ufish->all());
