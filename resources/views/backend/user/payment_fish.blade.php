@@ -258,36 +258,36 @@
             doc.save('bill.pdf');
         });
 
-        $('#data_ikan').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var kl_address = button.data('panitia_alamat');
-            var bill_nbr = button.data('no_bill');
-            var own_name = button.data('own_name');
-            var f_vty = button.data('fish_type');
-            var f_grade = button.data('fish_grade');
-            var reg_price = button.data('reg_price');
-            var pay_sts = button.data('reg_status');
-            var rek_number = button.data('panitia_rek');
-            var rek_name = button.data('panitia_rek_name');
-            var panitia_cp1 = button.data('panitia_cp1');
-            var panitia_cp2 = button.data('panitia_cp1');
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var modal = $(this)
-            // modal.find('.modal-title').text('New message to ' + recipient)
-            modal.find('.modal-body #kl_address').text(kl_address);
-            modal.find('.modal-body #bill_nbr').text(bill_nbr);
-            modal.find('.modal-body #own_name').text(own_name);
-            modal.find('.modal-body #f_vty').text(f_vty);
-            modal.find('.modal-body #f_grade').text(f_grade);
-            modal.find('.modal-body #reg_price').text(reg_price);
-            modal.find('.modal-body #pay_sts').text(pay_sts);
-            modal.find('.modal-body #rek_number').text(rek_number);
-            modal.find('.modal-body #rek_name').text(rek_name);
-            modal.find('.modal-body #panitia_cp1').text(panitia_cp1);
-            modal.find('.modal-body #panitia_cp2').text(panitia_cp2);
+        // $('#data_ikan').on('show.bs.modal', function (event) {
+        //     var button = $(event.relatedTarget);
+        //     var kl_address = button.data('panitia_alamat');
+        //     var bill_nbr = button.data('no_bill');
+        //     var own_name = button.data('own_name');
+        //     var f_vty = button.data('fish_type');
+        //     var f_grade = button.data('fish_grade');
+        //     var reg_price = button.data('reg_price');
+        //     var pay_sts = button.data('reg_status');
+        //     var rek_number = button.data('panitia_rek');
+        //     var rek_name = button.data('panitia_rek_name');
+        //     var panitia_cp1 = button.data('panitia_cp1');
+        //     var panitia_cp2 = button.data('panitia_cp1');
+        //     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        //     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        //     var modal = $(this)
+        //     // modal.find('.modal-title').text('New message to ' + recipient)
+        //     modal.find('.modal-body #kl_address').text(kl_address);
+        //     modal.find('.modal-body #bill_nbr').text(bill_nbr);
+        //     modal.find('.modal-body #own_name').text(own_name);
+        //     modal.find('.modal-body #f_vty').text(f_vty);
+        //     modal.find('.modal-body #f_grade').text(f_grade);
+        //     modal.find('.modal-body #reg_price').text(reg_price);
+        //     modal.find('.modal-body #pay_sts').text(pay_sts);
+        //     modal.find('.modal-body #rek_number').text(rek_number);
+        //     modal.find('.modal-body #rek_name').text(rek_name);
+        //     modal.find('.modal-body #panitia_cp1').text(panitia_cp1);
+        //     modal.find('.modal-body #panitia_cp2').text(panitia_cp2);
             
-        })
+        // })
 
     })
     </script>
