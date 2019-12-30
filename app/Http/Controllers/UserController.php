@@ -259,4 +259,10 @@ class UserController extends Controller
         // dd($ufish->all());
         return view('backend.user.payment_fish', ['fish_bl' => $ufish_bl, 'fish_l' => $ufish_l]);
     }
+
+    public function userBillFish($id) {
+        $fish = \App\Models\Tbl_user_fish::with(['user', 'fish', 'cat'])->find($id);
+
+        return view('backend.user.payment_detail_fish', ['fish' => $fish]);
+    }
 }

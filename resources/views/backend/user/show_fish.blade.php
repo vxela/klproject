@@ -21,8 +21,8 @@
     <li><a href="{{route('user.personal', ['id' => auth()->user()->id])}}"><i class="fa fa-fw fa-play"></i> Data Diri</a></li>
     <li><a href="{{route('user.fish', ['id' => auth()->user()->id])}}"><i class="fa fa-fw fa-play"></i> Entry Ikan</a></li>
     <li><a href="{{route('user.payment_fish')}}"><i class="fa fa-fw fa-play"></i> Pembayaran</a></li>
-    <li><a href="#"><i class="fa fa-fw fa-play"></i> Pesan Panitia</a></li>
-    <li><a href="#"><i class="fa fa-fw fa-play"></i> Ubah Password</a></li>
+    {{-- <li><a href="#"><i class="fa fa-fw fa-play"></i> Pesan Panitia</a></li>
+    <li><a href="#"><i class="fa fa-fw fa-play"></i> Ubah Password</a></li> --}}
 
 @endsection
 
