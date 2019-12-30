@@ -113,7 +113,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             Koi Lovers Makasar Project
@@ -203,7 +203,7 @@
                                             <small id="panitia_cp2"></small>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
