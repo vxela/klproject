@@ -15,7 +15,7 @@ class role_tbl_seeder extends Seeder
         DB::table('tbl_roles')->insert([
             'name' => 'admin',
             'link' => '/admin',
-            'route'	=> 'admin.dashboard'
+            'route'	=> 'admin.dashboard',
             'desc' => 'administrator system',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -23,7 +23,7 @@ class role_tbl_seeder extends Seeder
         DB::table('tbl_roles')->insert([
             'name' => 'writer',
             'link' => '/writer',
-            'route'	=> 'writer.dashboard'
+            'route'	=> 'writer.dashboard',
             'desc' => 'content writer',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -31,7 +31,7 @@ class role_tbl_seeder extends Seeder
         DB::table('tbl_roles')->insert([
             'name' => 'user',
             'link' => '/user',
-            'route'	=> 'user.dashboard'
+            'route'	=> 'user.dashboard',
             'desc' => 'user',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
