@@ -222,4 +222,35 @@ class UserController extends Controller
         return redirect()->back();
 
     }
+
+    public function userPaymentFish() {
+        $user_id = auth()->user()->id;
+
+        $ufish_bl = \App\Models\Tbl_user_fish::with([
+                        'user' => function($query) use ($user_id) {
+                            $query->where('id', '=', $user_id);
+                            },
+                        'bio' => function($query) use ($user_id) {
+                            $query->where('user_id', '=', $user_id);
+                            },
+                        'fish', 'cat'    
+                    ])->where('user_id', $user_id)
+                      ->where('status', 'BELUM LUNAS')
+                      ->get();
+
+            $ufish_l = \App\Models\Tbl_user_fish::with([
+                    'user' => function($query) use ($user_id) {
+                        $query->where('id', '=', $user_id);
+                        },
+                    'bio' => function($query) use ($user_id) {
+                        $query->where('user_id', '=', $user_id);
+                        },
+                    'fish', 'cat'    
+                    ])->where('user_id', $user_id)
+                      ->where('status', 'BELUM LUNAS')
+                      ->get();                      
+        
+        // dd($ufish->all());
+        return view('backend.user.payment_fish', ['fish_bl' => $ufish_bl, 'fish_l' => $ufish_l]);
+    }
 }

@@ -20,6 +20,7 @@ Route::get('/register', 'LoginController@register')->name('register');
 
 Route::post('/guest/register', 'RegisterController@register')->name('user_register');
 
+Route::get('/user/payment', 'UserController@userPaymentFish')->name('user.payment_fish');
 Route::post('/user/update_picture_ikan/', 'UserController@updateFishPicture')->name('user.update_fish_picture');
 Route::post('/user/update_ikan/', 'UserController@updateFish')->name('user.update_fish');
 Route::get('/user/data_ikan/{id}', 'UserController@showDetailFish')->name('user.detail_fish');

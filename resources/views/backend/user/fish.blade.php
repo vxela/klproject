@@ -48,6 +48,7 @@
                 </div>
                 <div class="card-body">
                     @if (count($data_fish) != 0)
+                    <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <thead class="thead-light">
                                 <tr>
@@ -109,6 +110,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
                     @else
                     <div class="col-12 text-center">
                             <h3>Belum ada ikan terdaftar</h3>
