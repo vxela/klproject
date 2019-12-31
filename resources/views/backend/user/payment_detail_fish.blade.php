@@ -73,7 +73,7 @@
                         <div class="col-md text-md-right">
                             <h5 class="text-uppercase">Pembayaran Ke</h5>
                             <p class="mb-0">
-                                152 000 498204 0 (Mandiri)<br>
+                                152 000 498204 3 (Mandiri)<br>
                                 An. Ridho Yuwono<br>
                             </p>
                         </div>
