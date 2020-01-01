@@ -33,7 +33,9 @@
 @section('pagecontent')
     <div class="card mb-4">
         <div class="card-body">
-            Dashboard
+            <a href="{{route('user.personal', ['id' => auth()->user()->id])}}" class="btn btn-block btn-lg btn-primary"> Data Diri</a>
+            <a href="{{route('user.fish', ['id' => auth()->user()->id])}}" class="btn btn-block btn-lg btn-primary"> Entry Ikan</a>
+            <a href="{{route('user.payment_fish')}}" class="btn btn-block btn-lg btn-primary"> Pembayaran</a>
         </div>
     </div>
 @endsection
