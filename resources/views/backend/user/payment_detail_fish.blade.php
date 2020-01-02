@@ -109,6 +109,18 @@
                             <td class="text-uppercase">STATUS</td>
                             <td class="text-right bg-danger">{{$fish->status}}</td>
                         </tr>
+                        <tr class="bg-light font-weight-bold">
+                            <td></td>
+                            <td></td>
+                            <td class="text-uppercase">CP</td>
+                            <td class="text-right bg-danger">0852 9722 2999 (Ridho)</td>
+                        </tr>
+                        <tr class="bg-light font-weight-bold">
+                            <td></td>
+                            <td></td>
+                            <td class="text-uppercase">CP2</td>
+                            <td class="text-right bg-danger">0812 4151 0808 (Abe)</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
