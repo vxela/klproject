@@ -113,13 +113,13 @@
                             <td></td>
                             <td></td>
                             <td class="text-uppercase">CP</td>
-                            <td class="text-right bg-danger">0852 9722 2999 (Ridho)</td>
+                            <td class="text-right">0852 9722 2999 (Ridho)</td>
                         </tr>
                         <tr class="bg-light font-weight-bold">
                             <td></td>
                             <td></td>
                             <td class="text-uppercase">CP2</td>
-                            <td class="text-right bg-danger">0812 4151 0808 (Abe)</td>
+                            <td class="text-right">0812 4151 0808 (Abe)</td>
                         </tr>
                         </tbody>
                     </table>
