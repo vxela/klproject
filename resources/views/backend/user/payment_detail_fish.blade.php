@@ -107,7 +107,11 @@
                             <td></td>
                             <td></td>
                             <td class="text-uppercase">STATUS</td>
-                            <td class="text-right bg-danger">{{$fish->status}}</td>
+                            @if ($fish->status == "LUNAS")
+                                <td class="text-right bg-success">{{$fish->status}}</td>
+                            @else
+                                <td class="text-right bg-danger">{{$fish->status}}</td>
+                            @endif
                         </tr>
                         <tr class="bg-light font-weight-bold">
                             <td></td>
