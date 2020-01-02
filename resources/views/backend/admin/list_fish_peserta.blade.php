@@ -84,7 +84,7 @@
                             {{$fs->date_reg}}
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary">Detail</a>
+                            <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary">Detail</a>
                             @if ($fs->status == 'BELUM LUNAS')
                                 <a href="" class="btn btn-success">Konfirmasi</a>
                             @endif

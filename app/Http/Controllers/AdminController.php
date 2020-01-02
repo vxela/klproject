@@ -20,4 +20,18 @@ class AdminController extends Controller
 
         return view('backend.admin.list_fish_peserta', ['data_fish' => $fish]);
     }
+
+    public function detailUserFish($id) {
+        $ufish = \App\Models\Tbl_user_fish::with([
+            'user',
+            'bio',
+            'fish',
+            'cat'
+        ])->find($id);
+
+        $cat = \App\Models\Tbl_cat::all();
+        $var = \App\Models\Tbl_fish::all();
+
+        return view('backend.admin.detail_user_fish', ['fish' => $ufish, 'data_cat' => $cat, 'data_var' => $var]);
+    }
 }
