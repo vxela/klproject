@@ -18,7 +18,7 @@
         <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-4">
-                <h1 class="text-center mb-4">BootAdmin</h1>
+                <h1 class="text-center mb-4">KLM Project Login</h1>
                 <div class="card">
                     <div class="card-body">
                         @if (Session::has('alert'))

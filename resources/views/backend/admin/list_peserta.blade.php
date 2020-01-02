@@ -27,8 +27,63 @@
 @endsection
 
 @section('pagecontent')
-    <div class="card-body">
-        adfd
+    <div class="card mb-4">
+        <div class="card-header bg-white font-weight-bold">
+            Data Peserta
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Nama
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Kontak
+                        </th>
+                        <th>
+                            Prowinsi
+                        </th>
+                        <th>
+                            Kab/Kota
+                        </th>
+                        <th>
+                            Fish
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data_peserta as $pes)
+                        <tr>
+                            <td>
+                                {{$pes->user()->name}}
+                            </td>
+                            <td>
+                                {{$pes->email}}
+                            </td>
+                            <td>
+                                {{$pes->no_hp}}
+                            </td>
+                            <td>
+                                {{$pes->prov}}
+                            </td>
+                            <td>
+                                {{$pes->kota}}
+                            </td>
+                            <td>
+                                <a href="{{route('admin.peserta_fish', ['id' => $pes->user_id])}}" class="btn btn-primary">Lihat Ikan</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer bg-white">
+            /
+        </div>
     </div>
 @endsection
 
