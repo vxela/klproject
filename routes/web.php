@@ -31,4 +31,6 @@ Route::post('/user/personal_data/', 'UserController@personalUpdateData')->name('
 Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('user.personal');
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
+Route::get('/admin/list_peserta', 'AdminController@listPeserta')->name('admin.list_peserta');
+Route::get('/admin/add_peserta', 'AdminController@index')->name('admin.add_peserta');
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');

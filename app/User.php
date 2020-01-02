@@ -42,6 +42,10 @@ class User extends Authenticatable
     	return $this->hasOne('App\Models\Tbl_bio');
     }
 
+    public function role() {
+        return $this->hasOne('App\Models\Tbl_role');
+    }
+
     public function user_fish() {
         return $this->hasMany('App\Models\Tbl_user_fish');
     }

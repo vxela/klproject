@@ -5,7 +5,7 @@
 @endsection
 
 @section('pagetitle')
-    Admin Dashboard
+    Admin Dashboard | Data Peserta
 @endsection
 
 @section('topnav')
@@ -19,19 +19,19 @@
 @section('pagemenu')
     <li><a href="{{route('admin.list_peserta')}}"><i class="fa fa-fw fa-users"></i> Data Pendaftar</a></li>
     <li><a href="{{route('admin.add_peserta')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Peserta</a></li>
+    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-user-plus"></i> logout</a></li>
 @endsection
 
 @section('pagebreadcrumb')
-    Dashboard
+    Admin > Data Peserta
 @endsection
 
 @section('pagecontent')
     <div class="card-body">
-        Dashboard
+        adfd
     </div>
 @endsection
 
 @section('pagejs')
     
 @endsection
-
