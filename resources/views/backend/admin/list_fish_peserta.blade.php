@@ -32,73 +32,75 @@
             Data Ikan
         </div>
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>
-                            Varietas
-                        </th>
-                        <th>
-                            Size
-                        </th>
-                        <th>
-                            Grade
-                        </th>
-                        <th>
-                            Reg Fee
-                        </th>
-                        <th>
-                            Status Pembayaran
-                        </th>
-                        <th>
-                            Tanggal Reg
-                        </th>
-                        <th>
-                            Detail
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data_fish as $fs)
-                    <tr>
-                        <td>
-                            {{$fs->fish->name}}
-                        </td>
-                        <td>
-                            {{$fs->fish_size}}
-                        </td>
-                        <td>
-                            {{$fs->cat->grade}}
-                        </td>
-                        <td>
-                            {{'Rp. '.number_format($fs->cat->reg_price).',00'}}
-                        </td>
-                        <td>
-                            @if ($fs->status == 'LUNAS')
-                                <span class="badge badge-success">{{$fs->status}}</span>
-                            @else
-                                <span class="badge badge-warning">{{$fs->status}}</span>
-                            @endif
-                        </td>
-                        <td>
-                            {{$fs->date_reg}}
-                        </td>
-                        <td>
-                            <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary">Detail</a>
-                            @if ($fs->status == 'BELUM LUNAS')
-                                <form action="{{route('admin.confirm_reg_fish')}}" method="post" style="display:inline;">
-                                    @csrf
-                                    <input type="hidden" name="fish_id" value="{{$fs->id}}">
-                                    <input type="hidden" name="status" value="LUNAS">
-                                    <button type="submit" class="btn btn-success">Konfirmasi</a>
-                                    {{-- <button href="{{route('admin.confirm_reg_fish', ['id' => $fs->id])}}" class="btn btn-success">Konfirmasi</a> --}}
-                                </form>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Varietas
+                            </th>
+                            <th>
+                                Size
+                            </th>
+                            <th>
+                                Grade
+                            </th>
+                            <th>
+                                Reg Fee
+                            </th>
+                            <th>
+                                Status Pembayaran
+                            </th>
+                            <th>
+                                Tanggal Reg
+                            </th>
+                            <th>
+                                Detail
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data_fish as $fs)
+                        <tr>
+                            <td>
+                                {{$fs->fish->name}}
+                            </td>
+                            <td>
+                                {{$fs->fish_size}}
+                            </td>
+                            <td>
+                                {{$fs->cat->grade}}
+                            </td>
+                            <td>
+                                {{'Rp. '.number_format($fs->cat->reg_price).',00'}}
+                            </td>
+                            <td>
+                                @if ($fs->status == 'LUNAS')
+                                    <span class="badge badge-success">{{$fs->status}}</span>
+                                @else
+                                    <span class="badge badge-warning">{{$fs->status}}</span>
+                                @endif
+                            </td>
+                            <td>
+                                {{$fs->date_reg}}
+                            </td>
+                            <td>
+                                <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary">Detail</a>
+                                @if ($fs->status == 'BELUM LUNAS')
+                                    <form action="{{route('admin.confirm_reg_fish')}}" method="post" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="fish_id" value="{{$fs->id}}">
+                                        <input type="hidden" name="status" value="LUNAS">
+                                        <button type="submit" class="btn btn-success">Konfirmasi</a>
+                                        {{-- <button href="{{route('admin.confirm_reg_fish', ['id' => $fs->id])}}" class="btn btn-success">Konfirmasi</a> --}}
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="card-footer bg-white">
             Show {{count($data_fish)}} Fish Registered
