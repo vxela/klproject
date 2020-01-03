@@ -153,7 +153,7 @@
                                 <input type="file" class="form-control-file" name="fish_pict" id="fish_pict" required>
                                 <input type="hidden" name="fish_id" value="{{$fish->id}}">
                             </div>
-                            <label for="" class="col-4">
+                            <label for="" class="col-4 text-right">
                                 <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
                             </label>
                         </div>
@@ -169,6 +169,18 @@
                         Foto Resi Belum Di Upload
                     </div>
                     <div class="card-body">
+                        <form action="{{route('admin.upload_user_resi_register')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group row mb-0">
+                                <div class="col-8">
+                                    <input type="file" class="form-control-file" name="fish_resi_pict" id="fish_resi_pict" required>
+                                    <input type="hidden" name="fish_id" value="{{$fish->id}}">
+                                </div>
+                                <label for="" class="col-4 text-right">
+                                    <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
+                                </label>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -179,20 +191,23 @@
                         Foto Resi Pendaftaran
                     </div>
                     <div class="card-body">
+                        <div class="card">
+                            <img src="{{$fish->fish_resi_picture}}" alt="" class="img-thumbnail">
+                        </div>
                     </div>
                     <div class="card-footer bg-white">
-                        {{-- <form action="{{route('admin.update_user_picture_fish')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('admin.update_user_resi_register')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mb-0">
                                 <div class="col-8">
-                                    <input type="file" class="form-control-file" name="fish_pict" id="fish_pict" required>
+                                    <input type="file" class="form-control-file" name="fish_resi_pict" id="fish_resi_pict" required>
                                     <input type="hidden" name="fish_id" value="{{$fish->id}}">
                                 </div>
-                                <label for="" class="col-4">
+                                <label for="" class="col-4 text-right">
                                     <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
                                 </label>
                             </div>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             </div>            

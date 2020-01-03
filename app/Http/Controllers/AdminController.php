@@ -60,7 +60,7 @@ class AdminController extends Controller
         } else {
             $ufish->status = $req->status_reg;
             $ufish->confirm_by = '';
-
+            $ufish->fish_resi_picture = '';
         }
 
 
@@ -141,4 +141,77 @@ class AdminController extends Controller
         return redirect()->back();
 
     }
+
+    public function uploadFishResiReg(Request $req) {
+        if($req->hasFile('fish_resi_pict')) {
+            $filename_ext = $req->file('fish_resi_pict')->getClientOriginalName();
+            $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+            $extension = $req->file('fish_resi_pict')->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+            $req->file('fish_resi_pict')->storeAs('public/resi', $filenametostore);
+            $oripath = public_path('storage/resi/'.$filenametostore);
+            $img = Image::make($oripath)->resize(500, null, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($oripath);
+
+            $img_path = '/storage/resi/'.$filenametostore;
+        } else {
+            $img_path = '/storage/resi/default_fish.jpg';
+        }
+
+        $ufish_id = $req->fish_id;
+        $ufish = \App\Models\Tbl_user_fish::find($ufish_id);
+
+        $ufish->fish_resi_picture = $img_path;
+        $ufish->status = "LUNAS";
+        $ufish->confirm_by = auth()->user()->name;
+        $update = $ufish->save();
+
+
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Simpan Resi Gagal, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Gambar Resi Berhasil Di Simpan']);
+        }
+
+        return redirect()->back();
+    }
+
+    public function updateFishResiReg(Request $req) {
+        if($req->hasFile('fish_resi_pict')) {
+            $filename_ext = $req->file('fish_resi_pict')->getClientOriginalName();
+            $filename = pathinfo($filename_ext, PATHINFO_FILENAME);
+            $extension = $req->file('fish_resi_pict')->getClientOriginalExtension();
+            $filenametostore = $filename.'_'.Carbon::now()->format('Y_m_d_His').'.'.$extension;
+            $req->file('fish_resi_pict')->storeAs('public/resi', $filenametostore);
+            $oripath = public_path('storage/resi/'.$filenametostore);
+            $img = Image::make($oripath)->resize(500, null, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($oripath);
+
+            $img_path = '/storage/resi/'.$filenametostore;
+        } else {
+            $img_path = '/storage/resi/default_fish.jpg';
+        }
+
+        $ufish_id = $req->fish_id;
+        $ufish = \App\Models\Tbl_user_fish::find($ufish_id);
+
+        $ufish->fish_resi_picture = $img_path;
+        $ufish->status = "LUNAS";
+        $ufish->confirm_by = auth()->user()->name;
+        $update = $ufish->save();
+
+
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Update Resi Gagal, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Gambar Resi Berhasil Di Update']);
+        }
+
+        return redirect()->back();
+    }
+
 }

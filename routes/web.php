@@ -32,6 +32,8 @@ Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('use
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
+Route::post('/admin/update_resi_ikan', 'AdminController@updateFishResiReg')->name('admin.update_user_resi_register');
+Route::post('/admin/upload_resi_ikan', 'AdminController@uploadFishResiReg')->name('admin.upload_user_resi_register');
 Route::post('/admin/update_picture_ikan', 'AdminController@updateFishPicture')->name('admin.update_user_picture_fish');
 Route::post('/admin/fish_confirm_registrasi', 'AdminController@ConfirmRegistrasi')->name('admin.confirm_reg_fish');
 Route::post('/admin/fish_peserta_detail', 'AdminController@UpdateUserFish')->name('admin.update_user_fish');
