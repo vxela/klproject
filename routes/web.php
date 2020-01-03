@@ -40,5 +40,5 @@ Route::post('/admin/fish_peserta_detail', 'AdminController@UpdateUserFish')->nam
 Route::get('/admin/fish_peserta_detail/{id}', 'AdminController@detailUserFish')->name('admin.detail_user_fish');
 Route::get('/admin/fish_peserta/{id}', 'AdminController@listFishPeserta')->name('admin.peserta_fish');
 Route::get('/admin/list_peserta', 'AdminController@listPeserta')->name('admin.list_peserta');
-Route::get('/admin/add_peserta', 'AdminController@index')->name('admin.add_peserta');
+Route::get('/admin/add_peserta', 'AdminController@addPeserta')->name('admin.add_peserta');
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');

@@ -214,4 +214,8 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function addPeserta() {
+        return view('backend.admin.tambah_peserta');
+    }
+
 }
