@@ -86,7 +86,13 @@
                         <td>
                             <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary">Detail</a>
                             @if ($fs->status == 'BELUM LUNAS')
-                                <a href="" class="btn btn-success">Konfirmasi</a>
+                                <form action="{{route('admin.confirm_reg_fish')}}" method="post" style="display:inline;">
+                                    @csrf
+                                    <input type="hidden" name="fish_id" value="{{$fs->id}}">
+                                    <input type="hidden" name="status" value="LUNAS">
+                                    <button type="submit" class="btn btn-success">Konfirmasi</a>
+                                    {{-- <button href="{{route('admin.confirm_reg_fish', ['id' => $fs->id])}}" class="btn btn-success">Konfirmasi</a> --}}
+                                </form>
                             @endif
                         </td>
                     </tr>
@@ -95,11 +101,28 @@
             </table>
         </div>
         <div class="card-footer bg-white">
-            /
+            Show {{count($data_fish)}} Fish Registered
         </div>
     </div>
 @endsection
 
 @section('pagejs')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+    $(document).ready(function(){
+        if($('#flash_data').length) {
+            let type = $('#flash_data').data('type');
+            let msg = $('#flash_data').data('msg');
+        
+            Swal.fire({
+                icon: type,
+                text: msg,
+                showConfirmButton: true,
+            });
+        };
+    });
+    </script>
+
     
 @endsection

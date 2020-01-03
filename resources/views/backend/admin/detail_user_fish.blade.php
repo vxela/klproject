@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
             <div class="card mb-4">
-                <form action="{{route('user.update_fish')}}" method="post">
+                <form action="{{route('admin.update_user_fish')}}" method="post">
 
                     <div class="card-header bg-white font-weight-bold">
                         Data Ikan Detail
@@ -98,11 +98,29 @@
                         <div class="form-group row">
                             <label for="" class="col-4 col-form-label">Status Pembayaran</label>
                             <div class="col-8">
-                                @if ($fish->status != 'LUNAS')
+                                <select class="form-control
+                                @if ($fish->status == 'LUNAS')
+                                    is-valid
+                                @else
+                                    is-invalid
+                                @endif
+                                " name="status_reg" id="status_reg" required>
+                                    <option value="LUNAS"
+                                        @if ($fish->status == 'LUNAS')
+                                            selected
+                                        @endif
+                                    >LUNAS</option>
+                                    <option value="BELUM LUNAS"
+                                        @if ($fish->status == 'BELUM LUNAS')
+                                            selected
+                                        @endif
+                                    >BELUM LUNAS</option>
+                                </select> 
+                                {{-- @if ($fish->status != 'LUNAS')
                                     <input type="text" class="form-control is-invalid" id="status" value="{{$fish->status}}" disabled>
                                 @else
                                     <input type="text" class="form-control" id="status" value="{{$fish->status}}" disabled>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </div>
@@ -128,7 +146,7 @@
                     </div>
                 </div>
                 <div class="card-footer bg-white">
-                    <form action="{{route('user.update_fish_picture')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.update_user_picture_fish')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row mb-0">
                             <div class="col-8">
@@ -143,12 +161,61 @@
                 </div>
             </div>
         </div>
+
+        @if ($fish->fish_resi_picture == '')
+            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-white font-weight-bold">
+                        Foto Resi Belum Di Upload
+                    </div>
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        @else
+            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
+                <div class="card mb-4">
+                    <div class="card-header bg-white font-weight-bold">
+                        Foto Resi Pendaftaran
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="card-footer bg-white">
+                        {{-- <form action="{{route('admin.update_user_picture_fish')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group row mb-0">
+                                <div class="col-8">
+                                    <input type="file" class="form-control-file" name="fish_pict" id="fish_pict" required>
+                                    <input type="hidden" name="fish_id" value="{{$fish->id}}">
+                                </div>
+                                <label for="" class="col-4">
+                                    <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
+                                </label>
+                            </div>
+                        </form> --}}
+                    </div>
+                </div>
+            </div>            
+        @endif
     </div>
 @endsection
 
 @section('pagejs')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <script>
     $(document).ready(function(){
+        if($('#flash_data').length) {
+            let type = $('#flash_data').data('type');
+            let msg = $('#flash_data').data('msg');
+        
+            Swal.fire({
+                icon: type,
+                text: msg,
+                showConfirmButton: true,
+            });
+        };
+
         $('#type_ukuran').change(function() {
             var min = $('option:selected',this).data("min_size");
             var max = $('option:selected',this).data("max_size");

@@ -82,7 +82,7 @@
             </table>
         </div>
         <div class="card-footer bg-white">
-            /
+            Show {{count($data_peserta)}} Participant
         </div>
     </div>
 @endsection
