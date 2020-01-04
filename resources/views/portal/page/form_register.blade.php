@@ -93,7 +93,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-4 col-xs-12 col-form-label">No. Telpon</label>
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{10,14}" required title=" angka panjang 11 -13 karakter">
+                                <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{10,14}" required title=" angka panjang 10 -14 karakter">
                             </div>
                         </div>
                         <div class="form-group row">
