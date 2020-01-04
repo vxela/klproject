@@ -114,7 +114,7 @@ class UserController extends Controller
         $user_fish = [
             'user_id'            => $r->user_id,
             'handler_name'       => $r->handler_name,
-            'handler_address'    => $r->handler_address,
+            'handler_address'    => $r->prov .', '.$r->kabupaten,
             'bio_id'             => $r->bio_id,
             'fish_id'            => $r->varietas,
             'cat_id'             => $r->type_ukuran,

@@ -60,8 +60,18 @@
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-4 col-form-label">Alamat Handler <small class="reqq">*</small></label>
-                            <div class="col-8">
-                                <input type="text" class="form-control" name="handler_address" id="handler_address" placeholder="Provinsi, Kota" required>
+                            <div class="col-4">
+                                {{-- <input type="text" class="form-control" name="handler_address" id="handler_address" placeholder="Provinsi, Kota" required> --}}
+                                <select class="form-control m-b" name="provinsi" id="propinsi" required>
+                                    <option selected value=""> Pilih Provinsi </option>
+                                </select>
+                                <input type="hidden" name="prov" id="prov" value="">
+                            </div>
+                            <div class="col-4">
+                                {{-- <input type="text" class="form-control" name="handler_address" id="handler_address" placeholder="Provinsi, Kota" required> --}}
+                                <select class="form-control m-b" name="kabupaten" id="kabupaten" required>
+                                    <option selected value=""> Pilih Kabupaten </option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -121,6 +131,21 @@
 @section('pagejs')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
+        var return_first = function() {
+        var tmp = null;
+        $.ajax({
+                'async': false,
+                'type': "get",
+                'global': false,
+                'dataType': 'json',
+                'url': 'https://x.rajaapi.com/poe',
+                'success': function(data) {
+                    tmp = data.token;
+                }
+            });
+            return tmp;
+        }();
+                
         $(document).ready(function(){
             if($('#flash_data').length) {
                 let type = $('#flash_data').data('type');
@@ -132,6 +157,67 @@
                     showConfirmButton: true,
                 });
             };
+
+            $.ajax({
+                url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
+                type: 'GET',
+                dataType: 'json',
+                success: function(json) {
+                    if (json.code == 200) {
+                        for (i = 0; i < Object.keys(json.data).length; i++) {
+                            if(json.data[i].name == 'SULAWESI SELATAN') {
+                                $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id).attr('data-prov', json.data[i].name).attr('selected', true));
+                                var propinsi = $("#propinsi").val();
+                                $.ajax({
+                                    url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                                    data: "idpropinsi=" + propinsi,
+                                    type: 'GET',
+                                    cache: false,
+                                    dataType: 'json',
+                                    success: function(json) {
+                                        $("#kabupaten").html('');
+                                        if (json.code == 200) {
+                                            for (i = 0; i < Object.keys(json.data).length; i++) {
+                                                $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                                            }
+                                        } else {
+                                            $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                                        }
+                                        $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                                    }
+                                });
+                            } else {
+                                $('#propinsi').append($('<option>').text(json.data[i].name).attr('data-prov', json.data[i].name).attr('value', json.data[i].id));
+                            }
+                        }
+                    } else {
+                        $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                    }
+                }
+            });
+
+            $("#propinsi").change(function() {
+                var propinsi = $("#propinsi").val();
+                $("#prov_name").val($("#propinsi").text());
+                $.ajax({
+                    url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                    data: "idpropinsi=" + propinsi,
+                    type: 'GET',
+                    cache: false,
+                    dataType: 'json',
+                    success: function(json) {
+                        $("#kabupaten").html('');
+                        if (json.code == 200) {
+                            for (i = 0; i < Object.keys(json.data).length; i++) {
+                                $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                            }
+                        } else {
+                            $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                        }
+                        $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                    }
+                });
+            });            
 
             $('#type_ukuran').change(function(){
                 var data_grade = $('option:selected',this).data("grade");
