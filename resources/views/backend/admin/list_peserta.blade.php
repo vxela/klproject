@@ -76,7 +76,7 @@
                                     {{$pes->bio->kota}}
                                 </td>
                                 <td>
-                                    <a href="{{route('admin.peserta_fish', ['id' => $pes->bio->id])}}" class="btn btn-primary">Lihat Ikan</a>
+                                    <a href="{{route('admin.peserta_fish', ['id' => $pes->fish->id])}}" class="btn btn-primary">Lihat Ikan</a>
                                 </td>
                             </tr>
                         @endforeach
