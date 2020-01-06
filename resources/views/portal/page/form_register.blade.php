@@ -80,80 +80,79 @@
 
                 <div class="row justify-content-md-center">
 
-                <div class="col-lg-6">
-                    
-                    <form action="{{route('user_register')}}" method="post">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Lengkap</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" class="form-control nama_lengkap" id="nama_lengkap" name="nama_lengkap" value="" placeholder="Nama Lengkap" required>
+                    <div class="col-lg-6">
+                        <form action="{{route('user_register')}}" method="post">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Lengkap</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control nama_lengkap" id="nama_lengkap" name="nama_lengkap" value="" placeholder="Nama Lengkap" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">No. Telpon</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{10,14}" required title=" angka panjang 10 -14 karakter">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">No. Telpon</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{10,14}" required title=" angka panjang 10 -14 karakter">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat Email</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="email" class="form-control email" name="email" id="email" value="" placeholder="Email" required autocomplete="off">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat Email</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="email" class="form-control email" name="email" id="email" value="" placeholder="Email" required autocomplete="off">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" class="form-control alamat" name="alamat" id="alamat" value="" placeholder="Asal Daerah Pemilik" required>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control alamat" name="alamat" id="alamat" value="" placeholder="Asal Daerah Pemilik" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Provinsi</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <select class="form-control m-b" name="provinsi" id="propinsi" required>
-                                    <option selected value=""> Pilih Provinsi </option>
-                                </select>
-                                <input type="hidden" name="prov" id="prov" value="">
-                                {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Provinsi</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <select class="form-control m-b" name="provinsi" id="propinsi" required>
+                                        <option selected value=""> Pilih Provinsi </option>
+                                    </select>
+                                    <input type="hidden" name="prov" id="prov" value="">
+                                    {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Kota</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <select class="form-control m-b" name="kabupaten" id="kabupaten" required>
-                                    <option selected value=""> Pilih Kabupaten </option>
-                                </select>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Kota</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <select class="form-control m-b" name="kabupaten" id="kabupaten" required>
+                                        <option selected value=""> Pilih Kabupaten </option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Username</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" required minlength="6" autocomplete="off">
+                            <hr>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Username</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" required minlength="6" autocomplete="off">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Password</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required minlength="6" autocomplete="off">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Password</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required minlength="6" autocomplete="off">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-4 col-xs-12 col-form-label">Ulangi Password</label>
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="password" class="form-control" name="password2" id="password2" value="" placeholder="Ulangi Password" required minlength="6" autocomplete="off">
-                            </div>
-                        </div>                                                            
-                        <div class="form-group row">
-                            <div class="col-sm-4 col-xs-12 text-right">
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                            </div>
-                            <div class="col-sm-8 col-xs-12">
-                                <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button>
-                            </div>
-                        </div>                                                                                                                                                                                                                        
-                    </form>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Ulangi Password</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <input type="password" class="form-control" name="password2" id="password2" value="" placeholder="Ulangi Password" required minlength="6" autocomplete="off">
+                                </div>
+                            </div>                                                            
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-xs-12 text-right">
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                                <div class="col-sm-8 col-xs-12">
+                                    <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button>
+                                </div>
+                            </div>                                                                                                                                                                                                                        
+                        </form>
                     </div>
 
                 </div>

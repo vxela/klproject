@@ -12,4 +12,8 @@ class Tbl_bio extends Model
         return \App\User::find($this->user_id);
     }
 
+    public function usr() {
+        return $this->hasOne('App\User');
+    }
+
 }

@@ -10,6 +10,7 @@ use Session;
 use Image;
 use File;
 use DB;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,9 @@ class AdminController extends Controller
     }
 
     public function listPeserta() {
-        $peserta = \App\Models\Tbl_bio::all();
+        // $peserta = \App\Models\Tbl_bio::all()->paginate(10);
+        $peserta = \App\User::with(['bio','user_fish'])->where('role_id','=', 3)->get();
+        // dd($peserta);
         return view('backend.admin.list_peserta', ['data_peserta' => $peserta]);
     }
 
@@ -218,4 +221,93 @@ class AdminController extends Controller
         return view('backend.admin.tambah_peserta');
     }
 
+    public function storePeserta(Request $r) {
+        DB::beginTransaction();
+        
+        $data_user = [
+            'role_id'   =>3,
+            'name'      =>$r->username,
+            'email'     =>$r->email,
+            'password'  =>bcrypt($r->password)
+        ];
+
+        $user = \App\User::create($data_user);
+
+        $data_regis = [
+            'user_id'    => $user->id,
+            'nama'       => $r->nama_lengkap,
+            'no_hp'      => $r->no_hp,
+            'email'      => $r->email,
+            'alamat'     => $r->alamat,
+            'prov'       => $r->prov,
+            'kota'       => $r->kabupaten
+        ];
+
+        $bio = \App\Models\Tbl_bio::create($data_regis);
+
+        if( !$user || !$bio )
+        {
+            DB::rollBack();
+        } else {
+            DB::commit();
+        }
+
+        Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil mendaftarkan peserta!!.. || username ='.$r->username.' || Password = '.$r->password.' ||']);
+
+        return redirect()->back();
+    }
+
+    public function addAdmin() {
+        return view('backend.admin.tambah_admin');
+    }
+
+    public function storeAdmin(Request $r) {
+        DB::beginTransaction();
+        
+        $data_user = [
+            'role_id'   =>1,
+            'name'      =>$r->username,
+            'email'     =>$r->email,
+            'password'  =>bcrypt($r->password)
+        ];
+
+        $user = \App\User::create($data_user);
+
+        $data_regis = [
+            'user_id'    => $user->id,
+            'nama'       => $r->nama_lengkap,
+            'no_hp'      => $r->no_hp,
+            'email'      => $r->email,
+            'alamat'     => $r->alamat,
+            'prov'       => $r->prov,
+            'kota'       => $r->kabupaten
+        ];
+
+        $bio = \App\Models\Tbl_bio::create($data_regis);
+
+        if( !$user || !$bio )
+        {
+            DB::rollBack();
+        } else {
+            DB::commit();
+        }
+
+        Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil menambahkan administrator !!.. || username ='.$r->username.' || Password = '.$r->password.' ||']);
+
+        return redirect()->back();
+    }
+
+    public function dataFish() {
+        $fishs = \App\Models\Tbl_user_fish::paginate(10);
+
+        return view('backend.admin.list_ikan', ['data_fish' => $fishs]);
+    }
+
+    public function printStickerFish($id){
+        $fish = \App\Models\Tbl_user_fish::find($id);
+        // dd($fish);
+        return view('backend.pdf.test', ['fish' => $fish]);
+        // $pdf = PDF::loadView('backend.pdf.test', ['fish' => $fish]);
+        // return $pdf->stream($id.'-file.pdf');
+    }
 }

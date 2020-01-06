@@ -19,7 +19,8 @@
 @section('pagemenu')
     <li><a href="{{route('admin.list_peserta')}}"><i class="fa fa-fw fa-users"></i> Data Pendaftar</a></li>
     <li><a href="{{route('admin.add_peserta')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Peserta</a></li>
-    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-user-plus"></i> logout</a></li>
+    <li><a href="{{route('admin.add_admin')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Admin</a></li>
+
 @endsection
 
 @section('pagebreadcrumb')
@@ -60,22 +61,22 @@
                         @foreach ($data_peserta as $pes)
                             <tr>
                                 <td>
-                                    {{$pes->user()->name}}
+                                    {{$pes->bio->nama}}
                                 </td>
                                 <td>
-                                    {{$pes->email}}
+                                    {{$pes->bio->email}}
                                 </td>
                                 <td>
-                                    {{$pes->no_hp}}
+                                    {{$pes->bio->no_hp}}
                                 </td>
                                 <td>
-                                    {{$pes->prov}}
+                                    {{$pes->bio->prov}}
                                 </td>
                                 <td>
-                                    {{$pes->kota}}
+                                    {{$pes->bio->kota}}
                                 </td>
                                 <td>
-                                    <a href="{{route('admin.peserta_fish', ['id' => $pes->user_id])}}" class="btn btn-primary">Lihat Ikan</a>
+                                    <a href="{{route('admin.peserta_fish', ['id' => $pes->bio->id])}}" class="btn btn-primary">Lihat Ikan</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -84,7 +85,14 @@
             </div>
         </div>
         <div class="card-footer bg-white">
-            Show {{count($data_peserta)}} Participant
+            <div class="row">
+                <div class="col-6">
+                    Show {{count($data_peserta)}} Participant
+                </div>
+                <div class="col-6 text-right">
+                    {{-- {{$data_peserta->links()}} --}}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

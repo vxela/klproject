@@ -19,6 +19,8 @@
 @section('pagemenu')
     <li><a href="{{route('admin.list_peserta')}}"><i class="fa fa-fw fa-users"></i> Data Pendaftar</a></li>
     <li><a href="{{route('admin.add_peserta')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Peserta</a></li>
+    <li><a href="{{route('admin.add_admin')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Admin</a></li>
+
 @endsection
 
 @section('pagebreadcrumb')
@@ -28,7 +30,8 @@
 @section('pagecontent')
 <div class="row">
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <form action="">
+        <form action="{{route('admin.store_peserta')}}" method="POST">
+            @csrf
             <div class="card mb-4">
                 <div class="card-header bg-white font-weight-bold">
                     Admin Tambah Peserta
@@ -36,73 +39,67 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <input type="hidden" name="_token" value="Zwn7CykLyuPcE7wavDFyeFeLEWpzDsS4EigZ4j9N">                        <div class="form-group row">
+                            <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Lengkap</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control nama_lengkap" id="nama_lengkap" name="nama_lengkap" value="" placeholder="Nama Lengkap" required="">
+                                    <input type="text" class="form-control nama_lengkap" id="nama_lengkap" name="nama_lengkap" value="" placeholder="Nama Lengkap" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">No. Telpon</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{11}" required="" title=" angka panjang 11 -13 karakter">
+                                    <input type="text" class="form-control no_hp" name="no_hp" id="no_hp" value="" placeholder="No. Telpon / WA" pattern=".[0-9]{10,14}" required title=" angka panjang 10 -14 karakter">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat Email</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="email" class="form-control email" name="email" id="email" value="" placeholder="Email" required="" autocomplete="off">
+                                    <input type="email" class="form-control email" name="email" id="email" value="" placeholder="Email" required autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Alamat</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control alamat" name="alamat" id="alamat" value="" placeholder="Asal Daerah Pemilik" required="">
+                                    <input type="text" class="form-control alamat" name="alamat" id="alamat" value="" placeholder="Asal Daerah Pemilik" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Provinsi</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <select class="form-control m-b" name="provinsi" id="propinsi" required="">
-                                        <option selected="" value=""> Pilih Provinsi </option>
-                                    <option data-prov="ACEH" value="11">ACEH</option><option data-prov="SUMATERA UTARA" value="12">SUMATERA UTARA</option><option data-prov="SUMATERA BARAT" value="13">SUMATERA BARAT</option><option data-prov="RIAU" value="14">RIAU</option><option data-prov="JAMBI" value="15">JAMBI</option><option data-prov="SUMATERA SELATAN" value="16">SUMATERA SELATAN</option><option data-prov="BENGKULU" value="17">BENGKULU</option><option data-prov="LAMPUNG" value="18">LAMPUNG</option><option data-prov="KEPULAUAN BANGKA BELITUNG" value="19">KEPULAUAN BANGKA BELITUNG</option><option data-prov="KEPULAUAN RIAU" value="21">KEPULAUAN RIAU</option><option data-prov="DKI JAKARTA" value="31">DKI JAKARTA</option><option data-prov="JAWA BARAT" value="32">JAWA BARAT</option><option data-prov="JAWA TENGAH" value="33">JAWA TENGAH</option><option data-prov="DI YOGYAKARTA" value="34">DI YOGYAKARTA</option><option data-prov="JAWA TIMUR" value="35">JAWA TIMUR</option><option data-prov="BANTEN" value="36">BANTEN</option><option data-prov="BALI" value="51">BALI</option><option data-prov="NUSA TENGGARA BARAT" value="52">NUSA TENGGARA BARAT</option><option data-prov="NUSA TENGGARA TIMUR" value="53">NUSA TENGGARA TIMUR</option><option data-prov="KALIMANTAN BARAT" value="61">KALIMANTAN BARAT</option><option data-prov="KALIMANTAN TENGAH" value="62">KALIMANTAN TENGAH</option><option data-prov="KALIMANTAN SELATAN" value="63">KALIMANTAN SELATAN</option><option data-prov="KALIMANTAN TIMUR" value="64">KALIMANTAN TIMUR</option><option data-prov="KALIMANTAN UTARA" value="65">KALIMANTAN UTARA</option><option data-prov="SULAWESI UTARA" value="71">SULAWESI UTARA</option><option data-prov="SULAWESI TENGAH" value="72">SULAWESI TENGAH</option><option value="73" data-prov="SULAWESI SELATAN" selected="selected">SULAWESI SELATAN</option><option data-prov="SULAWESI TENGGARA" value="74">SULAWESI TENGGARA</option><option data-prov="GORONTALO" value="75">GORONTALO</option><option data-prov="SULAWESI BARAT" value="76">SULAWESI BARAT</option><option data-prov="MALUKU" value="81">MALUKU</option><option data-prov="MALUKU UTARA" value="82">MALUKU UTARA</option><option data-prov="PAPUA BARAT" value="91">PAPUA BARAT</option><option data-prov="PAPUA" value="94">PAPUA</option></select>
-                                    <input type="hidden" name="prov" id="prov" value="SULAWESI SELATAN">
-                                    
+                                    <select class="form-control m-b" name="provinsi" id="propinsi" required>
+                                        <option selected value=""> Pilih Provinsi </option>
+                                    </select>
+                                    <input type="hidden" name="prov" id="prov" value="">
+                                    {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Asal Kota</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <select class="form-control m-b" name="kabupaten" id="kabupaten" required=""><option value="KABUPATEN KEPULAUAN SELAYAR">KABUPATEN KEPULAUAN SELAYAR</option><option value="KABUPATEN BULUKUMBA">KABUPATEN BULUKUMBA</option><option value="KABUPATEN BANTAENG">KABUPATEN BANTAENG</option><option value="KABUPATEN JENEPONTO">KABUPATEN JENEPONTO</option><option value="KABUPATEN TAKALAR">KABUPATEN TAKALAR</option><option value="KABUPATEN GOWA">KABUPATEN GOWA</option><option value="KABUPATEN SINJAI">KABUPATEN SINJAI</option><option value="KABUPATEN MAROS">KABUPATEN MAROS</option><option value="KABUPATEN PANGKAJENE DAN KEPULAUAN">KABUPATEN PANGKAJENE DAN KEPULAUAN</option><option value="KABUPATEN BARRU">KABUPATEN BARRU</option><option value="KABUPATEN BONE">KABUPATEN BONE</option><option value="KABUPATEN SOPPENG">KABUPATEN SOPPENG</option><option value="KABUPATEN WAJO">KABUPATEN WAJO</option><option value="KABUPATEN SIDENRENG RAPPANG">KABUPATEN SIDENRENG RAPPANG</option><option value="KABUPATEN PINRANG">KABUPATEN PINRANG</option><option value="KABUPATEN ENREKANG">KABUPATEN ENREKANG</option><option value="KABUPATEN LUWU">KABUPATEN LUWU</option><option value="KABUPATEN TANA TORAJA">KABUPATEN TANA TORAJA</option><option value="KABUPATEN LUWU UTARA">KABUPATEN LUWU UTARA</option><option value="KABUPATEN LUWU TIMUR">KABUPATEN LUWU TIMUR</option><option value="KABUPATEN TORAJA UTARA">KABUPATEN TORAJA UTARA</option><option value="KOTA MAKASSAR">KOTA MAKASSAR</option><option value="KOTA PAREPARE">KOTA PAREPARE</option><option value="KOTA PALOPO">KOTA PALOPO</option></select>
+                                    <select class="form-control m-b" name="kabupaten" id="kabupaten" required>
+                                        <option selected value=""> Pilih Kabupaten </option>
+                                    </select>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Username</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" required="" minlength="6" autocomplete="off">
+                                    <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" required minlength="6" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Password</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required="" minlength="6" autocomplete="off">
+                                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required minlength="6" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Ulangi Password</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <input type="password" class="form-control" name="password2" id="password2" value="" placeholder="Ulangi Password" required="" minlength="6" autocomplete="off">
+                                    <input type="password" class="form-control" name="password2" id="password2" value="" placeholder="Ulangi Password" required minlength="6" autocomplete="off">
                                 </div>
-                            </div>                                                            
-                            {{-- <div class="form-group row">
-                                <div class="col-sm-4 col-xs-12 text-right">
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-                                <div class="col-sm-8 col-xs-12">
-                                    <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button>
-                                </div>
-                            </div> --}}
+                            </div>                                                                                                                                                                                                                        
                         </div>
                     </div>
                 </div>
@@ -123,5 +120,127 @@
 @endsection
 
 @section('pagejs')
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+    var return_first = function() {
+    var tmp = null;
+    $.ajax({
+            'async': false,
+            'type': "get",
+            'global': false,
+            'dataType': 'json',
+            'url': 'https://x.rajaapi.com/poe',
+            'success': function(data) {
+                tmp = data.token;
+            }
+        });
+        return tmp;
+    }();
+    $(document).ready(function(){
+        if($('#flash_data').length) {
+            let type = $('#flash_data').data('type');
+            let msg = $('#flash_data').data('msg');
+        
+            Swal.fire({
+                icon: type,
+                text: msg,
+                showConfirmButton: true,
+            });
+        };
+
+        $.ajax({
+            url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
+            type: 'GET',
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 200) {
+                    for (i = 0; i < Object.keys(json.data).length; i++) {
+                        if(json.data[i].name == 'SULAWESI SELATAN') {
+                            $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id).attr('data-prov', json.data[i].name).attr('selected', true));
+                            var propinsi = $("#propinsi").val();
+                            $.ajax({
+                                url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                                data: "idpropinsi=" + propinsi,
+                                type: 'GET',
+                                cache: false,
+                                dataType: 'json',
+                                success: function(json) {
+                                    $("#kabupaten").html('');
+                                    if (json.code == 200) {
+                                        for (i = 0; i < Object.keys(json.data).length; i++) {
+                                            $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                                        }
+                                    } else {
+                                        $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                                    }
+                                    $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                                }
+                            });
+                        } else {
+                            $('#propinsi').append($('<option>').text(json.data[i].name).attr('data-prov', json.data[i].name).attr('value', json.data[i].id));
+                        }
+                    }
+                } else {
+                    $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                }
+            }
+        });
+
+        $("#propinsi").change(function() {
+            var propinsi = $("#propinsi").val();
+            $("#prov_name").val($("#propinsi").text());
+            $.ajax({
+                url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                data: "idpropinsi=" + propinsi,
+                type: 'GET',
+                cache: false,
+                dataType: 'json',
+                success: function(json) {
+                    $("#kabupaten").html('');
+                    if (json.code == 200) {
+                        for (i = 0; i < Object.keys(json.data).length; i++) {
+                            $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].name));
+                        }
+                    } else {
+                        $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                    }
+                    $('#prov').val($('#propinsi').children('option:selected').data('prov'));
+                }
+            });
+        });
+        
+        $("#nama_lengkap").keyup(function(){
+            var v = this.value.toUpperCase();
+            $("#nama_lengkap").val(v);
+        });
+        $("#alamat").keyup(function(){
+            var v = this.value.toUpperCase();
+            $("#alamat").val(v);
+        });
+        $("#username").keypress(function(e){
+            var v = String.fromCharCode(e.which);
+            if(!v.match(/[a-zA-Z0-9]/)) {
+                return false;
+            }
+        });
+        $("#no_hp").keypress(function(e){
+            var v = String.fromCharCode(e.which);
+            if(!v.match(/[0-9]/)) {
+                return false;
+            }
+        }); 
+        $("#password2").keyup(function(){
+            var v1 = $(this).val()
+            var v2 = $('#password').val()
+            if(v1!=v2) {
+                $('#password').addClass('is-invalid');
+                $('#password2').addClass('is-invalid');
+            } else {
+                $('#password').removeClass('is-invalid');
+                $('#password2').removeClass('is-invalid');
+            }
+        });  
+    });
+    </script>
 @endsection

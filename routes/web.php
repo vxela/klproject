@@ -32,6 +32,11 @@ Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('use
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
+
+Route::get('/admin/data_ikan/{id}', 'AdminController@printStickerFish')->name('admin.fish_sticker');
+Route::get('/admin/data_ikan', 'AdminController@dataFish')->name('admin.fish_entry');
+Route::post('/admin/store_admin', 'AdminController@storeAdmin')->name('admin.store_admin');
+Route::get('/admin/add_admin', 'AdminController@addAdmin')->name('admin.add_admin');
 Route::post('/admin/update_resi_ikan', 'AdminController@updateFishResiReg')->name('admin.update_user_resi_register');
 Route::post('/admin/upload_resi_ikan', 'AdminController@uploadFishResiReg')->name('admin.upload_user_resi_register');
 Route::post('/admin/update_picture_ikan', 'AdminController@updateFishPicture')->name('admin.update_user_picture_fish');
@@ -40,5 +45,6 @@ Route::post('/admin/fish_peserta_detail', 'AdminController@UpdateUserFish')->nam
 Route::get('/admin/fish_peserta_detail/{id}', 'AdminController@detailUserFish')->name('admin.detail_user_fish');
 Route::get('/admin/fish_peserta/{id}', 'AdminController@listFishPeserta')->name('admin.peserta_fish');
 Route::get('/admin/list_peserta', 'AdminController@listPeserta')->name('admin.list_peserta');
+Route::post('/admin/store_peserta', 'AdminController@storePeserta')->name('admin.store_peserta');
 Route::get('/admin/add_peserta', 'AdminController@addPeserta')->name('admin.add_peserta');
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
