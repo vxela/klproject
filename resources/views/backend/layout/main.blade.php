@@ -50,6 +50,8 @@
                 <ul class="list-unstyled">
                     {{-- <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li> --}}
                     @yield('pagemenu')
+                    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Ganti Password Peserta</a></li>
+                    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Ganti Password</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
 
                 </ul>
