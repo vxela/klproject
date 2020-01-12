@@ -42,6 +42,12 @@
                         @csrf
                         <input type="hidden" name="fish_id" value="{{$fish->id}}">
                         <div class="form-group row">
+                            <label for="staticEmail" class="col-4 col-form-label">Nomor Peserta</label>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="reg_num" name="reg_num" value="{{Mush::uf_reg_num($fish->id)}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="staticEmail" class="col-4 col-form-label">Pemilik</label>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="username" name="username" value="{{Auth::user()->bio->nama}}" disabled>
@@ -112,7 +118,7 @@
                         <div class="form-group row">
                             <label for="inputPassword" class="col-4 col-form-label"></label>
                             <div class="col-8">
-                                <button type="submit" id="btn_submit" class="btn btn-primary">Update</button>
+                                <button type="submit" id="btn_submit" class="btn btn-primary" disabled>Update</button>
                             </div>
                         </div>
                     </form>

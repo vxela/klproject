@@ -111,7 +111,7 @@
                         <div class="form-group row">
                             <label for="staticEmail" class="col-4 col-form-label">Foto Ikan <small class="reqq">*</small> <br>(Min 100kb - Maks 500kb)</label>
                             <div class="col-8">
-                                <input type="file" class="form-control-file" name="fish_pict" id="fish_pict">
+                                <input type="file" class="form-control-file" name="fish_pict" id="fish_pict" required>
                             </div>
                         </div>
                         <div class="form-group row">
