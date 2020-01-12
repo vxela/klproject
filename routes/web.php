@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PortalController@index')->name('/');
+Route::get('/summary', 'PortalController@summary')->name('summary');
 
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login/auth', 'LoginController@auth');

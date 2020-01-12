@@ -46,6 +46,7 @@
         <ul>
         <li class=""><a href="{{route('/')}}#intro">Home</a></li>
         <li><a href="{{route('/')}}#information">Information</a></li>
+        <li><a href="{{route('summary')}}">Summary</a></li>
         {{-- <li><a href="#varietas">Variety</a></li>
         <li><a href="#awards">Awards</a></li>
         <li><a href="#faq">FAQ</a></li>

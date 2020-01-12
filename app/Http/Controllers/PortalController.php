@@ -9,4 +9,8 @@ class PortalController extends Controller
     public function index(){
         return view('portal.page.index');
     }
+
+    public function summary(){
+        return view('portal.page.summary');
+    }
 }
