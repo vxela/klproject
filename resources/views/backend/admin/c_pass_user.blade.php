@@ -5,7 +5,7 @@
 @endsection
 
 @section('pagetitle')
-    Admin Dashboard | Ubah Password
+    Admin Dashboard | Ubah Password Peserta
 @endsection
 
 @section('topnav')
@@ -27,7 +27,7 @@
 @endsection
 
 @section('pagebreadcrumb')
-    Dashboard | Ubah Password
+    Dashboard | Ubah Password Peserta
 @endsection
 
 @section('pagecontent')
@@ -37,11 +37,24 @@
             @csrf
             <div class="card mb-4">
                 <div class="card-header bg-white font-weight-bold">
-                    Ubah Password
+                    Ubah Password Peserta
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Peserta</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <select class="form-control m-b" name="user_id" id="user_id" required>
+                                        <option selected value=""> Pilih Peserta </option>
+                                        @foreach ($data_peserta as $peserta)
+                                        <option selected value="{{$peserta->id}}"> {{$peserta->bio->nama}}</option>
+                                        
+                                        @endforeach
+                                    </select>
+                                    {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Password</label>
                                 <div class="col-sm-8 col-xs-12">

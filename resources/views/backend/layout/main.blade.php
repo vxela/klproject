@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -10,6 +9,7 @@
         <link rel="stylesheet" href="{{asset('/bootadmin/css/datatables.min.css')}}">
         <link rel="stylesheet" href="{{asset('/bootadmin/css/fullcalendar.min.css')}}">
         <link rel="stylesheet" href="{{asset('/bootadmin/css/bootadmin.min.css')}}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
         @yield('pagecss')
         <title>
@@ -50,8 +50,11 @@
                 <ul class="list-unstyled">
                     {{-- <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li> --}}
                     @yield('pagemenu')
-                    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Ganti Password Peserta</a></li>
-                    <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Ganti Password</a></li>
+
+                    <li><a href="{{route('admin.fish_point')}}"><i class="fa fa-fw fa-diamond"></i> Points Points</a></li>
+                    <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-trophy"></i> Champion</a></li>
+                    <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password Peserta</a></li>
+                    <li><a href="{{route('admin.setup_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
 
                 </ul>

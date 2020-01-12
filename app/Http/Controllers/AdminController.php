@@ -310,4 +310,107 @@ class AdminController extends Controller
         // $pdf = PDF::loadView('backend.pdf.test', ['fish' => $fish]);
         // return $pdf->stream($id.'-file.pdf');
     }
+
+    public function setupUserPass() {
+
+        $peserta = \App\User::where('role_id', 3)->get();
+
+        return view('backend.admin.c_pass_user', ['data_peserta' => $peserta]);
+    }
+
+    public function updatePass(Request $r) {
+        if ($r->has('user_id')) {
+            $user_id = $r->user_id;
+            $user = \App\User::find($user_id);
+            $user->password = bcrypt($r->password);
+            $user->save();
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Pawword berhasil berubah, harap password disimpan dengan baik, password '.$user->name.' : '.$r->password]);
+            return redirect()->back();
+            
+        } else {
+            $user_id = auth()->user()->id;
+            $user = \App\User::find($user_id);
+            $user->password = bcrypt($r->password);
+            $user->save();
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Pawword berhasil berubah, harap password disimpan dengan baik, password '.$user->name.' : '.$r->password]);
+            return redirect()->route('logout');
+        }
+
+    }
+
+    public function setupPass() {
+        return view('backend.admin.change_password');
+    }
+
+    public function FishPoint() {
+        $point = \App\Models\Tbl_fish_point::all();
+            
+        return view('backend.admin.fish_point', ['data_point' => $point]);
+    }
+
+    public function addFishPoint() {
+
+        $fs = \App\User::where('role_id', 3)
+                                        ->get();
+
+        return view('backend.admin.add_fish_point', ['data_fish' => $fs]);
+
+    }
+
+    public function getFishByBio($id) {
+        $fs = \App\Models\Tbl_user_fish::with('fish')
+                                        ->where('bio_id', $id)
+                                        ->where('status', 'LUNAS')
+                                        ->get();
+
+        // $res = "";                                        
+        // foreach ($fs as $fish) {
+        //     $res .= "<option value='".$fs->id."'>".$fs->fish->name." | ".$fs->fish_size."</option>";
+        // }
+
+        // echo $res;
+
+        return response()->json($fs, 200);
+
+    }
+
+    public function storeFishPoint(Request $r) {
+        // dd($r->all());
+        $user = \App\Models\Tbl_bio::find($r->bio_id)->first();
+
+        $fish = \App\Models\Tbl_fish_point::where('user_fish_id', $r->fish_id)->count();
+
+        if($fish != 0) {
+            $fish = \App\Models\Tbl_fish_point::where('user_fish_id', $r->fish_id)->first();
+
+            $new = \App\Models\Tbl_fish_point::find($fish->id);
+
+            $new->point = $r->fish_point;
+            $new->date = Carbon::now()->format('Y-m-d');
+            $new->time = Carbon::now()->format('H:i:s');
+
+            $new->save();
+
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Point Di Update']);
+            return redirect()->back();
+
+        } else {
+            $data_point = [
+                'user_id' => $user->user_id,
+                'user_fish_id' => $r->fish_id,
+                'point' => $r->fish_point,
+                'date' => Carbon::now()->format('Y-m-d'),
+                'time' => Carbon::now()->format('H:i:s')            
+            ];
+        }
+
+        // print_r($data_point);
+
+        $store_fish = \App\Models\Tbl_fish_point::updateOrCreate($data_point);
+
+        Session::flash('notif', ['type' => 'success', 'msg' => 'Point Berhasil Di Simpan']);
+
+        return redirect()->back();
+
+    }
 }

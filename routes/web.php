@@ -33,6 +33,13 @@ Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish')
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
 
+Route::post('/admin/add_fish_point/store_fish_point', 'AdminController@storeFishPoint')->name('admin.store_fish_point');
+Route::get('/admin/add_fish_point/get_fish_by_bio/{id}', 'AdminController@getFishByBio')->name('admin.getfishbybio');
+Route::get('/admin/add_fish_point', 'AdminController@addFishPoint')->name('admin.add_fish_point');
+Route::get('/admin/fish_point', 'AdminController@FishPoint')->name('admin.fish_point');
+Route::post('/admin/update_pass_setup', 'AdminController@updatePass')->name('admin.update_pass');
+Route::get('/admin/pass_setup', 'AdminController@setupPass')->name('admin.setup_pass');
+Route::get('/admin/user_pass_setup', 'AdminController@setupUserPass')->name('admin.setup_user_pass');
 Route::get('/admin/data_ikan/{id}', 'AdminController@printStickerFish')->name('admin.fish_sticker');
 Route::get('/admin/data_ikan', 'AdminController@dataFish')->name('admin.fish_entry');
 Route::post('/admin/store_admin', 'AdminController@storeAdmin')->name('admin.store_admin');
