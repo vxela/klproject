@@ -53,7 +53,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>
-                                        Handler
+                                        Reg Number
                                     </th>
                                     <th>
                                         Jenis Ikan
@@ -82,7 +82,7 @@
                                 @foreach ($data_fish as $fish)
                                     <tr>
                                         <td>
-                                            {{$fish->handler_name}}
+                                            {{Mush::uf_reg_num($fish->id)}}
                                         </td>
                                         <td>
                                             {{$fish->fish->name}}

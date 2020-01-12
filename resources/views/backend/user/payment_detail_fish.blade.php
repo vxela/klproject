@@ -50,13 +50,13 @@
 
                     <div class="row">
                         <div class="col-md">
-                            <h5 class="text-uppercase">Tanggal</h5>
+                            <strong class="text-uppercase">Tanggal</strong>
                             <p class="mb-0">
                                 {{Carbon\Carbon::now()->format('l, Y/m/d')}}
                             </p>
                         </div>
                         <div class="col-md text-md-center">
-                            <h5 class="text-uppercase">No. Bill</h5>
+                            <strong class="text-uppercase">No. Bill</strong>
                             <p class="mb-0">
                                 @php
                                 $date = Carbon\Carbon::parse($fish->created_at)->format('Ymd_His');
@@ -65,13 +65,13 @@
                             </p>
                         </div>
                         <div class="col-md text-md-right">
-                            <h5 class="text-uppercase">Tagihan Untuk</h5>
+                            <strong class="text-uppercase">Tagihan Untuk</strong>
                             <p class="mb-0 text-uppercase">
-                                {{$fish->bio->nama}}
+                                {{$fish->bio->nama}} <br>
                             </p>
                         </div>
                         <div class="col-md text-md-right">
-                            <h5 class="text-uppercase">Pembayaran Ke</h5>
+                            <strong class="text-uppercase">Pembayaran Ke</strong>
                             <p class="mb-0">
                                 152 000 498204 3 (Mandiri)<br>
                                 An. Ridho Yuwono<br>
@@ -84,6 +84,7 @@
                     <table class="table table-borderless mb-0">
                         <thead>
                         <tr class="border-bottom text-uppercase">
+                            <th scope="col">No. Reg</th>
                             <th scope="col">Varietas</th>
                             <th scope="col">Ukuran</th>
                             <th scope="col">Biaya</th>
@@ -92,9 +93,10 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td>{{Mush::uf_reg_num($fish->id)}}</td>
                             <td>{{$fish->fish->name}}</td>
                             <td>{{$fish->cat->min_size.' - '.$fish->cat->max_size.' cm'}}</td>
-                            <td>{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
+                            <td class="text-right">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
                             <td class="text-right">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
                         </tr>
                         <tr class="bg-light font-weight-bold">
@@ -104,6 +106,7 @@
                             <td class="text-right">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
                         </tr>
                         <tr class="bg-light font-weight-bold">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td class="text-uppercase">STATUS</td>
@@ -116,10 +119,12 @@
                         <tr class="bg-light font-weight-bold">
                             <td></td>
                             <td></td>
+                            <td></td>
                             <td class="text-uppercase">CP</td>
                             <td class="text-right">0852 9722 2999 (Ridho)</td>
                         </tr>
                         <tr class="bg-light font-weight-bold">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td class="text-uppercase">CP2</td>
