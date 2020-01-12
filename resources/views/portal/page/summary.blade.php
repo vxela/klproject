@@ -14,13 +14,13 @@
                 <thead>
                     <tr>
                         <th>Jumlah Pendaftar</th>
-                        <th>-</th>
+                        <td>{{$n_own.' Orang'}}</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>Jumlah Handler</th>
-                        <td>{{$n_own.' orang'}}</td>
+                        <td>{{$t_hand.' Orang'}}</td>
                     </tr>
                     <tr>
                         <th>Jumlah Ikan</th>

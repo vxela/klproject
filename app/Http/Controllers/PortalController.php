@@ -26,6 +26,7 @@ class PortalController extends Controller
                         ->groupBy('handler_name')
                         ->orderBy('t_handler', 'DESC')
                         ->first();
+        $n_handler = \App\Models\Tbl_user_fish::distinct('handler_name')->count();
 
         // return response()->json($jml_var);
         // dd($jml_var);
@@ -36,6 +37,7 @@ class PortalController extends Controller
             'n_var' => $jml_var,
             'n_prov' => $jml_own_city,
             'n_hand' => $jml_handler,
+            't_hand' => $n_handler,
         ]);
     }
 }
