@@ -7,35 +7,36 @@
 @section('content')
     <div class="card bg-light mb-3">
         <div class="card-header">
-            Header
+            Summary
         </div>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>Jumlah Pendaftar</th>
+                        <th>-</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th>Jumlah Handler</th>
+                        <td>{{$n_own.' orang'}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <th>Jumlah Ikan</th>
+                        <td>{{$n_fish.' Ikan'}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                        <th>Ikan Terbanyak</th>
+                        <td>{{$n_var->fish->name.' ('.$n_var->total.' Ekor)'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Provinsi Terbanyak</th>
+                        <td>{{$n_prov->prov.' ('.$n_prov->t_prov.' Pendaftar)'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Handling Terbanyak</th>
+                        <td>{{$n_hand->handler_name.' ('.$n_hand->t_handler.' Ikan)'}}</td>
                     </tr>
                 </tbody>
             </table>
