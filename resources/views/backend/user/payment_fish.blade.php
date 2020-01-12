@@ -1,4 +1,4 @@
-@extends('backend.layout.main')
+@extends('backend.layout.main_user')
 
 @section('pagecss')
     
