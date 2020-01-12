@@ -46,10 +46,9 @@
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Nama Pemilik</label>
                                 <div class="col-sm-8 col-xs-12">
                                     <select class="form-control m-b bio_id" name="bio_id" id="bio_id" required>
-                                        <option selected value=""> Pilih Peserta </option>
+                                        <option value=""> Pilih Peserta </option>
                                         @foreach ($data_fish as $fish)
                                             <option value="{{$fish->bio->id}}" data-turl="{{route('admin.getfishbybio', ['id' => $fish->bio->id])}}"> {{$fish->bio->nama}}</option>
-                                        
                                         @endforeach
                                     </select>
                                     {{-- <input type="text" class="form-control" id="owner_name" value="" placeholder="Nama Handling"> --}}

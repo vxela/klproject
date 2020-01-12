@@ -36,7 +36,7 @@ Dashboard | Fish Point List
                 </div>
                 <div class="col-6 text-right">
                     @if (count($data_point) > 0)
-                        <a href="#" class="btn btn-primary">Form Point</a>
+                        <a href="{{route('admin.add_fish_point')}}" class="btn btn-primary">Tambah Data Point</a>
                     @endif
                 </div>
             </div>
@@ -64,6 +64,9 @@ Dashboard | Fish Point List
                                     Variety
                                 </th>
                                 <th>
+                                    Size
+                                </th>
+                                <th>
                                     Point
                                 </th>
                                 <th>
@@ -72,7 +75,29 @@ Dashboard | Fish Point List
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($data_point as $point)
+                                <tr>
+                                    <td>
+                                        {{$point->user->bio->nama}}
+                                    </td>
+                                    <td>
+                                        {{$point->user_fish->handler_name}}
+                                    </td>
+                                    <td>
+                                        {{$point->user_fish->fish->name}}
+                                    </td>
+                                    <td>
+                                        {{$point->user_fish->fish_size.' Cm'}}
+                                    </td>
+                                    <td>
+                                        {{$point->point}}
+                                    </td>
+                                    <td>
+                                        {{$point->id}}
+                                    </td>
+
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

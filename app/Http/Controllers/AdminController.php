@@ -376,7 +376,7 @@ class AdminController extends Controller
 
     public function storeFishPoint(Request $r) {
         // dd($r->all());
-        $user = \App\Models\Tbl_bio::find($r->bio_id)->first();
+        $user = \App\Models\Tbl_bio::find($r->bio_id);
 
         $fish = \App\Models\Tbl_fish_point::where('user_fish_id', $r->fish_id)->count();
 
