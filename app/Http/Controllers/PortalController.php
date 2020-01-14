@@ -40,4 +40,10 @@ class PortalController extends Controller
             't_hand' => $n_handler,
         ]);
     }
+
+    public function point() {
+        $p = \App\Models\Tbl_fish_point::all();
+
+        return view('portal.page.point_table', ['points' => $p]);
+    }
 }

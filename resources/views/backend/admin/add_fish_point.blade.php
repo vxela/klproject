@@ -37,7 +37,7 @@
             @csrf
             <div class="card mb-4">
                 <div class="card-header bg-white font-weight-bold">
-                    Ubah Password Peserta
+                    Form Penilain Ikan
                 </div>
                 <div class="card-body">
                     <div class="row">
