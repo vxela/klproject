@@ -54,10 +54,10 @@
               <a class="nav-link" href="{{route('/')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('/')}}">Summary</a>
+              <a class="nav-link" href="{{route('summary')}}">Summary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('/')}}">Point</a>
+              <a class="nav-link" href="{{route('point')}}">Point</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('/')}}">Best In Size</a>
