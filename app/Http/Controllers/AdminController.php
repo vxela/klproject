@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon as Carbon;
 use Illuminate\Support\Facades\Validator;
+use Response;
 use Storage;
 use Session;
 use Image;
@@ -412,5 +413,25 @@ class AdminController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function champion() {
+        return view('backend.admin.champion_list');
+    }
+    
+    public function addChampion() {
+        $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
+        $user = \App\User::where('role_id', 3)->get();
+        return view('backend.admin.add_champion', ['data_cat' => $cat, 'data_user' => $user]);
+    }
+
+    public function getChampionCat($grade) {
+        $cat = \App\Models\Tbl_cat_champion::where('grade', $grade)->get();
+        return Response::json($cat);
+    }
+    
+    public function getFishChampion($user_id) {
+        $fish = \App\Models\Tbl_user_fish::with('fish')->where('user_id', $user_id)->get();
+        return Response::json($fish);
     }
 }
