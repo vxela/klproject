@@ -51,8 +51,8 @@
                     {{-- <li><a href="#"><i class="fa fa-fw fa-tachometer-alt"></i> Dashboard</a></li> --}}
                     @yield('pagemenu')
 
-                    <li><a href="{{route('admin.fish_point')}}"><i class="fa fa-fw fa-diamond"></i> Points Points</a></li>
-                    <li><a href="{{route('admin.champion')}}"><i class="fa fa-fw fa-trophy"></i> Champion</a></li>
+                    <li><a href="{{route('admin.fish_point')}}"><i class="fa fa-fw fa-diamond"></i> Fish Points</a></li>
+                    <li><a href="{{route('admin.champion')}}"><i class="fa fa-fw fa-trophy"></i> Fish Champion</a></li>
                     <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password Peserta</a></li>
                     <li><a href="{{route('admin.setup_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>

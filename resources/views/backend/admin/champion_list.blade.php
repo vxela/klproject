@@ -38,14 +38,68 @@
                 <div class="row">
                     <div class="col-6">Champion List</div>
                     <div class="col-6 text-right">
-                        <a href="{{route('admin.add_champion')}}" class="btn btn-success">Tambah Champion</a>
+                        <a href="{{route('admin.add_champion')}}" class="btn btn-primary">Tambah Champion</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        //
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No
+                                        </th>
+                                        <th>
+                                            Owner
+                                        </th>
+                                        <th>
+                                            Variety
+                                        </th>
+                                        <th>
+                                            Size
+                                        </th>
+                                        <th>
+                                            Champion
+                                        </th>
+                                        <th>
+                                            Position
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data_champion as $champion)
+                                        <tr>
+                                            <td>
+                                                1.
+                                            </td>
+                                            <td>
+                                                {{$champion->user->bio->nama}}
+                                            </td>
+                                            <td>
+                                                {{$champion->user_fish->fish->name}}
+                                            </td>
+                                            <td>
+                                                {{$champion->user_fish->fish_size}}
+                                            </td>
+                                            <td>
+                                                {{$champion->user_fish->cat->grade}}
+                                            </td>
+                                            <td>
+                                                {{$champion->cat_champ->cat_name}}
+                                            </td>
+                                            <th>
+                                                <a href="{{route('admin.show_fish_champion', ['id' => $champion->id])}}" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            </th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +161,7 @@
                         } else {
                             $('.fish_id').append($('<option>').text('Ikan Belum Lunas, Atau Ikan Belum Terdaftar').attr('value', ''));
                         }
-                        console.log(json);
+                        // console.log(json);
                     }
                 });
             }

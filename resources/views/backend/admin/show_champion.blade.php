@@ -5,7 +5,7 @@
 @endsection
 
 @section('pagetitle')
-    Admin Dashboard | Form Add Champion
+    Admin Dashboard | Form Edit Champion
 @endsection
 
 @section('topnav')
@@ -27,7 +27,7 @@
 @endsection
 
 @section('pagebreadcrumb')
-    Admin Dashboard | Form Add Champion
+    Admin Dashboard | Form Edit Champion
 @endsection
 
 @section('pagecontent')
@@ -35,9 +35,9 @@
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="card mb-4">
             <div class="card-header bg-white font-weight-bold">
-                Form Add Champion
+                Form Edit Champion
             </div>
-            <form action="{{route('admin.store_fish_champion')}}" method="post">
+            <form action="{{route('admin.update_fish_champion', ['id' => $champion->id])}}" method="post">
                 <div class="card-body">
                     <div class="row">
                         @csrf
@@ -48,7 +48,11 @@
                                     <select class="form-control m-b grade" name="grade" id="grade" required>
                                             <option value=""> Pilih Grade </option>
                                         @foreach ($data_cat as $cat)
+                                        @if ($cat->grade == $champion->cat_champ->grade)
+                                            <option value="{{$cat->grade}}" data-turl="{{route('admin.get_champion_cat', ['grade' => $cat->grade])}}"  selected>{{$cat->grade}}</option>
+                                        @else
                                             <option value="{{$cat->grade}}" data-turl="{{route('admin.get_champion_cat', ['grade' => $cat->grade])}}">{{$cat->grade}}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -57,7 +61,7 @@
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Kategori</label>
                                 <div class="col-sm-8 col-xs-12">
                                     <select class="form-control m-b cat_id" name="cat_id" id="cat_id" required>
-                                        <option value=""> Pilih Kategori </option>
+                                        <option value="{{$champion->champion_cat_id}}"> {{$champion->cat_champ->cat_name}} </option>
                                         
                                     </select>
                                 </div>
@@ -68,9 +72,12 @@
                                     <select class="form-control m-b owner" name="owner" id="owner" required>
                                             <option value=""> Pilih Owner </option>
                                         @foreach ($data_user as $user)
+                                        @if ($user->id == $champion->user_id)
+                                            <option value="{{$user->id}}" data-turl="{{route('admin.get_fish_champion', ['user_id' => $user->id])}}" selected> {{$user->bio->nama}} </option>
+                                        @else
                                             <option value="{{$user->id}}" data-turl="{{route('admin.get_fish_champion', ['user_id' => $user->id])}}"> {{$user->bio->nama}} </option>
+                                        @endif
                                         @endforeach
-                                        
                                     </select>
                                 </div>
                             </div>
@@ -78,7 +85,7 @@
                                 <label for="" class="col-sm-4 col-xs-12 col-form-label">Ikan</label>
                                 <div class="col-sm-8 col-xs-12">
                                     <select class="form-control m-b user_fish_id" name="user_fish_id" id="user_fish_id" required>
-                                        <option value=""> Pilih Ikan </option>
+                                        <option value="{{$champion->user_fish_id}}"> {{$champion->user_fish->fish->name}} </option>
                                         
                                     </select>
                                 </div>
@@ -88,7 +95,7 @@
                 </div>
                 <div class="card-footer bg-white">
                     <div class="form-group text-right">
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>                
             </form>

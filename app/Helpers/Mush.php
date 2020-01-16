@@ -20,4 +20,13 @@ class Mush {
 
         return $reg_number;
     }
+    
+    public static function no_reg($fish_id) {
+
+        $ufish_id = $fish_id;
+
+        $fid = str_pad($fish_id, 3, 0, STR_PAD_LEFT);
+
+        return $fid;
+    }
 }

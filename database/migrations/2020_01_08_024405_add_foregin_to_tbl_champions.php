@@ -28,12 +28,7 @@ class AddForeginToTblChampions extends Migration
                 ->references('id')
                 ->on('tbl_cats')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->foreign('point_id')
-                ->references('id')
-                ->on('tbl_fish_points')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');      
+                ->onUpdate('cascade');    
         });
     }
 
@@ -48,7 +43,6 @@ class AddForeginToTblChampions extends Migration
             $table->dropForeign('tbl_fish_champions_user_fish_id_foreign');
             $table->dropForeign('tbl_fish_champions_user_id_foreign');
             $table->dropForeign('tbl_fish_champions_cat_id_foreign');
-            $table->dropForeign('tbl_fish_champions_point_id_foreign');
         });
     }
 }

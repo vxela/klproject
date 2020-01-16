@@ -12,6 +12,7 @@ use Image;
 use File;
 use DB;
 use PDF;
+use Mush;
 
 class AdminController extends Controller
 {
@@ -416,7 +417,8 @@ class AdminController extends Controller
     }
 
     public function champion() {
-        return view('backend.admin.champion_list');
+        $champion = \App\Models\Tbl_fish_champion::all();
+        return view('backend.admin.champion_list', ['data_champion' => $champion]);
     }
     
     public function addChampion() {
@@ -431,7 +433,81 @@ class AdminController extends Controller
     }
     
     public function getFishChampion($user_id) {
-        $fish = \App\Models\Tbl_user_fish::with('fish')->where('user_id', $user_id)->get();
+        $fish = \App\Models\Tbl_user_fish::with('fish')
+                                            ->where('user_id', $user_id)
+                                            ->where('status', 'LUNAS')
+                                            ->get();
         return Response::json($fish);
+    }
+
+    public function storeFishChampion(Request $r) {
+
+        
+        $fish = \App\Models\Tbl_user_fish::find($r->user_fish_id);
+        
+        $point = \App\Models\Tbl_fish_point::where('user_fish_id', $fish->id)->first();
+
+        // dd($point);
+        if($point == null) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Point Ikan no '.Mush::no_reg($fish->id).' Kosong silahkan di isi dan Ulangi Lagi']);
+            return redirect()->route('admin.champion');
+
+        }
+
+        $data_champion = [
+            'user_fish_id'  => $fish->id,
+            'user_id'   => $fish->user_id,
+            'cat_id'    => $fish->cat_id,
+            'champion_cat_id'   => $r->cat_id,
+            'point_id'  => $point->point,
+            'date'  => Carbon::now()->format('Y-m-d'),
+            'time'  => Carbon::now()->format('H:i:s'),
+        ];
+
+        DB::beginTransaction();
+
+        $champion = \App\Models\Tbl_fish_champion::create($data_champion);
+
+        if(!$champion) {
+            DB::rollBack();
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menyimpan Data Champion, Ulangi Lagi']);
+        } else {
+            DB::commit();
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Champion Berhasil Tersimpan']);
+        }
+        return redirect()->route('admin.champion');
+
+    }
+
+    public function showFishChampion($id) {
+        $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
+        $user = \App\User::where('role_id', 3)->get();
+        $champ = \App\Models\Tbl_fish_champion::find($id);
+
+        return view('backend.admin.show_champion', ['data_cat' => $cat, 'data_user' => $user, 'champion' => $champ]);
+
+    }
+
+    public function updateFishChampion(Request $r,$id) {
+
+        $champion = \App\Models\Tbl_fish_champion::find($id);
+
+        $user_fish = \App\Models\Tbl_user_fish::find($r->user_fish_id);
+
+        
+        $champion->user_fish_id = $r->user_fish_id;
+        $champion->user_id = $r->owner;
+        $champion->cat_id = $user_fish->cat_id;
+        $champion->champion_cat_id = $r->cat_id;
+        $champion->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
+        $update = $champion->save();
+
+        if(!$update) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Update Data Champion, Ulangi Lagi']);
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Update Data Champion Berhasil!!']);
+        }
+        return redirect()->route('admin.champion');
     }
 }
