@@ -423,8 +423,10 @@ class AdminController extends Controller
     
     public function addChampion() {
         $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
-        $user = \App\User::where('role_id', 3)->get();
-        return view('backend.admin.add_champion', ['data_cat' => $cat, 'data_user' => $user]);
+        $fish = \App\Models\Tbl_user_fish::with(['fish', 'bio'])
+                                            ->where('status', 'LUNAS')
+                                            ->get();
+        return view('backend.admin.add_champion', ['data_cat' => $cat, 'data_ikan' => $fish]);
     }
 
     public function getChampionCat($grade) {

@@ -71,24 +71,16 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Owner</label>
+                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Peserta</label>
                                 <div class="col-sm-8 col-xs-12">
-                                    <select class="form-control m-b owner" name="owner" id="owner" required>
-                                            <option value=""> Pilih Owner </option>
-                                        @foreach ($data_user as $user)
-                                            <option value="{{$user->id}}" data-turl="{{route('admin.get_fish_champion', ['user_id' => $user->id])}}"> {{$user->bio->nama}} </option>
+                                    <select class="form-control m-b user_fish_id" name="user_fish_id" id="user_fish_id" required>
+                                        <option value=""> Pilih ID Peserta </option>
+                                        @foreach ($data_ikan as $fish)
+                                            <option value="{{$fish->id}}" data-owner="{{$fish->user_id}}"> <strong>{{Mush::no_reg($fish->id)}}</strong> </option>
                                         @endforeach
                                         
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-4 col-xs-12 col-form-label">Ikan</label>
-                                <div class="col-sm-8 col-xs-12">
-                                    <select class="form-control m-b user_fish_id" name="user_fish_id" id="user_fish_id" required>
-                                        <option value=""> Pilih Ikan </option>
-                                        
-                                    </select>
+                                    <input type="hidden" name="owner" id="owner" value="">
                                 </div>
                             </div>                        
                         </div>
@@ -147,29 +139,11 @@
             }
         });
 
-        $('.owner').on('change', function(){
-            var turl = $(this).find(':selected').data('turl');
-            if(grade != '') {
-                $.ajax({
-                    url : turl,
-                    cache: false,
-                    success: function(json) {
-                        $("#user_fish_id").html('');
-                        if(Object.keys(json).length > 0) {
-                            for(i=0; i<Object.keys(json).length; i++) {
-                                if(i==0) {
-                                    $('#user_fish_id').append($('<option selected>').text(json[i].id +' | '+json[i].fish.name).attr('value', json[i].id));
-                                } else {
-                                    $('#user_fish_id').append($('<option>').text(json[i].id +' | '+json[i].fish.name).attr('value', json[i].id));
-                                }
-                            }
-                        } else {
-                            $('.user_fish_id').append($('<option>').text('Tidak Ada Ikan Pada User Ini').attr('value', ''));
-                        }
-                        console.log(json);
-                    }
-                });
-            }
+        $('.user_fish_id').on('change', function() {
+            var owner = $(this).find(':selected').data('owner');
+
+            $('#owner').val(owner);
+
         });
     });
     </script>
