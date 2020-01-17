@@ -87,13 +87,13 @@
                                 {{$fs->date_reg}}
                             </td>
                             <td>
-                                <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary">Detail</a>
+                                <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-primary"><i class="fa fa-search"></i></a>
                                 @if ($fs->status == 'BELUM LUNAS')
                                     <form action="{{route('admin.confirm_reg_fish')}}" method="post" style="display:inline;">
                                         @csrf
                                         <input type="hidden" name="fish_id" value="{{$fs->id}}">
                                         <input type="hidden" name="status" value="LUNAS">
-                                        <button type="submit" class="btn btn-success">Konfirmasi</a>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></a>
                                         {{-- <button href="{{route('admin.confirm_reg_fish', ['id' => $fs->id])}}" class="btn btn-success">Konfirmasi</a> --}}
                                     </form>
                                 @endif

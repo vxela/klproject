@@ -52,9 +52,12 @@ Dashboard | Fish Point List
                 </div>
             @else
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="data_point">
                         <thead>
                             <tr>
+                                <th>
+                                    #
+                                </th>
                                 <th>
                                     Nama Owner
                                 </th>
@@ -76,8 +79,14 @@ Dashboard | Fish Point List
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $n = 1;
+                            @endphp
                             @foreach ($data_point as $point)
                                 <tr>
+                                    <td>
+                                        {{$n++}}
+                                    </td>
                                     <td>
                                         {{$point->user->bio->nama}}
                                     </td>
@@ -93,8 +102,17 @@ Dashboard | Fish Point List
                                     <td>
                                         {{$point->point}}
                                     </td>
-                                    <td>
-                                        {{$point->id}}
+                                    <td class="text-right">
+                                        <form action="{{route('admin.delete_fish_point')}}" method="post" class="form-inline">
+                                            @csrf
+                                            <a href="{{route('admin.show_fish_point', ['id' => $point->user_fish->id])}}" class="btn btn-sm btn-primary">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <input type="hidden" name="point_id" value="{{$point->id}}">
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
 
                                 </tr>
@@ -118,5 +136,22 @@ Dashboard | Fish Point List
 @endsection
 
 @section('pagejs')
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+    $(document).ready(function(){
+        if($('#flash_data').length) {
+            let type = $('#flash_data').data('type');
+            let msg = $('#flash_data').data('msg');
+        
+            Swal.fire({
+                icon: type,
+                text: msg,
+                showConfirmButton: true,
+            });
+        };
+
+        $('#data_point').DataTable();
+    });
+    </script>
 @endsection

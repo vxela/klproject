@@ -46,6 +46,9 @@ Route::get('/admin/add_champion', 'AdminController@addChampion')->name('admin.ad
 Route::get('/admin/champion', 'AdminController@champion')->name('admin.champion');
 Route::post('/admin/add_fish_point/store_fish_point', 'AdminController@storeFishPoint')->name('admin.store_fish_point');
 Route::get('/admin/add_fish_point/get_fish_by_bio/{id}', 'AdminController@getFishByBio')->name('admin.getfishbybio');
+Route::post('/admin/delete_fish_point/', 'AdminController@deleteFishPoint')->name('admin.delete_fish_point');
+Route::post('/admin/show_fish_point/{id}', 'AdminController@updateFishPoint')->name('admin.update_fish_point');
+Route::get('/admin/show_fish_point/{id}', 'AdminController@showFishPoint')->name('admin.show_fish_point');
 Route::get('/admin/add_fish_point', 'AdminController@addFishPoint')->name('admin.add_fish_point');
 Route::get('/admin/fish_point', 'AdminController@FishPoint')->name('admin.fish_point');
 Route::post('/admin/update_pass_setup', 'AdminController@updatePass')->name('admin.update_pass');

@@ -345,7 +345,7 @@ class AdminController extends Controller
     }
 
     public function FishPoint() {
-        $point = \App\Models\Tbl_fish_point::all();
+        $point = \App\Models\Tbl_fish_point::orderBy('point', 'DESC')->get();
             
         return view('backend.admin.fish_point', ['data_point' => $point]);
     }
@@ -544,5 +544,48 @@ class AdminController extends Controller
             Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Menyimpan Data Category Champion!']);
             return redirect()->back();
         }
+    }
+
+    public function showFishPoint($id) {
+
+        $fpoint = \App\Models\Tbl_fish_point::where('user_fish_id',$id)->first();
+        // $peserta = \App\User::where('role_id', 3)->get();
+        // dd($fpoint);
+        $peserta = \App\Models\Tbl_user_fish::where('status', 'LUNAS')->get();
+
+        return view('backend.admin.show_fish_point', ['point' => $fpoint, 'data_peserta' => $peserta]);
+
+    }
+
+    public function updateFishPoint(Request $r, $id) {
+
+        $point = \App\Models\Tbl_fish_point::find($id);
+        // dd($r->all());
+        $point->user_fish_id = $r->user_fish_id;
+        $point->user_id = $r->user_id;
+        $point->point = $r->fish_point;
+        $point->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
+        $point->save();
+
+        if(!$point) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Update Data Point, Ulangi Lagi']);
+            return redirect()->route('admin.fish_point');
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Update Data Point!']);
+            return redirect()->route('admin.fish_point');
+        }
+    }
+
+    public function deleteFishPoint(Request $r) {
+        $point = \App\Models\Tbl_fish_point::find($r->point_id);
+
+        $point->forceDelete();
+
+        Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Delete Data Point!']);
+
+        return redirect()->back();
+
+
     }
 }

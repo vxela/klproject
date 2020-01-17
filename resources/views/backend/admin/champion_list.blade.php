@@ -66,10 +66,10 @@
                                             Size
                                         </th>
                                         <th>
-                                            Champion
+                                            Grade
                                         </th>
                                         <th>
-                                            Position
+                                            Predikat
                                         </th>
                                         <th></th>
                                     </tr>
