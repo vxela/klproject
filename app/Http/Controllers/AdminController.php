@@ -451,8 +451,14 @@ class AdminController extends Controller
 
         // dd($point);
         if($point == null) {
-            Session::flash('notif', ['type' => 'error', 'msg' => 'Point Ikan no '.Mush::no_reg($fish->id).' Kosong silahkan di isi dan Ulangi Lagi']);
-            return redirect()->route('admin.champion');
+            // Session::flash('notif', ['type' => 'error', 'msg' => 'Point Ikan no '.Mush::no_reg($fish->id).' Kosong silahkan di isi dan Ulangi Lagi']);
+            // return redirect()->route('admin.champion');
+
+            $fpoint = 1234;
+
+        } else {
+
+            $fpoint = $point->point;
 
         }
 
@@ -461,7 +467,7 @@ class AdminController extends Controller
             'user_id'   => $fish->user_id,
             'cat_id'    => $fish->cat_id,
             'champion_cat_id'   => $r->cat_id,
-            'point_id'  => $point->point,
+            'point_id'  => $fpoint,
             'date'  => Carbon::now()->format('Y-m-d'),
             'time'  => Carbon::now()->format('H:i:s'),
         ];
