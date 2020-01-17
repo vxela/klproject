@@ -54,6 +54,9 @@
                                             No
                                         </th>
                                         <th>
+                                            No Reg
+                                        </th>
+                                        <th>
                                             Owner
                                         </th>
                                         <th>
@@ -79,6 +82,9 @@
                                         <tr>
                                             <td>
                                                 {{$n++}}
+                                            </td>
+                                            <td>
+                                                {{Mush::no_reg($champion->user_fish->id)}}
                                             </td>
                                             <td>
                                                 {{$champion->user->bio->nama}}
