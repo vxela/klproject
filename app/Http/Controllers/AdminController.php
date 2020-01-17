@@ -524,7 +524,7 @@ class AdminController extends Controller
 
     public function addCatChampion() {
         $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
-        $position = \App\Models\Tbl_cat_champion::distinct()->get(['grade', 'cat_name']);
+        $position = \App\Models\Tbl_cat_champion::distinct()->get(['id','grade', 'cat_name']);
         return view('backend.admin.add_cat_champion', ['data_cat' => $cat, 'data_position' => $position]);
     }
 

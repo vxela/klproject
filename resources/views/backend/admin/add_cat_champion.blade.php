@@ -59,6 +59,7 @@
                                                 <div class="col-auto collapse-icon"></div>
                                             </div>
                                         </a>
+                                        
                                     </div>
                                     <div id="{{str_replace(' ','',$cat->grade)}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
                                         <div class="card-body">
@@ -70,6 +71,9 @@
                                                         </th>
                                                         <th>
                                                             Position
+                                                        </th>
+                                                        <th>
+
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -85,6 +89,16 @@
                                                                 </td>
                                                                 <td>
                                                                     {{$pos->cat_name}}
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    {{-- {{$pos->id}} --}}
+                                                                    <form action="" method="post">
+                                                                        @csrf
+                                                                        <input type="hidden" name="champ_id" value="{{$pos->id}}">
+                                                                        <button type="button" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></button>
+                                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+
+                                                                    </form>
                                                                 </td>
                                                             </tr>   
                                                         @endif
