@@ -35,9 +35,11 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table" id="data_fish">
                     <thead>
                         <tr>
+                            <th>#</th>
+                            <th>REG NUMBER</th>
                             <th>Nama Pemilik</th>
                             <th>Nama Handler</th>
                             <th>Jenis Ikan</th>
@@ -45,21 +47,30 @@
                             <th>Grade</th>
                             <th>Tanggal Daftar</th>
                             <th>Status</th>
-                            <th>-</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $n=1;
+                        @endphp
                         @foreach ($data_fish as $fish)
                             <tr>
+                                <td>{{$n++}}</td>
+                                <td>{{Mush::no_reg($fish->id)}}</td>
                                 <td>{{$fish->bio->nama}}</td>
                                 <td>{{$fish->handler_name}}</td>
                                 <td>{{$fish->fish->name}}</td>
                                 <td>{{$fish->fish_size}}</td>
                                 <td>{{$fish->cat->grade}}</td>
-                                <td>{{$fish->date_reg.'['.$fish->time_reg.']'}}</td>
-                                <td>{{$fish->status}}</td>
                                 <td>
-                                    <a href="{{route('admin.fish_sticker', ['id' => $fish->id])}}" class="btn btn-warning">Sticker</a>
+                                @if ($fish->status == 'BELUM LUNAS')
+                                    <span class="badge badge-warning">{{$fish->status}}</span>
+                                @else
+                                    <span class="badge badge-success">{{$fish->status}}</span>
+                                @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('admin.fish_sticker', ['id' => $fish->id])}}" class="btn btn-sm btn-primary">Sticker</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -71,7 +82,6 @@
             <div class="row">
                 <div class="col-6">
                     <!-- total data -->
-                    {{$data_fish->links()}}
                 </div>
                 <div class="col-6 text-right">
                     <!-- pagination -->
@@ -83,5 +93,9 @@
 @endsection
 
 @section('pagejs')
-    
+    <script>
+    $(document).ready(function(){
+        $('#data_fish').DataTable();
+    });
+    </script>
 @endsection

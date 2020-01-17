@@ -300,7 +300,7 @@ class AdminController extends Controller
     }
 
     public function dataFish() {
-        $fishs = \App\Models\Tbl_user_fish::paginate(10);
+        $fishs = \App\Models\Tbl_user_fish::all();
 
         return view('backend.admin.list_ikan', ['data_fish' => $fishs]);
     }

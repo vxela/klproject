@@ -25,7 +25,7 @@ class Mush {
 
         $ufish_id = $fish_id;
 
-        $fid = str_pad($fish_id, 3, 0, STR_PAD_LEFT);
+        $fid = str_pad($fish_id, 4, 0, STR_PAD_LEFT);
 
         return $fid;
     }
