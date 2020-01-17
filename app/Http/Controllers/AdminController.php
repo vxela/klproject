@@ -586,6 +586,15 @@ class AdminController extends Controller
 
         return redirect()->back();
 
+    }
 
+    public function deleteChampion(Request $r) {
+        $chp = \App\Models\Tbl_fish_champion::find($r->champion_id);
+
+        $chp->forceDelete();
+
+        Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Delete Data Champion!']);
+
+        return redirect()->back();
     }
 }

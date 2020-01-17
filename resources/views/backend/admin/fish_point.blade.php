@@ -59,13 +59,13 @@ Dashboard | Fish Point List
                                     #
                                 </th>
                                 <th>
+                                    Reg ID
+                                </th>
+                                <th>
                                     Nama Owner
                                 </th>
                                 <th>
-                                    Nama Handler
-                                </th>
-                                <th>
-                                    Variety
+                                    Kota Asal
                                 </th>
                                 <th>
                                     Size
@@ -88,13 +88,13 @@ Dashboard | Fish Point List
                                         {{$n++}}
                                     </td>
                                     <td>
+                                        {{Mush::no_reg($point->user_fish->id)}}
+                                    </td>
+                                    <td>
                                         {{$point->user->bio->nama}}
                                     </td>
                                     <td>
-                                        {{$point->user_fish->handler_name}}
-                                    </td>
-                                    <td>
-                                        {{$point->user_fish->fish->name}}
+                                        {{$point->user->bio->kota}}
                                     </td>
                                     <td>
                                         {{$point->user_fish->fish_size.' Cm'}}
@@ -103,9 +103,9 @@ Dashboard | Fish Point List
                                         {{$point->point}}
                                     </td>
                                     <td class="text-right">
-                                        <form action="{{route('admin.delete_fish_point')}}" method="post" class="form-inline">
+                                        <form action="{{route('admin.delete_fish_point')}}" method="post">
                                             @csrf
-                                            <a href="{{route('admin.show_fish_point', ['id' => $point->user_fish->id])}}" class="btn btn-sm btn-primary">
+                                            <a href="{{route('admin.show_fish_point', ['id' => $point->user_fish->id])}}" class="btn btn-sm btn-success">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                             <input type="hidden" name="point_id" value="{{$point->id}}">

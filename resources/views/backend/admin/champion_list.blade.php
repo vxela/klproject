@@ -101,10 +101,14 @@
                                             <td>
                                                 {{$champion->cat_champ->cat_name}}
                                             </td>
-                                            <th>
-                                                <a href="{{route('admin.show_fish_champion', ['id' => $champion->id])}}" class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                            </th>
+                                            <td>
+                                                <form action="{{route('admin.delete_champion')}}" method="post">
+                                                    @csrf
+                                                    <a href="{{route('admin.show_fish_champion', ['id' => $champion->id])}}" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
+                                                    <input type="hidden" name="champion_id" value="{{$champion->id}}">
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

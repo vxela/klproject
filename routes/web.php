@@ -42,6 +42,7 @@ Route::get('/admin/edit_champion/{id}', 'AdminController@showFishChampion')->nam
 Route::post('/admin/add_champion', 'AdminController@storeFishChampion')->name('admin.store_fish_champion');
 Route::get('/admin/add_champion/get_fish_champion/{user_id}', 'AdminController@getFishChampion')->name('admin.get_fish_champion');
 Route::get('/admin/add_champion/get_champion_cat/{grade}', 'AdminController@getChampionCat')->name('admin.get_champion_cat');
+Route::post('/admin/add_champion/delete', 'AdminController@deleteChampion')->name('admin.delete_champion');
 Route::get('/admin/add_champion', 'AdminController@addChampion')->name('admin.add_champion');
 Route::get('/admin/champion', 'AdminController@champion')->name('admin.champion');
 Route::post('/admin/add_fish_point/store_fish_point', 'AdminController@storeFishPoint')->name('admin.store_fish_point');
