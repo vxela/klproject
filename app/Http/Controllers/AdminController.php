@@ -489,10 +489,13 @@ class AdminController extends Controller
 
     public function showFishChampion($id) {
         $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
+        $fish = \App\Models\Tbl_user_fish::with(['fish', 'bio'])
+                                            ->where('status', 'LUNAS')
+                                            ->get();
         $user = \App\User::where('role_id', 3)->get();
         $champ = \App\Models\Tbl_fish_champion::find($id);
 
-        return view('backend.admin.show_champion', ['data_cat' => $cat, 'data_user' => $user, 'champion' => $champ]);
+        return view('backend.admin.show_champion', ['data_cat' => $cat, 'data_ikan' => $fish, 'champion' => $champ]);
 
     }
 
