@@ -510,4 +510,28 @@ class AdminController extends Controller
         }
         return redirect()->route('admin.champion');
     }
+
+    public function addCatChampion() {
+        $cat = \App\Models\Tbl_cat_champion::distinct()->get(['grade']);
+        $position = \App\Models\Tbl_cat_champion::distinct()->get(['grade', 'cat_name']);
+        return view('backend.admin.add_cat_champion', ['data_cat' => $cat, 'data_position' => $position]);
+    }
+
+    public function storeCatChampion(Request $r) {
+        $data_cat = [
+            'grade' => $r->grade,
+            'cat_name' => $r->position,
+            'cat_desk' => $r->desc
+        ];
+
+        $cat = \App\Models\Tbl_cat_champion::create($data_cat);
+
+        if(!$cat) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menyimpan Data Category Champion, Ulangi Lagi']);
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Menyimpan Data Category Champion!']);
+            return redirect()->back();
+        }
+    }
 }

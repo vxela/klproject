@@ -18,6 +18,7 @@
 
 @section('pagemenu')
     <li><a href="{{route('admin.list_peserta')}}"><i class="fa fa-fw fa-users"></i> Data Pendaftar</a></li>
+    <li><a href="{{route('admin.fish_entry')}}"><i class="fa fa-fw fa-table"></i> Data Ikan</a></li>
     <li><a href="{{route('admin.add_peserta')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Peserta</a></li>
     <li><a href="{{route('admin.add_admin')}}"><i class="fa fa-fw fa-user-plus"></i> Tambah Admin</a></li>
 
@@ -35,7 +36,14 @@
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="card mb-4">
             <div class="card-header bg-white font-weight-bold">
-                Form Add Champion
+                <div class="row">
+                    <div class="col-6">
+                        Form Add Champion
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="{{route('admin.add_cat_champion')}}" class="btn btn-success">Tambah Kategori</a>
+                    </div>
+                </div>
             </div>
             <form action="{{route('admin.store_fish_champion')}}" method="post">
                 <div class="card-body">
@@ -150,9 +158,9 @@
                         if(Object.keys(json).length > 0) {
                             for(i=0; i<Object.keys(json).length; i++) {
                                 if(i==0) {
-                                    $('#user_fish_id').append($('<option selected>').text(json[i].fish.name).attr('value', json[i].id));
+                                    $('#user_fish_id').append($('<option selected>').text(json[i].id +' | '+json[i].fish.name).attr('value', json[i].id));
                                 } else {
-                                    $('#user_fish_id').append($('<option>').text(json[i].fish.name).attr('value', json[i].id));
+                                    $('#user_fish_id').append($('<option>').text(json[i].id +' | '+json[i].fish.name).attr('value', json[i].id));
                                 }
                             }
                         } else {

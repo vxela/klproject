@@ -35,6 +35,8 @@ Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish')
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
 
+Route::post('/admin/store_champion_category', 'AdminController@storeCatChampion')->name('admin.store_cat_champion');
+Route::get('/admin/add_champion_category', 'AdminController@addCatChampion')->name('admin.add_cat_champion');
 Route::post('/admin/update_champion/{id}', 'AdminController@updateFishChampion')->name('admin.update_fish_champion');
 Route::get('/admin/edit_champion/{id}', 'AdminController@showFishChampion')->name('admin.show_fish_champion');
 Route::post('/admin/add_champion', 'AdminController@storeFishChampion')->name('admin.store_fish_champion');
