@@ -35,7 +35,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="list_peserta">
                     <thead>
                         <tr>
                             <th>
@@ -99,5 +99,9 @@
 @endsection
 
 @section('pagejs')
-    
+    <script>
+    $(document).ready(function(){
+        $('#list_peserta').DataTable();
+    });
+    </script>
 @endsection

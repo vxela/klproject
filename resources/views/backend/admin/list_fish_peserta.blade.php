@@ -35,7 +35,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="fish_peserta">
                     <thead>
                         <tr>
                             <th>
@@ -125,6 +125,8 @@
                 showConfirmButton: true,
             });
         };
+
+        $('#fish_peserta').DataTable();
     });
     </script>
 
