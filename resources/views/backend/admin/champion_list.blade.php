@@ -72,10 +72,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $n=1;
+                                    @endphp
                                     @foreach ($data_champion as $champion)
                                         <tr>
                                             <td>
-                                                1.
+                                                {{$n++}}
                                             </td>
                                             <td>
                                                 {{$champion->user->bio->nama}}
