@@ -79,7 +79,7 @@
                                             <p class="card-text mb-1"><span class="badge badge-warning">{{$fl->status}}</span></p>
                                             {{-- <a href="{{route('user.detail_fish', ['id' => $fl->id])}}" class="btn btn-sm btn-info">Detail</a> --}}
                                             <a href="{{route('user.detail_nota_fish', ['id' => $fl->id])}}" class="btn btn-sm btn-primary btn-block">Detail Nota</a>
-                                            <button type="button" target="_blank" data-route_url="{{route('user.detail_fish', ['id' => $fbl->id])}}" class="btn btn-sm btn-success btn-block" id="btn_print">Print Nota</button>
+                                            <button type="button" target="_blank" data-route_url="{{route('user.detail_fish', ['id' => $fl->id])}}" class="btn btn-sm btn-success btn-block" id="btn_print">Print Nota</button>
                                         </div>
                                     </div>
                                 </div>
