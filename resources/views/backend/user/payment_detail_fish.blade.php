@@ -87,13 +87,13 @@
                             <th scope="col">No. Reg</th>
                             <th scope="col">Varietas</th>
                             <th scope="col">Ukuran</th>
-                            <th scope="col">Biaya</th>
+                            <th scope="col" class="text-right">Biaya</th>
                             <th scope="col" class="text-right">Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{Mush::uf_reg_num($fish->id)}}</td>
+                            <td>{{Mush::no_reg($fish->id)}}</td>
                             <td>{{$fish->fish->name}}</td>
                             <td>{{$fish->cat->min_size.' - '.$fish->cat->max_size.' cm'}}</td>
                             <td class="text-right">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>

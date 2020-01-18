@@ -10,6 +10,7 @@ use Session;
 use Image;
 use File;
 use DB;
+use PDF;
 
 class UserController extends Controller
 {
@@ -264,5 +265,16 @@ class UserController extends Controller
         $fish = \App\Models\Tbl_user_fish::with(['user', 'fish', 'cat'])->find($id);
 
         return view('backend.user.payment_detail_fish', ['fish' => $fish]);
+    }
+
+    public function printAllFishNota($id) {
+        $fishs = \App\Models\Tbl_user_fish::where('user_id', $id)->get();
+
+        $pdf = PDF::loadView('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
+        // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
+        $pdf->setPaper('A4', 'potrait');
+
+        $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
+        return $pdf->stream($file_name.'all_fish_bill.pdf');
     }
 }
