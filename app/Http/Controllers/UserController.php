@@ -270,11 +270,20 @@ class UserController extends Controller
     public function printAllFishNota($id) {
         $fishs = \App\Models\Tbl_user_fish::where('user_id', $id)->get();
 
-        $pdf = PDF::loadView('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
-        // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
-        $pdf->setPaper('A4', 'potrait');
+        $l_fishs = count($fishs);
 
-        $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
-        return $pdf->stream($file_name.'all_fish_bill.pdf');
+        if ($l_fishs != 0) {
+            $pdf = PDF::loadView('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
+            // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
+            $pdf->setPaper('A4', 'potrait');
+    
+            $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
+            $pdf->download($file_name.'all_fish_bill.pdf');
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);
+            return redirect()->back();
+        }
+
     }
 }

@@ -55,7 +55,7 @@
                     <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-trophy"></i> Champion</a></li>
                     <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password Peserta</a></li>
                     <li><a href="{{route('admin.setup_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password</a></li> --}}
-                    <li><a href="{{route('user.report_all_fish_nota', ['id' => auth()->user()->id])}}" target="_blank"><i class="fa fa-print"></i> Print All Nota</a></li>
+                    <li><a href="{{route('user.report_all_fish_nota', ['id' => auth()->user()->id])}}"><i class="fa fa-print"></i> Print All Nota</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
 
                 </ul>

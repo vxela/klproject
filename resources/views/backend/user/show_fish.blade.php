@@ -44,7 +44,7 @@
                         <div class="form-group row">
                             <label for="staticEmail" class="col-4 col-form-label">Nomor Peserta</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" id="reg_num" name="reg_num" value="{{Mush::uf_reg_num($fish->id)}}" disabled>
+                                <input type="text" class="form-control" id="reg_num" name="reg_num" value="{{Mush::no_reg($fish->id)}}" disabled>
                             </div>
                         </div>
                         <div class="form-group row">

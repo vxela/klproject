@@ -45,7 +45,8 @@
                                     <div class="card" style="">
                                         <img class="card-img-top" src="{{$fbl->fish_picture_thumb}}" alt="Card image cap">
                                         <div class="card-body text-center px-2">
-                                            <h5 class="card-title mb-1">{{$fbl->fish->name}}</h5>
+                                            <strong>[{{Mush::no_reg($fbl->fish->id)}}]</strong> <br>
+                                            <small>{{$fbl->fish->name}}</small>
                                             <p class="card-text mb-1"><span class="badge badge-warning">{{$fbl->status}}</span></p>
                                             {{-- <a href="{{route('user.detail_fish', ['id' => $fbl->id])}}" class="btn btn-sm btn-info">Detail</a> --}}
                                             {{-- <a href="{{route('user.detail_fish', ['id' => $fbl->id])}}" class="btn btn-sm btn-info">Detail</a> --}}
@@ -75,7 +76,8 @@
                                     <div class="card" style="">
                                         <img class="card-img-top" src="{{$fl->fish_picture_thumb}}" alt="Card image cap">
                                         <div class="card-body text-center px-2">
-                                            <h5 class="card-title mb-1">{{$fl->fish->name}}</h5>
+                                            <strong>[{{Mush::no_reg($fl->fish->id)}}]</strong> <br>
+                                            <small>{{$fl->fish->name}}</small>
                                             <p class="card-text mb-1"><span class="badge badge-warning">{{$fl->status}}</span></p>
                                             {{-- <a href="{{route('user.detail_fish', ['id' => $fl->id])}}" class="btn btn-sm btn-info">Detail</a> --}}
                                             <a href="{{route('user.detail_nota_fish', ['id' => $fl->id])}}" class="btn btn-sm btn-primary btn-block">Detail Nota</a>

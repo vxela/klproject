@@ -52,6 +52,7 @@
                         <table class="table table-striped table-hover">
                             <thead class="thead-light">
                                 <tr>
+                                    <th>#</th>
                                     <th>
                                         Reg Number
                                     </th>
@@ -79,10 +80,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $n = 1;
+                                @endphp
                                 @foreach ($data_fish as $fish)
                                     <tr>
+                                        <td>{{$n++}}</td>
                                         <td>
-                                            {{Mush::uf_reg_num($fish->id)}}
+                                            <strong>{{Mush::no_reg($fish->id)}}</strong>
                                         </td>
                                         <td>
                                             {{$fish->fish->name}}
@@ -134,7 +139,7 @@
                 Swal.fire({
                     icon: type,
                     text: msg,
-                    showConfirmButton: false
+                    showConfirmButton: true
                 });
         };
     });
