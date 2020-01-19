@@ -29,8 +29,8 @@
         @foreach ($data_stc as $stc)
             <div class="tab mt-2">
                 <div class="card">
-                    <div class="card-header text-center">
-                        <strong>{{$stc->fish->name}}</strong>
+                    <div class="card-header text-center px-1" style="font-weight: bold; font-size: 14px">
+                        {{$stc->fish->name}}
                     </div>
                     <div class="card-body p-0">
                         <img src="{{$stc->fish_picture}}">
@@ -38,10 +38,10 @@
                     <hr class="m-0">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center">
-                            <strong>ID : [{{Mush::no_reg($stc->id)}}]</strong>
+                            <small>ID : [{{Mush::no_reg($stc->id)}}]</small>
                         </li>
                         <li class="list-group-item text-center">
-                            <strong>
+                            <small>
                                 SIZE : 
                                 @if ($stc->fish_size == null)
                                     -
@@ -49,7 +49,7 @@
                                     {{$stc->fish_size}}
                                 @endif
                                 cm
-                            </strong>
+                            </small>
                         </li>
                     </ul>
                 </div>
@@ -94,6 +94,7 @@
         //  }, 3000);
         setTimeout(function(){ 
             window.print();
+            setTimeout(window.close, 0);
         }, 5000);
     });
 </script>
