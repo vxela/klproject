@@ -31,7 +31,14 @@
 @section('pagecontent')
     <div class="card mb-4">
         <div class="card-header bg-white font-weight-bold">
-            Data Ikan
+            <div class="row">
+                <div class="col-4">
+                    Data Ikan
+                </div>
+                <div class="col-8 text-right">
+                    <a href="{{route('admin.print_user_sticker', ['id' => $user_id])}}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Sticker</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">

@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function listFishPeserta($id) {
         $fish = \App\Models\Tbl_user_fish::where('user_id', $id)->get();
 
-        return view('backend.admin.list_fish_peserta', ['data_fish' => $fish]);
+        return view('backend.admin.list_fish_peserta', ['data_fish' => $fish, 'user_id' => $id]);
     }
 
     public function detailUserFish($id) {
@@ -607,6 +607,12 @@ class AdminController extends Controller
         // $pdf->setPaper('A4', 'potrait');
         // return $pdf->stream('KLM_Project_fish_sticker.pdf');
 
+
+    }
+
+    public function printUserFishSticker($id) {
+        $stc = \App\Models\Tbl_user_fish::where('user_id', $id)->get();
+        return view('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
 
     }
 }
