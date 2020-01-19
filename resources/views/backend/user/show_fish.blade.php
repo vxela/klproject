@@ -42,7 +42,7 @@
                         @csrf
                         <input type="hidden" name="fish_id" value="{{$fish->id}}">
                         <div class="form-group row">
-                            <label for="staticEmail" class="col-4 col-form-label">Nomor Peserta</label>
+                            <label for="staticEmail" class="col-4 col-form-label">Reg ID</label>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="reg_num" name="reg_num" value="{{Mush::no_reg($fish->id)}}" disabled>
                             </div>

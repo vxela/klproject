@@ -278,8 +278,7 @@ class UserController extends Controller
             $pdf->setPaper('A4', 'potrait');
     
             $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
-            $pdf->download($file_name.'all_fish_bill.pdf');
-            return redirect()->back();
+            return $pdf->stream($file_name.'all_fish_bill.pdf');
         } else {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);
             return redirect()->back();

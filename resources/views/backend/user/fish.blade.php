@@ -54,7 +54,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>
-                                        Reg Number
+                                        Reg ID
                                     </th>
                                     <th>
                                         Jenis Ikan
