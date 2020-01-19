@@ -12,7 +12,7 @@
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 5px;
-        width: 100%;
+        max-width: 100%;
     }
     .tab {
         width: 30%;
@@ -31,7 +31,7 @@
                         <tr>
                             <td rowspan="3">
                             {{-- <img src="{{substr($stc->fish_picture, 1)}}"> --}}
-                                <img src="{{$stc->fish_picture_thumb}}">
+                                <img src="{{$stc->fish_picture}}">
                             </td>
                             <td>ID</td>
                             <td><strong>{{Mush::no_reg($stc->id)}}</strong></td>
