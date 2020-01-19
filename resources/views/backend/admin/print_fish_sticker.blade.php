@@ -33,7 +33,7 @@
                         <strong>{{$stc->fish->name}}</strong>
                     </div>
                     <div class="card-body p-0">
-                        <img src="{{$stc->fish_picture_thumb}}">
+                        <img src="{{$stc->fish_picture}}">
                     </div>
                     <hr class="m-0">
                     <ul class="list-group list-group-flush">
