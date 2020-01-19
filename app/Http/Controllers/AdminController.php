@@ -597,4 +597,16 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function printFishSticker() {
+
+        $stc = \App\Models\Tbl_user_fish::all();
+
+        // return view('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
+        $pdf = PDF::loadView('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
+        $pdf->setPaper('A4', 'potrait');
+        return $pdf->stream('KLM_Project_fish_sticker.pdf');
+
+
+    }
 }
