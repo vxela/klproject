@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-    /* img {
+    img {
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 5px;
         width: 90;
     }
-    .main {
+    /* .main {
         width: 100%;
         overflow: hidden;
     }
