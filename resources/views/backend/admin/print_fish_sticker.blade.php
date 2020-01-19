@@ -15,22 +15,59 @@
         max-width: 100%;
     }
     .tab {
-        width: 30%;
+        width: 16%;
         display: inline-block;
     }
     </style>
 </head>
 <body>
     <div class="container">
+
         @php
             $n = 1;
         @endphp
         @foreach ($data_stc as $stc)
-            <div class="tab">
-                    <table class="table table-bordered mb-1">
+            <div class="tab mt-2">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <strong>{{$stc->fish->name}}</strong>
+                    </div>
+                    <div class="card-body p-0">
+                        <img src="{{$stc->fish_picture}}">
+                    </div>
+                    <hr class="m-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <strong>ID : [{{Mush::no_reg($stc->id)}}]</strong>
+                        </li>
+                        <li class="list-group-item text-center">
+                            <strong>
+                                SIZE : 
+                                @if ($stc->fish_size == null)
+                                    -
+                                @else    
+                                    {{$stc->fish_size}}
+                                @endif
+                                cm
+                            </strong>
+                        </li>
+                    </ul>
+                </div>
+                {{-- <div class="sticker">
+                    <div><strong>{{$stc->fish->name}}</strong></div>
+                    <div><strong>{{Mush::no_reg($stc->id)}}</strong></div>
+                    <div><strong>
+                        @if ($stc->fish_size == null)
+                            -
+                        @else    
+                            {{$stc->fish_size}}
+                        @endif
+                    </strong></div>
+                    <div><strong><img src="{{$stc->fish_picture}}"></strong></div>
+                </div> --}}
+                    {{-- <table class="table table-bordered mb-1">
                         <tr>
                             <td rowspan="3">
-                            {{-- <img src="{{substr($stc->fish_picture, 1)}}"> --}}
                                 <img src="{{$stc->fish_picture}}">
                             </td>
                             <td>ID</td>
@@ -43,7 +80,7 @@
                         <tr>
                             <td colspan="2">Size</td>
                         </tr>
-                    </table>
+                    </table> --}}
             </div>
         @endforeach
     </div>
@@ -52,10 +89,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
-        $.ajaxSetup({ cache: false });
         // setInterval(function(){ 
         //     window.print();
         //  }, 3000);
+        setTimeout(function(){ 
+            window.print();
+        }, 5000);
     });
 </script>
 </body>
