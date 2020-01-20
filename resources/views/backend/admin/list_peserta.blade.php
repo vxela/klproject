@@ -38,6 +38,7 @@
                 <table class="table table-striped" id="list_peserta">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>
                                 Nama
                             </th>
@@ -59,8 +60,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $n = 1;
+                        @endphp
                         @foreach ($data_peserta as $pes)
                             <tr>
+                                <td>{{$n++}}</td>
                                 <td>
                                     {{$pes->bio->nama}}
                                 </td>

@@ -15,7 +15,7 @@
         max-width: 100%;
     }
     .tab {
-        width: 16%;
+        width: 24%;
         display: inline-block;
     }
     </style>
@@ -32,15 +32,11 @@
                     <div class="card-header text-center px-1" style="font-weight: bold; font-size: 14px">
                         {{$stc->fish->name}}
                     </div>
-                    <div class="card-body p-0">
-                        <img src="{{$stc->fish_picture}}">
-                    </div>
-                    <hr class="m-0">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center">
+                        <li class="list-group-item text-center py-1">
                             <small>ID : [{{Mush::no_reg($stc->id)}}]</small>
                         </li>
-                        <li class="list-group-item text-center">
+                        <li class="list-group-item text-center py-1">
                             <small>
                                 SIZE : 
                                 @if ($stc->fish_size == null)
@@ -52,6 +48,10 @@
                             </small>
                         </li>
                     </ul>
+                    <div class="card-body p-0">
+                        <img src="{{$stc->fish_picture}}">
+                    </div>
+                    {{-- <hr class="m-0"> --}}
                 </div>
                 {{-- <div class="sticker">
                     <div><strong>{{$stc->fish->name}}</strong></div>

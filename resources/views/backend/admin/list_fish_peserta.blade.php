@@ -37,6 +37,7 @@
                 </div>
                 <div class="col-8 text-right">
                     <a href="{{route('admin.print_user_sticker', ['id' => $user_id])}}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Sticker</a>
+                    <a href="{{route('admin.print_user_nota', ['user_id' => $user_id])}}" class="btn btn-warning" target="_blank"><i class="fa fa-print"></i> Nota</a>
                 </div>
             </div>
         </div>
@@ -45,6 +46,12 @@
                 <table class="table table-striped" id="fish_peserta">
                     <thead>
                         <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Reg Id
+                            </th>
                             <th>
                                 Varietas
                             </th>
@@ -58,7 +65,7 @@
                                 Reg Fee
                             </th>
                             <th>
-                                Status Pembayaran
+                                Status
                             </th>
                             <th>
                                 Tanggal Reg
@@ -66,11 +73,23 @@
                             <th>
                                 Detail
                             </th>
+                            <th>
+                                -
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $n = 1;
+                        @endphp
                         @foreach ($data_fish as $fs)
                         <tr>
+                            <td>
+                                {{$n++}}
+                            </td>
+                            <td>
+                                {{Mush::no_reg($fs->id)}}
+                            </td>
                             <td>
                                 {{$fs->fish->name}}
                             </td>
@@ -104,6 +123,9 @@
                                         {{-- <button href="{{route('admin.confirm_reg_fish', ['id' => $fs->id])}}" class="btn btn-success">Konfirmasi</a> --}}
                                     </form>
                                 @endif
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i class="fa fa-print"></i></a>
                             </td>
                         </tr>
                         @endforeach

@@ -615,4 +615,22 @@ class AdminController extends Controller
         return view('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
 
     }
+
+    public function printFishNota($user_id) {
+        $fishs = \App\Models\Tbl_user_fish::where('user_id', $user_id)->get();
+
+        $l_fishs = count($fishs);
+
+        if ($l_fishs != 0) {
+            $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs]);
+            // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
+            $pdf->setPaper('A4', 'potrait');
+    
+            $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
+            return $pdf->stream($file_name.'all_fish_bill.pdf');
+        } else {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);
+            return redirect()->back();
+        }
+    }
 }

@@ -36,6 +36,7 @@ Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish')
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
 
+Route::get('/admin/print_nota/{user_id}', 'AdminController@printFishNota')->name('admin.print_user_nota');
 Route::get('/admin/print_sticker/{id}', 'AdminController@printUserFishSticker')->name('admin.print_user_sticker');
 Route::get('/admin/print_sticker', 'AdminController@printFishSticker')->name('admin.print_sticker');
 Route::post('/admin/store_champion_category', 'AdminController@storeCatChampion')->name('admin.store_cat_champion');
