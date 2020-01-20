@@ -618,15 +618,16 @@ class AdminController extends Controller
 
     public function printFishNota($user_id) {
         $fishs = \App\Models\Tbl_user_fish::where('user_id', $user_id)->get();
+        $user = \App\User::find($user_id);
 
         $l_fishs = count($fishs);
 
         if ($l_fishs != 0) {
-            $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs]);
+            $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
             // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
             $pdf->setPaper('A4', 'potrait');
     
-            $file_name = Carbon::now()->format('YmdHis').'_'.auth()->user()->bio->id.'_'.auth()->user()->bio->nama;
+            $file_name = Carbon::now()->format('YmdHis').'_'.$user->bio->id.'_'.$user->bio->nama;
             return $pdf->stream($file_name.'all_fish_bill.pdf');
         } else {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);

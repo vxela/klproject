@@ -8,7 +8,7 @@
         <!-- Bootstrap CSS -->
         {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
 
-        <title>{{auth()->user()->bio->nama.'_all_fish_nota_'.Carbon\Carbon::now()->format('Ymd_His')}}</title>
+        <title>{{$user->bio->nama.'_all_fish_nota_'.Carbon\Carbon::now()->format('Ymd_His')}}</title>
         <style>
         body{
             font-family: "Courier New", Courier, monospace;
@@ -55,7 +55,7 @@
                 <tr>
                     <td valign="top" style="width:30%">
                         <strong>Nota To :</strong><br>
-                        <small>{{'Mr/Mrs. '.auth()->user()->bio->nama}}</small>
+                        <small>{{'Mr/Mrs. '.$user->bio->nama}}</small>
                     </td>
                     <td valign="top" style="width:30%">
                         <strong>Nota Date\Time :</strong><br>
