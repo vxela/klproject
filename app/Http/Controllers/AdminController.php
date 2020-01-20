@@ -633,4 +633,11 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+    public function printUserFishNota($fish_id) {
+        $fish = \App\Models\Tbl_user_fish::find($fish_id);
+
+        // dd($fish);s
+        return view('backend.admin.print_user_fish_nota', ['fish' => $fish]);
+    }
 }

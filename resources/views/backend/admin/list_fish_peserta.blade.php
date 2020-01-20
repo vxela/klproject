@@ -125,7 +125,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="#" class="btn btn-warning"><i class="fa fa-print"></i></a>
+                                <a href="{{route('admin.print_user_fish_nota', ['fish_id' => $fs->id])}}" class="btn btn-warning" target="_blank"><i class="fa fa-print"></i></a>
                             </td>
                         </tr>
                         @endforeach

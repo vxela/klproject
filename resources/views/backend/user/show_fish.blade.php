@@ -38,7 +38,8 @@
                     Data Ikan
                 </div>
                 <div class="card-body">
-                    <form action="{{route('user.update_fish')}}" method="post">
+                    {{-- <form action="{{route('user.update_fish')}}" method="post"> --}}
+                    <form action="" method="post">
                         @csrf
                         <input type="hidden" name="fish_id" value="{{$fish->id}}">
                         <div class="form-group row">
@@ -134,7 +135,8 @@
                     <img src="{{$fish->fish_picture}}" alt="" class="img-thumbnail">
                 </div>
                 <div class="card-footer bg-white">
-                    <form action="{{route('user.update_fish_picture')}}" method="post" enctype="multipart/form-data">
+                    {{-- <form action="{{route('user.update_fish_picture')}}" method="post" enctype="multipart/form-data"> --}}
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row mb-0">
                             <div class="col-8">
@@ -142,7 +144,7 @@
                                 <input type="hidden" name="fish_id" value="{{$fish->id}}">
                             </div>
                             <label for="" class="col-4">
-                                <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
+                                <button type="submit" id="btn_submit_pict" class="btn btn-primary" disabled>Upload</button>
                             </label>
                         </div>
                     </form>
