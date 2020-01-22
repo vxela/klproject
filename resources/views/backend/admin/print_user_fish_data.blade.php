@@ -72,7 +72,7 @@
                         </small><br><hr class="m-0">
                     </div>
 
-            @if ($loop->iteration % 6 == 0)
+            @if ($loop->iteration % 8 == 0)
                 </div>
                 <div class="newpage"></div>  
                 <div class="row">
