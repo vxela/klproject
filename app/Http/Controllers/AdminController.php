@@ -641,4 +641,10 @@ class AdminController extends Controller
         // dd($fish);s
         return view('backend.admin.print_user_fish_nota', ['fish' => $fish]);
     }
+
+    public function printUserFishData($user_id) {
+        $fish = \App\Models\Tbl_user_fish::where('user_id', $user_id)->get();
+        $user = \App\User::find($user_id);
+        return view('backend.admin.print_user_fish_data', ['fishs' => $fish, 'user' => $user]);
+    }
 }
