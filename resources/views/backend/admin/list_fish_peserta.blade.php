@@ -36,7 +36,7 @@
                     Data Ikan
                 </div>
                 <div class="col-8 text-right">
-                    <a href="{{route('admin.print_user_data', ['user_id' => $user_id])}}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Data</a>
+                    <a href="{{route('admin.print_user_data', ['user_id' => $user_id])}}" class="btn btn-primary" target="_blank"><i class="fa fa-print"></i> Data</a>
                     <a href="{{route('admin.print_user_sticker', ['id' => $user_id])}}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Sticker</a>
                     <a href="{{route('admin.print_user_nota', ['user_id' => $user_id])}}" class="btn btn-warning" target="_blank"><i class="fa fa-print"></i> Nota</a>
                 </div>
