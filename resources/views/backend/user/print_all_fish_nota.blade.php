@@ -109,7 +109,7 @@
                                 <td>{{Mush::no_reg($fish->id)}}</td>
                                 <td>{{Carbon\Carbon::parse($fish->date)->format('Ymd').'/'.$fish->user_id.'/'.$fish->bio_id.'/'.$fish->id}}</td>
                                 <td>{{$fish->fish->name}}</td>
-                                <td>{{$fish->fish_size}}</td>
+                                <td>{{$fish->fish_size.' cm'}}</td>
                                 <td>{{$fish->status}}</td>
                                 <td class="num">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
                                 @php
@@ -118,7 +118,7 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="3"></td>
+                                <td colspan="4"></td>
                                 <td colspan="" class="num"><strong>TOTAL</strong></td>
                                 <td colspan="2" class="num"><strong>{{'Rp. '.number_format($fee_total).',00'}}</strong></td>
                             </tr>
