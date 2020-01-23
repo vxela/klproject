@@ -651,4 +651,19 @@ class AdminController extends Controller
         return view('backend.admin.print_user_fish_data', ['fishs' => $fish, 'user' => $user]);
     }
 
+    public function rekapPayment() {
+
+        $lunas = \App\Models\Tbl_user_fish::where('status', 'LUNAS')->get();
+        $tlunas = \App\Models\Tbl_user_fish::where('status', 'BELUM LUNAS')->get();
+        $all_fish = \App\Models\Tbl_user_fish::all();
+
+        return view('backend.admin.rekap_payment',
+                        [
+                            'data_lunas' => $lunas,
+                            'data_tlunas' => $tlunas,
+                            'all_data' => $all_fish
+                        ]
+                    );
+    }
+
 }
