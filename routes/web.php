@@ -40,7 +40,7 @@ Route::get('/admin/print_fish_data/{user_id}', 'AdminController@printUserFishDat
 Route::get('/admin/print_fish_nota/{fish_id}', 'AdminController@printUserFishNota')->name('admin.print_user_fish_nota');
 Route::get('/admin/print_nota/{user_id}', 'AdminController@printFishNota')->name('admin.print_user_nota');
 Route::get('/admin/print_sticker/{id}', 'AdminController@printUserFishSticker')->name('admin.print_user_sticker');
-Route::get('/admin/print_sticker', 'AdminController@printFishSticker')->name('admin.print_sticker');
+Route::get('/admin/print_sticker', 'AdminController@printFishSticker')->name('admin.print_sticker'); //print fish stiker
 Route::post('/admin/store_champion_category', 'AdminController@storeCatChampion')->name('admin.store_cat_champion');
 Route::get('/admin/add_champion_category', 'AdminController@addCatChampion')->name('admin.add_cat_champion');
 Route::post('/admin/update_champion/{id}', 'AdminController@updateFishChampion')->name('admin.update_fish_champion');

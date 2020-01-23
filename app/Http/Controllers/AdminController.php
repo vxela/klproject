@@ -600,8 +600,11 @@ class AdminController extends Controller
 
     public function printFishSticker() {
 
-        $stc = \App\Models\Tbl_user_fish::all();
-
+        $stc = \App\Models\Tbl_user_fish::orderBy('fish_id', 'DESC')
+                                            ->orderBy('fish_size', 'ASC')
+                                            ->get();
+        
+        // dd()
         return view('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
         // $pdf = PDF::loadView('backend.admin.print_fish_sticker', ['data_stc' => $stc]);
         // $pdf->setPaper('A4', 'potrait');
@@ -647,4 +650,5 @@ class AdminController extends Controller
         $user = \App\User::find($user_id);
         return view('backend.admin.print_user_fish_data', ['fishs' => $fish, 'user' => $user]);
     }
+
 }
