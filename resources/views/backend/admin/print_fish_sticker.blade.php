@@ -92,10 +92,10 @@
         // setInterval(function(){ 
         //     window.print();
         //  }, 3000);
-        // setTimeout(function(){ 
-        //     window.print();
-        //     setTimeout(window.close, 0);
-        // }, 5000);
+        setTimeout(function(){ 
+            window.print();
+            setTimeout(window.close, 0);
+        }, 5000);
     });
 </script>
 </body>
