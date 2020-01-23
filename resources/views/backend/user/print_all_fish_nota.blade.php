@@ -88,6 +88,9 @@
                                 Varietas
                             </th>
                             <th>
+                                Size
+                            </th>
+                            <th>
                                 Status
                             </th>
                             <th class="num">
@@ -106,6 +109,7 @@
                                 <td>{{Mush::no_reg($fish->id)}}</td>
                                 <td>{{Carbon\Carbon::parse($fish->date)->format('Ymd').'/'.$fish->user_id.'/'.$fish->bio_id.'/'.$fish->id}}</td>
                                 <td>{{$fish->fish->name}}</td>
+                                <td>{{$fish->fish_size}}</td>
                                 <td>{{$fish->status}}</td>
                                 <td class="num">{{'Rp. '.number_format($fish->cat->reg_price).',00'}}</td>
                                 @php
