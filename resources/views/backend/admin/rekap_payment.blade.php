@@ -53,7 +53,7 @@
                                         Status
                                     </th>
                                     <th>
-
+                                        Detail
                                     </th>
                                 </tr>
                             </thead>
@@ -127,6 +127,7 @@
                                         Status
                                     </th>
                                     <th>
+                                        Detail
                                     </th>
                                 </tr>
                             </thead>
@@ -192,7 +193,7 @@
                                         Status
                                     </th>
                                     <th>
-
+                                        Detail
                                     </th>
                                 </tr>
                             </thead>
