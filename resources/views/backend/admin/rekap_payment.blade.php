@@ -33,7 +33,14 @@
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card mb-2">
                 <div class="card-header bg-white font-weight-bold">
-                    Data Semua Tagihan
+                    <div class="row">
+                        <div class="col-8">
+                            Data Pembayaran
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="{{route('admin.print_all_rekap_payment')}}" target="_blank" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -107,7 +114,15 @@
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card mb-2">
                 <div class="card-header bg-white font-weight-bold">
-                    Data Lunas
+                    {{-- Data Lunas --}}
+                    <div class="row">
+                        <div class="col-8">
+                            Data Lunas
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -173,7 +188,14 @@
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="card mb-2">
                 <div class="card-header bg-white font-weight-bold">
-                    Data Belum Lunas
+                    <div class="row">
+                        <div class="col-8">
+                            Data Belum Lunas
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

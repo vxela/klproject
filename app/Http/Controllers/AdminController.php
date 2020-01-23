@@ -666,4 +666,11 @@ class AdminController extends Controller
                     );
     }
 
+    public function printRekapPaymentAll() {
+
+        $fishs = \App\Models\Tbl_user_fish::all();
+        return view('backend.admin.print_rekap_payment', ['data_ikan' => $fishs]);
+
+    }
+
 }
