@@ -120,7 +120,7 @@
                             Data Lunas
                         </div>
                         <div class="col-4 text-right">
-                            <a href="#" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
+                            <a href="{{route('admin.print_lunas_rekap_payment')}}" target="_blank" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                             Data Belum Lunas
                         </div>
                         <div class="col-4 text-right">
-                            <a href="#" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
+                            <a href="{{route('admin.print_blunas_rekap_payment')}}" target="_blank" class="btn btn-primary"><i class="fa fa-fw fa-print"></i> Print</a>
                         </div>
                     </div>
                 </div>

@@ -65,7 +65,9 @@
                         @endphp
                         @foreach ($data_peserta as $pes)
                             <tr>
-                                <td>{{$n++}}</td>
+                                <td>
+                                    {{$n++}}
+                                </td>
                                 <td>
                                     {{$pes->bio->nama}}
                                 </td>

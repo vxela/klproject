@@ -669,8 +669,38 @@ class AdminController extends Controller
     public function printRekapPaymentAll() {
 
         $fishs = \App\Models\Tbl_user_fish::all();
-        return view('backend.admin.print_rekap_payment', ['data_ikan' => $fishs]);
+        $user2 = \App\Models\Tbl_user_fish::with('user')->distinct()->get(['user_id']);
+        return view('backend.admin.print_rekap_payment', 
+                [
+                    'data_ikan' => $fishs,
+                    'data_user' => $user2
+                ]);
+    }
+    
+    public function printRekapPaymentLunas() {
 
+        $fishs = \App\Models\Tbl_user_fish::where('status', 'LUNAS')->get();
+        $user2 = \App\Models\Tbl_user_fish::with('user')
+                                            ->where('status', 'LUNAS')
+                                            ->distinct()->get(['user_id']);
+        return view('backend.admin.print_rekap_payment', 
+                [
+                    'data_ikan' => $fishs,
+                    'data_user' => $user2,
+                ]);
+    }
+    
+    public function printRekapPaymentBLunas() {
+
+        $fishs = \App\Models\Tbl_user_fish::where('status', 'BELUM LUNAS')->get();
+        $user2 = \App\Models\Tbl_user_fish::with('user')
+                                            ->where('status', 'BELUM LUNAS')
+                                            ->distinct()->get(['user_id']);
+        return view('backend.admin.print_rekap_payment', 
+                [
+                    'data_ikan' => $fishs,
+                    'data_user' => $user2,
+                ]);
     }
 
 }
