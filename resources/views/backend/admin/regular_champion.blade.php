@@ -123,8 +123,6 @@
                     <div class="card-body text-center">
                         <h5 class="card-title mb-0">{{'# '.$rc->cat_reg()->position.' - '.Mush::no_reg($rc->fish_id)}}</h5>
                         <strong>[{{$rc->cat_reg()->fish()->name}}] [{{$rc->peserta()->fish_size.' cm'}}]</strong><br>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
