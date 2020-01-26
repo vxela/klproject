@@ -35,7 +35,7 @@ Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('use
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
-
+Route::get('/admin/regular_champion', 'AdminController@regularChampion')->name('admin.regular_champion');
 Route::get('/admin/print_rekap_payment_belum_lunas', 'AdminController@printRekapPaymentBLunas')->name('admin.print_blunas_rekap_payment');
 Route::get('/admin/print_rekap_payment_lunas', 'AdminController@printRekapPaymentLunas')->name('admin.print_lunas_rekap_payment');
 Route::get('/admin/print_rekap_payment', 'AdminController@printRekapPaymentAll')->name('admin.print_all_rekap_payment');

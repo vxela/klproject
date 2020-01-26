@@ -703,4 +703,26 @@ class AdminController extends Controller
                 ]);
     }
 
+    public function regularChampion() {
+        // $f_id = \App\Models\Tbl_user_fish::groupBy('fish_id')->count();
+        $fid = \App\Models\Tbl_user_fish::select(DB::raw('fish_id, COUNT(fish_id) as jml'))
+                                            ->groupBy('fish_id')
+                                            ->orderBy('jml', 'DESC')
+                                            ->first();
+        $rc = \App\Models\Tbl_user_fish::where('fish_id', $fid->fish_id)
+                                            ->orderBy('fish_size')
+                                            ->take(4)
+                                            ->get();
+        // dd($rc);
+            $cat = \App\Models\Tbl_cat::all();
+            $var = \App\Models\Tbl_fish::all();
+            return view('backend.admin.regular_champion', 
+                        [
+                            'data_fish' => $rc,
+                            'data_cat' => $cat,
+                            'data_var' => $var
+                        ]
+                    );
+    }
+
 }
