@@ -705,24 +705,73 @@ class AdminController extends Controller
 
     public function regularChampion() {
         // $f_id = \App\Models\Tbl_user_fish::groupBy('fish_id')->count();
-        $fid = \App\Models\Tbl_user_fish::select(DB::raw('fish_id, COUNT(fish_id) as jml'))
-                                            ->groupBy('fish_id')
-                                            ->orderBy('jml', 'DESC')
-                                            ->first();
-        $rc = \App\Models\Tbl_user_fish::where('fish_id', $fid->fish_id)
-                                            ->orderBy('fish_size')
-                                            ->take(4)
-                                            ->get();
+        // $fid = \App\Models\Tbl_user_fish::select(DB::raw('fish_id, COUNT(fish_id) as jml'))
+        //                                     ->groupBy('fish_id')
+        //                                     ->orderBy('jml', 'DESC')
+        //                                     ->first();
+        // $rc = \App\Models\Tbl_user_fish::where('fish_id', $fid->fish_id)
+        //                                     ->orderBy('fish_size')
+        //                                     ->take(4)
+        //                                     ->get();
         // dd($rc);
-            $cat = \App\Models\Tbl_cat::all();
+            // $cat = \App\Models\Tbl_cat::all();
             $var = \App\Models\Tbl_fish::all();
+            $cat = \App\Models\Tbl_cat_regular::all();
+            $fish = \App\Models\Tbl_user_fish::all();
+
+            $regch = \App\Models\Tbl_regular_champion::join('tbl_cat_regulars', 'tbl_regular_champions.cat_reg_id', '=', 'tbl_cat_regulars.id')->get();
+
             return view('backend.admin.regular_champion', 
                         [
-                            'data_fish' => $rc,
+                            'data_var' => $var,
                             'data_cat' => $cat,
-                            'data_var' => $var
+                            'data_fish' => $fish,
+                            'data_regch' => $regch
                         ]
                     );
+    }
+
+    public function storeRegularPosition(Request $r) {
+        $data_cat = [
+            'varietas_id' => $r->var_id,
+            'position' => $r->posisi, 
+            'desk'  => $r->deskripsi
+        ];
+
+        $cat = \App\Models\Tbl_cat_regular::create($data_cat);
+
+        if (!$cat) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Category, Ulangi Lagi']);
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Menyimpan Kategori']);
+            return redirect()->back();
+        }
+        
+    }
+    public function storeRegularChampion(Request $r) {
+        $ch = \App\Models\Tbl_regular_champion::where('cat_reg_id', $r->cat_reg_id)->count();
+        if($ch > 0) {
+            $rch = \App\Models\Tbl_regular_champion::where('cat_reg_id', $r->cat_reg_id)->first();
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Regular Champion, '.$rch->cat_reg()->fish()->name.' Posisi '.$rch->cat_reg()->position.' sudah terisi, Pilih Posisi yang lain']);
+            return redirect()->back();            
+        } else {
+            $data_rc = [
+                'cat_reg_id' => $r->cat_reg_id,
+                'fish_id' => $r->peserta_id
+            ];
+    
+            $rc = \App\Models\Tbl_regular_champion::create($data_rc);
+    
+            if (!$rc) {
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Regular Champion, Ulangi Lagi']);
+                return redirect()->back();
+            } else {
+                Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil Menyimpan Regular Champion']);
+                return redirect()->back();
+            }
+        }
+        
     }
 
 }

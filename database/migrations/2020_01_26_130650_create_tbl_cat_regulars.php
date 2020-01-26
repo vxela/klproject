@@ -15,8 +15,8 @@ class CreateTblCatRegulars extends Migration
     {
         Schema::create('tbl_cat_regulars', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('grade');
-            $table->string('position');
+            $table->unsignedBigInteger('varietas_id');
+            $table->integer('position');
             $table->text('desk');
             $table->timestamps();
         });
