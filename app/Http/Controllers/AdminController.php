@@ -764,4 +764,17 @@ class AdminController extends Controller
         }
     }
 
+    public function regularChampionDelete(Request $r) {
+        $rc = \App\Models\Tbl_regular_champion::find($r->ch_id);
+        $delete = $rc->forceDelete();
+        
+        if(!$delete) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menghapus Data Regular Champion']);
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Regular Champion Dihapus']);
+            return redirect()->back();            
+        }
+    }
+
 }

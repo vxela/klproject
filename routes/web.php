@@ -35,6 +35,7 @@ Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('use
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
+Route::post('/admin/regular_champion/delete', 'AdminController@regularChampionDelete')->name('admin.delete_regular_champion');
 Route::get('/admin/regular_champion/{var_id}/{cat_id}', 'AdminController@regularChampiongetFish');
 Route::post('/admin/store_regular_champion', 'AdminController@storeRegularChampion')->name('admin.store_regular_champion');
 Route::get('/admin/regular_champion', 'AdminController@regularChampion')->name('admin.regular_champion');

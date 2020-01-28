@@ -113,12 +113,13 @@
                                         <th>
                                             Peserta
                                         </th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (count($data_rc) == 0)
                                         <tr>
-                                            <th colspan="5" class="text-center">
+                                            <th colspan="6" class="text-center">
                                                 Belum Ada Data
                                             </th>
                                         </tr>
@@ -142,6 +143,15 @@
                                                 </td>
                                                 <td>
                                                     {{Mush::no_reg($rc->user_fish_id)}}
+                                                </td>
+                                                <td>
+                                                    <form action="{{route('admin.delete_regular_champion')}}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="ch_id" value="{{$rc->id}}">
+                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
