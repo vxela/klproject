@@ -736,11 +736,14 @@ class AdminController extends Controller
         } else {
             $drch = \App\Models\Tbl_regular_champion::where('fish_id', $r->var_id)
                                                         ->where('cat_id', $r->ukuran_id)
-                                                        ->where('position', $r->posisi)
                                                         ->where('user_fish_id', $r->peserta_id)
                                                         ->get();
+            $prch = \App\Models\Tbl_regular_champion::where('fish_id', $r->var_id)
+                                                        ->where('cat_id', $r->ukuran_id)
+                                                        ->where('position', $r->posisi)
+                                                        ->get();
             // echo count($drch);
-            if(count($drch) == 0) {
+            if(count($drch) == 0 && count($prch) == 0) {
                 $data_rc = [
                     'fish_id' => $r->var_id,
                     'cat_id' => $r->ukuran_id,
