@@ -37,7 +37,6 @@ Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
 Route::get('/admin/regular_champion/{var_id}/{cat_id}', 'AdminController@regularChampiongetFish');
 Route::post('/admin/store_regular_champion', 'AdminController@storeRegularChampion')->name('admin.store_regular_champion');
-Route::post('/admin/store_cat_regular_champion', 'AdminController@storeRegularPosition')->name('admin.store_cat_regular_champion');
 Route::get('/admin/regular_champion', 'AdminController@regularChampion')->name('admin.regular_champion');
 Route::get('/admin/print_rekap_payment_belum_lunas', 'AdminController@printRekapPaymentBLunas')->name('admin.print_blunas_rekap_payment');
 Route::get('/admin/print_rekap_payment_lunas', 'AdminController@printRekapPaymentLunas')->name('admin.print_lunas_rekap_payment');

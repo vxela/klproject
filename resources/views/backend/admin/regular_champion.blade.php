@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-12">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <form action="{{route('admin.store_regular_champion')}}" method="post">
                         @csrf
                         <input type="hidden" name="url_path" id="url_path" value="{{route('admin.regular_champion')}}">
@@ -44,6 +44,7 @@
                                     <label for="varietas" class="col-sm-4 col-xs-12 col-form-label">Varietas</label>
                                     <div class="col-sm-8 col-xs-12">
                                         <select class="form-control var_id" id="var_id" name="var_id" required>
+                                            <option value="">Pilih Varietas</option>
                                             @foreach ($data_var as $var)
                                                 <option value="{{$var->id}}">{{$var->name}}</option>
                                             @endforeach
@@ -54,12 +55,21 @@
                                     <label for="ukuran" class="col-sm-4 col-xs-12 col-form-label">Ukuran</label>
                                     <div class="col-sm-8 col-xs-12">
                                         <select class="form-control ukuran_id" id="ukuran_id" name="ukuran_id" required>
+                                            <option value="">Pilih Ukuran</option>
                                             @foreach ($data_cat as $cat)
                                                 <option value="{{$cat->id}}">{{$cat->min_size.'-'.$cat->max_size.' cm'}}</option>                                                
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label">Peserta</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control" id="peserta_id" name="peserta_id" required>
+                                            <option value="">Pilih Peserta</option>
+                                        </select>
+                                    </div>
+                                </div>                                
                                 <div class="form-group row">
                                     <label for="posisi" class="col-sm-4 col-xs-12 col-form-label">Posisi</label>
                                     <div class="col-sm-8 col-xs-12">
@@ -72,26 +82,77 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="form-group row">
-                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label"></label>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <button type="button" class="btn btn-primary btn-lg btn-block">Cari Ikan</button>
-                                    </div>
-                                </div> --}}
-                                <div class="form-group row">
-                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label">Peserta</label>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <select class="form-control" id="peserta_id" name="peserta_id" required>
-                                            <option value="">Pilih Peserta</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                             <div class="card-footer bg-white text-right">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>                        
                     </form>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-header bg-white font-weight-bold">
+                            Data Regular Champion
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Varietas
+                                        </th>
+                                        <th>
+                                            Ukuran
+                                        </th>
+                                        <th>
+                                            Posisi
+                                        </th>
+                                        <th>
+                                            Peserta
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (count($data_rc) == 0)
+                                        <tr>
+                                            <th colspan="5" class="text-center">
+                                                Belum Ada Data
+                                            </th>
+                                        </tr>
+                                    @else
+                                        @php
+                                            $n = 1;
+                                        @endphp
+                                        @foreach ($data_rc as $rc)
+                                            <tr>
+                                                <td>
+                                                   {{$n++}} 
+                                                </td>
+                                                <td>
+                                                    {{$rc->fish()->fish->name}}
+                                                </td>
+                                                <td>
+                                                    {{$rc->fish()->cat->min_size.'-'.$rc->fish()->cat->max_size.' cm'}}
+                                                </td>
+                                                <td>
+                                                    # {{$rc->position}}
+                                                </td>
+                                                <td>
+                                                    {{Mush::no_reg($rc->user_fish_id)}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            //
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

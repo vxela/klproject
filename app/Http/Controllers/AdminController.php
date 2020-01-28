@@ -707,9 +707,12 @@ class AdminController extends Controller
         $varietas = \App\Models\Tbl_fish::all();
         $cat = \App\Models\Tbl_cat::all();
 
+        $creg = \App\Models\Tbl_regular_champion::all();
+
         return view('backend.admin.regular_champion', [
             'data_var' => $varietas,
             'data_cat' => $cat,
+            'data_rc' => $creg,
         ]);
     }
 
@@ -722,11 +725,43 @@ class AdminController extends Controller
 
     }
 
-    public function storeRegularPosition(Request $r) {
-                
-    }
     public function storeRegularChampion(Request $r) {
-                
+        $trch = \App\Models\Tbl_regular_champion::where('fish_id', $r->var_id)
+                                                    ->where('cat_id', $r->ukuran_id)
+                                                    ->where('position', $r->posisi)
+                                                    ->count();
+        if($trch > 4) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Regular Champion Sudah Penuh']);
+            return redirect()->back();
+        } else {
+            $drch = \App\Models\Tbl_regular_champion::where('fish_id', $r->var_id)
+                                                        ->where('cat_id', $r->ukuran_id)
+                                                        ->where('position', $r->posisi)
+                                                        ->where('user_fish_id', $r->peserta_id)
+                                                        ->get();
+            // echo count($drch);
+            if(count($drch) == 0) {
+                $data_rc = [
+                    'fish_id' => $r->var_id,
+                    'cat_id' => $r->ukuran_id,
+                    'user_fish_id' => $r->peserta_id,
+                    'position' => $r->posisi
+                ];
+
+                $rc = \App\Models\Tbl_regular_champion::create($data_rc);
+
+                if(!$rc) {
+                    Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Data Regular Champion']);
+                    return redirect()->back();
+                } else {
+                    Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Regular Champion Disimpan']);
+                    return redirect()->back();
+                }
+            } else {
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Posisi Regular Champion Sudah di isi']);
+                return redirect()->back();
+            }
+        }
     }
 
 }
