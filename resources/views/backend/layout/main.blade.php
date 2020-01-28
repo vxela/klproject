@@ -22,12 +22,8 @@
         @endif
         <nav class="navbar navbar-expand navbar-dark bg-primary">
             <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
-            @if (auth()->user()->role_id === 1)
-                <a class="navbar-brand" href="{{route('admin.dashboard')}}">Admin Dashboard</a>
-            @else
-                <a class="navbar-brand" href="{{route('user.dashboard')}}">User Dashboard</a>
-            @endif
-
+            <a class="navbar-brand" href="{{route('admin.dashboard')}}">Admin Dashboard</a>
+            
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav ml-auto">
                     {{-- <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-envelope"></i> 5</a></li>
