@@ -15,8 +15,10 @@ class CreateTblRegularChampions extends Migration
     {
         Schema::create('tbl_regular_champions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('cat_reg_id');
             $table->unsignedBigInteger('fish_id');
+            $table->unsignedBigInteger('cat_id');
+            $table->enum('position', ['1','2','3','4']);
+            $table->unsignedBigInteger('user_fish_id');
             $table->timestamps();
         });
     }

@@ -34,55 +34,28 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <form action="{{route('admin.store_regular_champion')}}" method="post">
                         @csrf
+                        <input type="hidden" name="url_path" id="url_path" value="{{route('admin.regular_champion')}}">
                         <div class="card mb-4">
                             <div class="card-header bg-white font-weight-bold">
                                 Form Tambah Regular Champion
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label for="varietas" class="col-sm-4 col-xs-12 col-form-label">Kategory</label>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <select class="form-control" id="cat_reg_id" name="cat_reg_id" required>
-                                            <option value="">Pilih Kategori</option>
-                                            @foreach ($data_cat as $cat)
-                                                <option value="{{$cat->id}}">{{$cat->fish()->name.' | Posisi '.$cat->position}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label">Peserta</label>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <select class="form-control" id="peserta_id" name="peserta_id" required>
-                                            <option value="">Pilih Peserta</option>
-                                            @foreach ($data_fish as $fish)
-                                                <option value="{{$fish->id}}">{{Mush::no_reg($fish->id)}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-white text-right">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </div>                        
-                    </form>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <form action="{{route('admin.store_cat_regular_champion')}}" method="post">
-                        @csrf
-                        <div class="card mb-4">
-                            <div class="card-header bg-white font-weight-bold">
-                                Form Tambah Category Regular Champion
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group row">
                                     <label for="varietas" class="col-sm-4 col-xs-12 col-form-label">Varietas</label>
                                     <div class="col-sm-8 col-xs-12">
-                                        <select class="form-control" id="var_id" name="var_id" required>
-                                            <option value="">Pilih Jenis Varietas</option>
+                                        <select class="form-control var_id" id="var_id" name="var_id" required>
                                             @foreach ($data_var as $var)
-                                                <option value="{{$var->id}}"> {{$var->name}} </option>
+                                                <option value="{{$var->id}}">{{$var->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ukuran" class="col-sm-4 col-xs-12 col-form-label">Ukuran</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control ukuran_id" id="ukuran_id" name="ukuran_id" required>
+                                            @foreach ($data_cat as $cat)
+                                                <option value="{{$cat->id}}">{{$cat->min_size.'-'.$cat->max_size.' cm'}}</option>                                                
                                             @endforeach
                                         </select>
                                     </div>
@@ -92,17 +65,25 @@
                                     <div class="col-sm-8 col-xs-12">
                                         <select class="form-control" id="posisi" name="posisi" required>
                                             <option value="">Pilih Posisi</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
+                                            <option value="1"># 1</option>
+                                            <option value="2"># 2</option>
+                                            <option value="3"># 3</option>
+                                            <option value="4"># 4</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="deskripsi" class="col-sm-4 col-xs-12 col-form-label">Deskripsi</label>
+                                {{-- <div class="form-group row">
+                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label"></label>
                                     <div class="col-sm-8 col-xs-12">
-                                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                                        <button type="button" class="btn btn-primary btn-lg btn-block">Cari Ikan</button>
+                                    </div>
+                                </div> --}}
+                                <div class="form-group row">
+                                    <label for="peserta" class="col-sm-4 col-xs-12 col-form-label">Peserta</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control" id="peserta_id" name="peserta_id" required>
+                                            <option value="">Pilih Peserta</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -115,26 +96,13 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        @foreach ($data_regch as $rc)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-2">
-                <div class="card">
-                    <img class="card-img-top" src="{{$rc->peserta()->fish_picture_thumb}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-0">{{'# '.$rc->cat_reg()->position.' - '.Mush::no_reg($rc->fish_id)}}</h5>
-                        <strong>[{{$rc->cat_reg()->fish()->name}}] [{{$rc->peserta()->fish_size.' cm'}}]</strong><br>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
 @endsection
 
 @section('pagejs')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
     $(document).ready(function(){
-
+        $.ajaxSetup({ cache: false });
         if($('#flash_data').length) {
             let type = $('#flash_data').data('type');
             let msg = $('#flash_data').data('msg');
@@ -145,6 +113,38 @@
                 showConfirmButton: true,
             });
         };
+
+        $.getFish = function getFish() {
+            var varietas = $('#var_id').val();
+            var ukuran = $('#ukuran_id').val();
+            var url_path = $('#url_path').val();
+
+            var r_url = url_path+'/'+varietas+'/'+ukuran;
+
+            $.ajax({
+                url : r_url,
+                success : function(json) {
+                    $('#peserta_id').html('');
+                    if(json.length == 0) {
+                        $('#peserta_id').append($('<option>').text('Tidak Ada Ikan Terdaftar').attr('value', ''));
+                    } else {
+                        for (i=0; i<json.length; i++) {
+                            var mstr = json[i].id;
+                            $('#peserta_id').append($('<option>').text(String('0000' + mstr).slice(-4)).attr('value', json[i].id));
+                        }
+                    }
+                    console.log(json);
+                }
+            });
+
+        }
+
+        $('.var_id').on('change', function() {
+            $.getFish();
+        });
+        $('.ukuran_id').on('change', function() {
+            $.getFish();
+        });
     });
     </script>
 @endsection
