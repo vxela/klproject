@@ -95,7 +95,7 @@
                             Data Regular Champion
                         </div>
                         <div class="card-body">
-                            <table class="table">
+                            <table class="table" id="rc_table">
                                 <thead>
                                     <tr>
                                         <th>
@@ -148,9 +148,6 @@
                                     @endif
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="card-footer">
-                            //
                         </div>
                     </div>
                 </div>
@@ -207,6 +204,8 @@
         $('.ukuran_id').on('change', function() {
             $.getFish();
         });
+
+        $('#rc_table').DataTable();
     });
     </script>
 @endsection
