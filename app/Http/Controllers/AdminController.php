@@ -22,12 +22,20 @@ class AdminController extends Controller
         $n_lfish = \App\Models\Tbl_user_fish::where('status', 'LUNAS')->count();
         $n_bfish = \App\Models\Tbl_user_fish::where('status', 'BELUM LUNAS')->count();
 
-        // echo $n_owner;
+        $n_payment = \App\Models\Tbl_user_fish::join('tbl_cats', 'tbl_user_fishs.cat_id', '=', 'tbl_cats.id')->sum('reg_price');
+        $n_lpayment = \App\Models\Tbl_user_fish::join('tbl_cats', 'tbl_user_fishs.cat_id', '=', 'tbl_cats.id')->where('status', 'LUNAS')->sum('reg_price');
+        $n_bpayment = \App\Models\Tbl_user_fish::join('tbl_cats', 'tbl_user_fishs.cat_id', '=', 'tbl_cats.id')->where('status', 'BELUM LUNAS')->sum('reg_price');
+
+        // echo $n_payment;
         return view('backend.admin.index', [
             'n_owner' => $n_owner,
             'n_peserta' => $n_fish,
             'n_lfish' => $n_lfish,
-            'n_bfish' => $n_bfish
+            'n_bfish' => $n_bfish,
+            'n_payment' => $n_payment,
+            'n_lpayment' => $n_lpayment,
+            'n_bpayment' => $n_bpayment,
+
         ]);
     }
 
