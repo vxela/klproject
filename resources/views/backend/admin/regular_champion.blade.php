@@ -128,6 +128,7 @@
                     if(json.length == 0) {
                         $('#peserta_id').append($('<option>').text('Tidak Ada Ikan Terdaftar').attr('value', ''));
                     } else {
+                        $('#peserta_id').append($('<option>').text('Pilih Peserta').attr('value', ''));
                         for (i=0; i<json.length; i++) {
                             var mstr = json[i].id;
                             $('#peserta_id').append($('<option>').text(String('0000' + mstr).slice(-4)).attr('value', json[i].id));
