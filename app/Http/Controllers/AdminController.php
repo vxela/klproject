@@ -17,7 +17,18 @@ use Mush;
 class AdminController extends Controller
 {
     public function index() {
-        return view('backend.admin.index');
+        $n_owner = \App\User::where('role_id', 3)->count();
+        $n_fish = \App\Models\Tbl_user_fish::all()->count();
+        $n_lfish = \App\Models\Tbl_user_fish::where('status', 'LUNAS')->count();
+        $n_bfish = \App\Models\Tbl_user_fish::where('status', 'BELUM LUNAS')->count();
+
+        // echo $n_owner;
+        return view('backend.admin.index', [
+            'n_owner' => $n_owner,
+            'n_peserta' => $n_fish,
+            'n_lfish' => $n_lfish,
+            'n_bfish' => $n_bfish
+        ]);
     }
 
     public function listPeserta() {
