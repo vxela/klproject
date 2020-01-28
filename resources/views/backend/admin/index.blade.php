@@ -93,7 +93,7 @@
                 </div>
                 <div class="flex-grow-1 bg-white p-4">
                     <p class="text-uppercase text-secondary mb-0">Total Tagihan</p>
-                    <h3 class="font-weight-bold mb-0">Rp. {{number_format($n_payment)}},00</h3>
+                    <h4 class="font-weight-bold mb-0">Rp. {{number_format($n_payment)}},00</h4>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="flex-grow-1 bg-white p-4">
                     <p class="text-uppercase text-secondary mb-0">Tagihan Lunas</p>
-                    <h3 class="font-weight-bold mb-0">Rp. {{number_format($n_lpayment)}},00</h3>
+                    <h4 class="font-weight-bold mb-0">Rp. {{number_format($n_lpayment)}},00</h4>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="flex-grow-1 bg-white p-4">
                     <p class="text-uppercase text-secondary mb-0">Belum Lunas</p>
-                    <h3 class="font-weight-bold mb-0">Rp. {{number_format($n_bpayment)}},00</h3>
+                    <h4 class="font-weight-bold mb-0">Rp. {{number_format($n_bpayment)}},00</h4>
                 </div>
             </div>
         </div>
