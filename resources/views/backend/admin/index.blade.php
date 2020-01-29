@@ -34,6 +34,7 @@
                 <div class="bg-dark text-light p-4">
                     <div class="d-flex align-items-center h-100">
                         <i class="fa fa-3x fa-fw fa-user"></i>
+                        {{-- s/? --}}
                     </div>
                 </div>
                 <div class="flex-grow-1 bg-white p-4">
