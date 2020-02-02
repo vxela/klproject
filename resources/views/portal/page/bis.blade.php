@@ -30,11 +30,11 @@
                     <img class="card-img-top" src="{{$bis->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
                     <div class="card-body text-center p-1">
                         <h5 class="m-1">#{{$n++}} {{Mush::no_reg($bis->id)}}</h5>
-                        <p class="card-text mb-1">{{ucfirst($bis->fish->name)}} {{$bis->fish_size.' cm'}}</p>
+                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->fish->name))}} {{$bis->fish_size.' cm'}}</p>
                         <h5>Owner</h5>
-                        <p class="card-text mb-1">{{ucfirst($bis->bio->nama)}} <br> <small>({{ucfirst($bis->bio->kota)}})</small></p>
+                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->bio->nama))}} <br> <small>({{ucfirst(strtolower($bis->bio->kota))}})</small></p>
                         <h5>Handler</h5>
-                        <p class="card-text mb-1">{{ucfirst($bis->handler_name)}} <br> <small>{{ucfirst($bis->handler_address)}}</small></p>
+                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->handler_name))}} <br> <small>{{ucfirst(strtolower($bis->handler_address))}}</small></p>
                     </div>
                 </div>
             </div>            
