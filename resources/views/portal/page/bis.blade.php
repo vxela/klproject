@@ -32,9 +32,9 @@
                         <h5 class="m-1">#{{$n++}} {{Mush::no_reg($bis->id)}}</h5>
                         <p class="card-text mb-1">{{ucfirst($bis->fish->name)}} {{$bis->fish_size.' cm'}}</p>
                         <h5>Owner</h5>
-                        <p class="card-text mb-1">{{ucfirst($bis->bio->nama)}} <br> <small>({{$bis->bio->kota}})</small></p>
+                        <p class="card-text mb-1">{{ucfirst($bis->bio->nama)}} <br> <small>({{ucfirst($bis->bio->kota)}})</small></p>
                         <h5>Handler</h5>
-                        <p class="card-text mb-1">{{ucfirst($bis->handler_name)}} <br> <small>{{$bis->handler_address}}</small></p>
+                        <p class="card-text mb-1">{{ucfirst($bis->handler_name)}} <br> <small>{{ucfirst($bis->handler_address)}}</small></p>
                     </div>
                 </div>
             </div>            
