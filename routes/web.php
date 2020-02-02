@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PortalController@index')->name('/');
+Route::get('/best_in_size', 'PortalController@BestInSize')->name('bis');
 Route::get('/summary', 'PortalController@summary')->name('summary');
 Route::get('/point', 'PortalController@point')->name('point');
 

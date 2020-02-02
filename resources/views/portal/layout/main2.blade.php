@@ -60,7 +60,7 @@
               <a class="nav-link" href="{{route('point')}}">Point</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('/')}}">Best In Size</a>
+              <a class="nav-link" href="{{route('bis')}}">Best In Size</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('/')}}">Champion</a>

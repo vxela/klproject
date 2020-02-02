@@ -46,4 +46,14 @@ class PortalController extends Controller
 
         return view('portal.page.point_table', ['points' => $p]);
     }
+
+    public function BestInSize() {
+        $csize = \App\Models\Tbl_cat::all();
+
+        $bis = \App\Models\Tbl_user_fish::where('cat_id', 1)->orderBy('fish_size')->get();
+
+        dd($bis);
+
+        return view('portal.page.bis', ['data_cat' => $csize]);
+    }
 }
