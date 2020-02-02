@@ -42,7 +42,7 @@ class PortalController extends Controller
     }
 
     public function point() {
-        $p = \App\Models\Tbl_fish_point::all();
+        $p = \App\Models\Tbl_fish_point::orderBy('point', 'DESC')->get();
 
         return view('portal.page.point_table', ['points' => $p]);
     }
