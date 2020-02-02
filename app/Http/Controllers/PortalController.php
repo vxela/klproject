@@ -50,7 +50,7 @@ class PortalController extends Controller
     public function BestInSize() {
         $csize = \App\Models\Tbl_cat::all();
 
-        $bis = \App\Models\Tbl_user_fish::where('cat_id', 1)->orderBy('fish_size')->get();
+        $bis = \App\Models\Tbl_user_fish::where('cat_id', 1)->orderBy('fish_size', 'ASC')->take(5)->get();
 
         dd($bis);
 
