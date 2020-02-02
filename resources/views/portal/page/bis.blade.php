@@ -20,18 +20,19 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         </div>
     </div>
-    <div class="card bg-light mb-3">
-        <div class="card-header">
-            Best In Size
-        </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-        </div>
+    <div class="row">
+        @foreach ($data_bis as $bis)
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body text-center p-1">
+                        <h5 class="card-title m-1">#n REGID</h5>
+                        <p class="card-text mb-1">Fish Variety, Size</p>
+                        <p class="card-text mb-1">Fish Owner, Asal</p>
+                        <p class="card-text mb-1">Fish Handler, Asal</p>
+                    </div>
+                </div>
+            </div>            
+        @endforeach
     </div>
-@endsection
+    @endsection
