@@ -24,7 +24,7 @@
         @foreach ($data_bis as $bis)
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="card">
-                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <img class="card-img-top" src="{{$bis->fish_picture}}" alt="Card image cap">
                     <div class="card-body text-center p-1">
                         <h5 class="card-title m-1">#n REGID</h5>
                         <p class="card-text mb-1">Fish Variety, Size</p>
