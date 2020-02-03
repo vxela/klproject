@@ -122,5 +122,7 @@
     <script src="{{asset('/bwatch/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/bwatch/js/popper.min.js')}}"></script>
     <script src="{{asset('/bwatch/js/custom.js')}}"></script>
+
+    @yield('pagejs')
   </body>
 </html>
