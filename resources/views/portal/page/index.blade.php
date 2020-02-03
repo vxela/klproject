@@ -25,6 +25,12 @@
     <!-- Main Stylesheet File -->
     <link href="{{asset('/dist/css/style.css')}}" rel="stylesheet">
 
+    <style>
+    .mimg {
+        width: 100%;
+    }
+    </style>
+
     <!-- =======================================================
     Theme Name: Rapid
     Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
@@ -118,6 +124,21 @@
         </div>
   
     </section><!-- #about -->    
+    <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="{{'/dist/img/lg_klm.jpg'}}" class="rounded mimg" alt="KLM PROJECT 2020">
+                </div>
+            </div>
+            <div class="modal-footer my-0 py-1 d-flex justify-content-center">
+              <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+              <a href="{{route('register')}}" class="btn btn-sm btn-primary">Daftar</a>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 
 @section('s_varietas')
@@ -156,4 +177,9 @@
 
     <!-- Template Main Javascript File -->
     <script src="{{asset('/dist/js/main.js')}}"></script>
+    <script>
+    $(document).ready(function(){
+        $('#welcome').modal('show');
+    })
+    </script>
 @endsection

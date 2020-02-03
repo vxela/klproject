@@ -21,14 +21,6 @@ class UserTblSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'writer',
-            'role_id' => 2,
-            'email' => 'writer@mail.com',
-            'password' => bcrypt('admin1234'),
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('users')->insert([
             'name' => 'user',
             'role_id' => 3,
             'email' => 'user@mail.com',

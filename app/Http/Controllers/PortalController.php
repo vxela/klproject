@@ -78,6 +78,9 @@ class PortalController extends Controller
     public function GradeChampionByCatId($cat_id) {
         $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
 
-        // $bis = \App\Models\Tbl_fish_champion::where('champion_cat_id', $cat_id)->orderBy('fish_size', 'DESC')->get();
+        // $bis = \App\Models\Tbl_fish_champion::join('tbl_cat_champions', function($query) use {
+        //                                             $join->on('tbl_fish_champions.champion_cat_id', '=', 'tbl_cat_champions.id')
+        //                                                 ->orderBy('tbl_cat_champions.')
+        //                                         });
     }
 }
