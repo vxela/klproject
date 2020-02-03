@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{{asset('/bwatch/css/bootstrap.min.css')}}" media="screen">
     <link rel="stylesheet" href="{{asset('/bwatch/css/custom.min.css')}}">
+    @yield('pagecss')
   </head>
   <body>
     <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">

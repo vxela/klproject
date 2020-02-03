@@ -4,6 +4,15 @@
     KLM Project | Best In Size
 @endsection
 
+@section('pagecss')
+    <style>
+    .font-card {
+        font-size: 18px;
+        font-weight: bolder;
+    }
+    </style>
+@endsection
+
 @section('content')
     <div class="row mb-3">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -32,16 +41,16 @@
             $n = 1;
         @endphp
         @foreach ($data_bis as $bis)
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mt-2 mb-2">
                 <div class="card">
                     <img class="card-img-top" src="{{$bis->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
                     <div class="card-body text-center p-1">
-                        <h5 class="m-1">#{{$n++}} {{Mush::no_reg($bis->id)}}</h5>
-                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->fish->name))}} {{$bis->fish_size.' cm'}}</p>
-                        <h5>Owner</h5>
-                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->bio->nama))}} <br> <small>({{ucfirst(strtolower($bis->bio->kota))}})</small></p>
-                        <h5>Handler</h5>
-                        <p class="card-text mb-1">{{ucfirst(strtolower($bis->handler_name))}} <br> <small>{{ucfirst(strtolower($bis->handler_address))}}</small></p>
+                        <h5 class="font-card m-1">#{{$n++}} {{Mush::no_reg($bis->id)}}</h5>
+                        <p class="card-text mb-1">{{ucwords(strtolower($bis->fish->name))}} {{$bis->fish_size.' cm'}}</p>
+                        <h5 class="font-card">Owner</h5>
+                        <p class="card-text mb-1">{{ucwords(strtolower($bis->bio->nama))}}</p><p class="mb-1"><small>({{ucwords(strtolower($bis->bio->kota))}})</small></p>
+                        <h5 class="font-card">Handler</h5>
+                        <p class="mb-1">{{ucwords(strtolower($bis->handler_name))}}</p><p class="mb-1"> <small>{{ucwords(strtolower($bis->handler_address))}}</small></p>
                     </div>
                 </div>
             </div>            
