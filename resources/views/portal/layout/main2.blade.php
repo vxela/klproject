@@ -64,7 +64,7 @@
               <a class="nav-link" href="{{route('bis')}}">Best In Size</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('/')}}">Champion</a>
+              <a class="nav-link" href="{{route('champion')}}">Champion</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('/')}}">Reguler</a>

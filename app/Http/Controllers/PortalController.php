@@ -62,4 +62,16 @@ class PortalController extends Controller
 
         return view('portal.page.bis', ['data_cat' => $csize, 'data_bis' => $bis, 'cat_id' => $cat_id]);
     }
+
+    public function GradeChampion() {
+
+        $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
+
+        // dd($champ);
+
+        $fchamp = \App\Models\Tbl_fish_champion::where('champion_cat_id', 1)->get();
+
+        return view('portal.page.champion', ['data_champion' => $champ, 'data_fchamp' => $fchamp]);
+
+    }
 }
