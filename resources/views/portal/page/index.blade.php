@@ -180,6 +180,7 @@
     <script>
     $(document).ready(function(){
         $('#welcome').modal('show');
+        console.log('run')
     })
     </script>
 @endsection
