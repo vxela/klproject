@@ -9,6 +9,10 @@
     .font-card {
         font-size: 18px;
         font-weight: bolder;
+        
+    }
+    .mimg {
+        width: 100%;
     }
     </style>
 @endsection
@@ -51,11 +55,38 @@
                         <p class="card-text mb-1">{{ucwords(strtolower($bis->bio->nama))}}</p><p class="mb-1"><small>({{ucwords(strtolower($bis->bio->kota))}})</small></p>
                         <h5 class="font-card">Handler</h5>
                         <p class="mb-1">{{ucwords(strtolower($bis->handler_name))}}</p><p class="mb-1"> <small>{{ucwords(strtolower($bis->handler_address))}}</small></p>
+                        <button type="button" class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#modal{{Mush::no_reg($bis->id)}}">Full Image</button>
                     </div>
                 </div>
             </div>            
         @endforeach
     </div>
+
+    @foreach ($data_bis as $mbis)
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal{{Mush::no_reg($mbis->id)}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{Mush::no_reg($mbis->id).' - '.$mbis->fish->name.' - '.$mbis->fish_size}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="{{$mbis->fish_picture}}" class="rounded mimg" alt="{{Mush::no_reg($mbis->id).' - '.$mbis->fish->name.' - '.$mbis->fish_size}}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    @endforeach
     @endsection
 
     @section('pagejs')
