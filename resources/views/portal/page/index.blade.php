@@ -65,7 +65,7 @@
         <ul>
         <li class="active"><a href="#intro">Home</a></li>
         <li><a href="#information">Information</a></li>
-        <li><a href="{{route('summary')}}">Summary</a></li>
+        {{-- <li><a href="{{route('summary')}}">Summary</a></li> --}}
         <li><a href="{{route('login')}}">Login</a></li>
         </ul>
     </nav><!-- .main-nav -->
