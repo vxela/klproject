@@ -69,7 +69,7 @@ class PortalController extends Controller
 
         // dd($champ);
 
-        $fchamp = \App\Models\Tbl_fish_champion::where('champion_cat_id', 1)->get();
+        $fchamp = \App\Models\Tbl_fish_champion::all();
 
         return view('portal.page.champion', ['data_champion' => $champ, 'data_fchamp' => $fchamp]);
 
