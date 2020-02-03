@@ -21,14 +21,6 @@ class role_tbl_seeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('tbl_roles')->insert([
-            'name' => 'writer',
-            'link' => '/writer',
-            'route'	=> 'writer.dashboard',
-            'desc' => 'content writer',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('tbl_roles')->insert([
             'name' => 'user',
             'link' => '/user',
             'route'	=> 'user.dashboard',
