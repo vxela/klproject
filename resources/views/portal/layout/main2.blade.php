@@ -54,7 +54,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('/')}}">Home</a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="{{route('summary')}}">Summary</a>
             </li>
             <li class="nav-item">
@@ -68,7 +68,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('/')}}">Reguler</a>
-            </li> --}}
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('register')}}">Register</a>
             </li>
