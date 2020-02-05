@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <th>Owner Terbanyak</th>
-                        <td></td>
+                        <td>{{$t_owner->user->bio->nama.' ('.$t_owner->t_owner.')'}}</td>
                     </tr>
                     <tr>
                         <th>Handling Terbanyak</th>

@@ -26,10 +26,15 @@ class PortalController extends Controller
                         ->groupBy('handler_name')
                         ->orderBy('t_handler', 'DESC')
                         ->first();
+        $jml_owner = \App\Models\Tbl_user_fish::select('user_id', DB::raw('count(*) as t_owner'))
+                        ->groupBy('user_id')
+                        ->orderBy('t_owner', 'DESC')
+                        ->first();
         $n_handler = \App\Models\Tbl_user_fish::distinct('handler_name')->count();
+        $n_owner = \App\Models\Tbl_user_fish::distinct('user_id')->count();
 
         // return response()->json($jml_var);
-        // dd($jml_var);
+        // dd($jml_owner);
 
         return view('portal.page.summary', [
             'n_own' => $jml_own,
@@ -38,6 +43,7 @@ class PortalController extends Controller
             'n_prov' => $jml_own_city,
             'n_hand' => $jml_handler,
             't_hand' => $n_handler,
+            't_owner' => $jml_owner,
         ]);
     }
 
