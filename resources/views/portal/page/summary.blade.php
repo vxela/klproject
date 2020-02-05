@@ -35,6 +35,10 @@
                         <td>{{$n_prov->prov.' ('.$n_prov->t_prov.' Pendaftar)'}}</td>
                     </tr>
                     <tr>
+                        <th>Owner Terbanyak</th>
+                        <td></td>
+                    </tr>
+                    <tr>
                         <th>Handling Terbanyak</th>
                         <td>{{$n_hand->handler_name.' ('.$n_hand->t_handler.' Ikan)'}}</td>
                     </tr>
