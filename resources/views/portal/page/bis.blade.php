@@ -79,9 +79,9 @@
                         <img src="{{$mbis->fish_picture}}" class="rounded mimg" alt="{{Mush::no_reg($mbis->id).' - '.$mbis->fish->name.' - '.$mbis->fish_size}}">
                     </div>
                 </div>
-                <div class="modal-footer">
+                {{-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                </div> --}}
             </div>
             </div>
         </div>

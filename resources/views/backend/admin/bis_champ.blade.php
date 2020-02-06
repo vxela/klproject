@@ -64,10 +64,10 @@
                                     <div class="col-sm-8 col-xs-12">
                                         <select class="form-control" id="posisi" name="posisi" required>
                                             <option value="">Pilih Posisi</option>
-                                            <option value="1"># 1</option>
-                                            <option value="2"># 2</option>
-                                            <option value="3"># 3</option>
-                                            <option value="4"># 4</option>
+                                            <option value="A"># A</option>
+                                            <option value="B"># B</option>
+                                            <option value="C"># C</option>
+                                            <option value="D"># D</option>
                                         </select>
                                     </div>
                                 </div>

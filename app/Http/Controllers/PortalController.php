@@ -73,20 +73,17 @@ class PortalController extends Controller
 
         $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
 
-        // dd($champ);
+        $fchamp = \App\Models\Tbl_fish_champion::where('grade');
 
-        $fchamp = \App\Models\Tbl_fish_champion::all();
-
-        return view('portal.page.champion', ['data_champion' => $champ, 'data_fchamp' => $fchamp]);
+        return view('portal.page.champion', [
+            'data_champion' => $champ,
+            'data_fchamp' => $fchamp
+        ]);
 
     }
 
     public function GradeChampionByCatId($cat_id) {
         $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
 
-        // $bis = \App\Models\Tbl_fish_champion::join('tbl_cat_champions', function($query) use {
-        //                                             $join->on('tbl_fish_champions.champion_cat_id', '=', 'tbl_cat_champions.id')
-        //                                                 ->orderBy('tbl_cat_champions.')
-        //                                         });
     }
 }
