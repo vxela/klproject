@@ -25,15 +25,6 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <select class="form-control cat_id" id="cat_id" name="cat_id">
                 @foreach ($data_champion as $champ)
-                    {{-- @if (isset($cat_id))
-                        @if ($cat->id == $cat_id)
-                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}" selected>{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
-                        @else
-                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
-                        @endif
-                    @else
-                        <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
-                        @endif --}}
                         <option value="{{$champ->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $champ->grade])}}">{{$champ->grade}}</option>
                 @endforeach
             </select>
