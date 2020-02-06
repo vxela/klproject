@@ -44,7 +44,7 @@
         @php
             $n = 1;
         @endphp
-        @foreach ($data_bis as $bis)
+        @foreach ($data_champion as $bis)
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-2 mb-2">
                 <div class="card">
                     <img class="card-img-top" src="{{$bis->user_fish->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
