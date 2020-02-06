@@ -95,8 +95,9 @@ class PortalController extends Controller
                                                 ->where('cat_id', 1)
                                                 ->orderBy('position', 'ASC')->get();
         
-        dd($rcm);
-
+        return view('portal.page.regular', [
+            'data_champion' => $rcm,
+        ]);
     }
 
 }
