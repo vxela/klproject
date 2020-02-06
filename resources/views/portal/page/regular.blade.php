@@ -63,7 +63,7 @@
         @endforeach
     </div>
 
-    @foreach ($data_bis as $mbis)
+    @foreach ($data_champion as $mbis)
 
         <!-- Modal -->
         <div class="modal fade" id="modal{{Mush::no_reg($mbis->user_fish->id)}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
