@@ -19,10 +19,7 @@
 
 @section('content')
     <div class="row mb-3">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        </div>
-        
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <select class="form-control cat_id" id="cat_id" name="cat_id">
                 {{-- @foreach ($data_cat as $cat)
                     @if (isset($cat_id))
@@ -36,8 +33,21 @@
                     @endif
                 @endforeach --}}
             </select>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        </div>        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <select class="form-control cat_id" id="cat_id" name="cat_id">
+                {{-- @foreach ($data_cat as $cat)
+                    @if (isset($cat_id))
+                        @if ($cat->id == $cat_id)
+                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}" selected>{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                        @else
+                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                        @endif
+                    @else
+                        <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                    @endif
+                @endforeach --}}
+            </select>
         </div>
     </div>
     <div class="row">
