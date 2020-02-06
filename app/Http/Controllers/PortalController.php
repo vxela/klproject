@@ -64,7 +64,9 @@ class PortalController extends Controller
     public function BestInSizebyCat($cat_id) {
         $csize = \App\Models\Tbl_cat::all();
 
-        $bis = \App\Models\Tbl_bis_champion::all();
+        $bis = \App\Models\Tbl_bis_champion::where('cat_id', $cat_id)
+                                                ->orderBy('position', 'ASC')
+                                                ->get();
 
         return view('portal.page.bis', ['data_cat' => $csize, 'data_bis' => $bis, 'cat_id' => $cat_id]);
     }
