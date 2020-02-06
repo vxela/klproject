@@ -49,7 +49,8 @@
 
                     <li><a href="{{route('admin.fish_point')}}"><i class="fa fa-fw fa-diamond"></i> Fish Points</a></li>
                     <li><a href="{{route('admin.champion')}}"><i class="fa fa-fw fa-trophy"></i> Fish Champion</a></li>
-                    <li><a href="{{route('admin.regular_champion')}}"><i class="fa fa-fw fa-flag"></i> Fish Regular Champion</a></li>
+                    <li><a href="{{route('admin.regular_champion')}}"><i class="fa fa-fw fa-flag"></i> Regular Champion</a></li>
+                    <li><a href="{{route('admin.best_in_size')}}"><i class="fa fa-fw fa-sort-amount-desc"></i> Best In Size</a></li>
                     <li><a href="{{route('admin.rekap_payment')}}"><i class="fa fa-fw fa-money"></i> Rekap Pembayaran</a></li>
                     <li><a href="{{route('admin.print_sticker')}}" target="_blank"><i class="fa fa-fw fa-print"></i> Print Fish Sticker</a></li>
                     <li><a href="{{route('admin.setup_user_pass')}}"><i class="fa fa-fw fa-lock"></i> Ganti Password Peserta</a></li>
