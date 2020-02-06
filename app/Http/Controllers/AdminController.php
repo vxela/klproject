@@ -799,4 +799,72 @@ class AdminController extends Controller
         }
     }
 
+    public function bisChampion() {
+        $cat = \App\Models\Tbl_cat::all();
+        $fbis = \App\Models\Tbl_bis_champion::all();
+        return view('backend.admin.bis_champ', [
+            'data_cat' => $cat,
+            'data_bis' => $fbis,
+        ]);
+    }
+
+    public function bisChampiongetFish($cat_id) {
+        $fish = \App\Models\Tbl_user_fish::where('cat_id', $cat_id)
+                                            ->get();
+
+        return Response::json($fish);        
+    }
+
+    public function bisChampionStore(Request $r) {
+        $trch = \App\Models\Tbl_bis_champion::where('cat_id', $r->ukuran_id)
+                                                    ->where('position', $r->posisi)
+                                                    ->count();
+        if($trch > 4) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Best Champion Sudah Penuh']);
+            return redirect()->back();
+        } else {
+            $drch = \App\Models\Tbl_bis_champion::where('cat_id', $r->ukuran_id)
+                                                        ->where('user_fish_id', $r->peserta_id)
+                                                        ->get();
+            $prch = \App\Models\Tbl_bis_champion::where('cat_id', $r->ukuran_id)
+                                                        ->where('position', $r->posisi)
+                                                        ->get();
+            // echo count($drch);
+            if(count($drch) == 0 && count($prch) == 0) {
+                $data_rc = [
+                    'fish_id' => $r->var_id,
+                    'cat_id' => $r->ukuran_id,
+                    'user_fish_id' => $r->peserta_id,
+                    'position' => $r->posisi
+                ];
+
+                $rc = \App\Models\Tbl_bis_champion::create($data_rc);
+
+                if(!$rc) {
+                    Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Data Regular Champion']);
+                    return redirect()->back();
+                } else {
+                    Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Regular Champion Disimpan']);
+                    return redirect()->back();
+                }
+            } else {
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Posisi Regular Champion Sudah di isi']);
+                return redirect()->back();
+            }
+        }
+    }
+
+    public function bisChampionDelete(Request $r) {
+        $rc = \App\Models\Tbl_bis_champion::find($r->ch_id);
+        $delete = $rc->forceDelete();
+        
+        if(!$delete) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menghapus Data Best In Size']);
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Best In Size']);
+            return redirect()->back();            
+        }
+    }
+
 }
