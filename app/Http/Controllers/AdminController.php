@@ -820,7 +820,7 @@ class AdminController extends Controller
         $trch = \App\Models\Tbl_bis_champion::where('cat_id', $r->ukuran_id)
                                                     ->where('position', $r->posisi)
                                                     ->count();
-        if($trch > 4) {
+        if($trch > 3) {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Best Champion Sudah Penuh']);
             return redirect()->back();
         } else {
