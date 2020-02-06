@@ -47,15 +47,15 @@
         @foreach ($data_bis as $bis)
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mt-2 mb-2">
                 <div class="card">
-                    <img class="card-img-top" src="{{$bis->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
+                    <img class="card-img-top" src="{{$bis->user_fish->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
                     <div class="card-body text-center p-1">
-                        <h5 class="font-card m-1">#{{$n++}} {{Mush::no_reg($bis->id)}}</h5>
-                        <p class="card-text mb-1">{{ucwords(strtolower($bis->fish->name))}} {{$bis->fish_size.' cm'}}</p>
+                        <h5 class="font-card m-1">#{{$n++}} {{Mush::no_reg($bis->user_fish->id)}}</h5>
+                        <p class="card-text mb-1">{{ucwords(strtolower($bis->user_fish->fish->name))}} {{$bis->user_fish->fish_size.' cm'}}</p>
                         <h5 class="font-card">Owner</h5>
-                        <p class="card-text mb-1">{{ucwords(strtolower($bis->bio->nama))}}</p><p class="mb-1"><small>({{ucwords(strtolower($bis->bio->kota))}})</small></p>
+                        <p class="card-text mb-1">{{ucwords(strtolower($bis->user_fish->bio->nama))}}</p><p class="mb-1"><small>({{ucwords(strtolower($bis->user_fish->bio->kota))}})</small></p>
                         <h5 class="font-card">Handler</h5>
-                        <p class="mb-1">{{ucwords(strtolower($bis->handler_name))}}</p><p class="mb-1"> <small>{{ucwords(strtolower($bis->handler_address))}}</small></p>
-                        <button type="button" class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#modal{{Mush::no_reg($bis->id)}}">Full Image</button>
+                        <p class="mb-1">{{ucwords(strtolower($bis->user_fish->handler_name))}}</p><p class="mb-1"> <small>{{ucwords(strtolower($bis->user_fish->handler_address))}}</small></p>
+                        <button type="button" class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#modal{{Mush::no_reg($bis->user_fish->id)}}">Full Image</button>
                     </div>
                 </div>
             </div>            
