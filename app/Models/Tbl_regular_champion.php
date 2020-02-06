@@ -18,4 +18,8 @@ class Tbl_regular_champion extends Model
     public function fish() {
         return \App\Models\Tbl_user_fish::find($this->user_fish_id);
     }
+
+    public function user_fish() {
+        return $this->belongsTo('App\Models\Tbl_user_fish', 'user_fish_id');
+    }
 }
