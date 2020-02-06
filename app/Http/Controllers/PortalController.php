@@ -88,4 +88,15 @@ class PortalController extends Controller
         $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
 
     }
+
+    public function RegularChampion() {
+
+        $rcm = \App\Models\Tbl_regular_champion::where('fish_id', 1)
+                                                ->where('cat_id', 1)
+                                                ->orderBy('position', 'ASC')->get();
+        
+        dd($rcm);
+
+    }
+
 }

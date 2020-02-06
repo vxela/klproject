@@ -67,7 +67,7 @@
               <a class="nav-link" href="{{route('champion')}}">Champion</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('/')}}">Reguler</a>
+              <a class="nav-link" href="{{route('regular')}}">Reguler</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('register')}}">Register</a>
