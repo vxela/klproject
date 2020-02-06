@@ -75,7 +75,7 @@ class PortalController extends Controller
 
         $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
 
-        $fchamp = \App\Models\Tbl_fish_champion::where('grade');
+        $fchamp = \App\Models\Tbl_grade_champion::where('grade', 1)->get();
 
         return view('portal.page.champion', [
             'data_champion' => $champ,
