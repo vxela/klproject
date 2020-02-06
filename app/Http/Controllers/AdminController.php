@@ -809,7 +809,8 @@ class AdminController extends Controller
     }
 
     public function bisChampiongetFish($cat_id) {
-        $fish = \App\Models\Tbl_user_fish::where('cat_id', $cat_id)
+        $fish = \App\Models\Tbl_user_fish::with('fish')
+                                            ->where('cat_id', $cat_id)
                                             ->get();
 
         return Response::json($fish);        

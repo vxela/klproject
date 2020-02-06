@@ -183,7 +183,7 @@
                         $('#peserta_id').append($('<option>').text('Ada '+json.length+' Peserta').attr('value', ''));
                         for (i=0; i<json.length; i++) {
                             var mstr = json[i].id;
-                            $('#peserta_id').append($('<option>').text(String('0000' + mstr).slice(-4)).attr('value', json[i].id));
+                            $('#peserta_id').append($('<option>').text(String('0000' + mstr).slice(-4) + ' | '+json[i].fish.name).attr('value', json[i].id));
                         }
                     }
                     console.log(json);
