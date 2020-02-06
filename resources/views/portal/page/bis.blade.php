@@ -65,18 +65,18 @@
     @foreach ($data_bis as $mbis)
 
         <!-- Modal -->
-        <div class="modal fade" id="modal{{Mush::no_reg($mbis->id)}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal{{Mush::no_reg($mbis->user_fish->id)}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{Mush::no_reg($mbis->id).' - '.$mbis->fish->name.' - '.$mbis->fish_size}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{Mush::no_reg($mbis->user_fish->id).' - '.$mbis->user_fish->fish->name.' - '.$mbis->user_fish->fish_size}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img src="{{$mbis->fish_picture}}" class="rounded mimg" alt="{{Mush::no_reg($mbis->id).' - '.$mbis->fish->name.' - '.$mbis->fish_size}}">
+                        <img src="{{$mbis->user_fish->fish_picture}}" class="rounded mimg" alt="{{Mush::no_reg($mbis->user_fish->id).' - '.$mbis->user_fish->fish->name.' - '.$mbis->user_fish->fish_size}}">
                     </div>
                 </div>
                 {{-- <div class="modal-footer">
