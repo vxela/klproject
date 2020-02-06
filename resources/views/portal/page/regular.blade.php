@@ -49,7 +49,7 @@
                 <div class="card">
                     <img class="card-img-top" src="{{$bis->user_fish->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
                     <div class="card-body text-center p-1">
-                        <h5 class="font-card mb-1">Best In Size {{$bis->position}}</h5>
+                        <h5 class="font-card mb-1">Reguler {{$bis->position}}</h5>
                         <h5 class="font-card mb-1">{{Mush::no_reg($bis->user_fish->id)}}</h5>
                         <p class="card-text mb-1">{{ucwords(strtolower($bis->user_fish->fish->name))}} {{$bis->user_fish->fish_size.' cm'}}</p>
                         <h5 class="font-card">Owner</h5>
