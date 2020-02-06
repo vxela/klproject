@@ -49,6 +49,7 @@
 
                     <li><a href="{{route('admin.fish_point')}}"><i class="fa fa-fw fa-diamond"></i> Fish Points</a></li>
                     <li><a href="{{route('admin.champion')}}"><i class="fa fa-fw fa-trophy"></i> Fish Champion</a></li>
+                    <li><a href="{{route('admin.grade')}}"><i class="fa fa-fw fa-trophy"></i> Grade Champion</a></li>
                     <li><a href="{{route('admin.regular_champion')}}"><i class="fa fa-fw fa-flag"></i> Regular Champion</a></li>
                     <li><a href="{{route('admin.best_in_size')}}"><i class="fa fa-fw fa-sort-amount-desc"></i> Best In Size</a></li>
                     <li><a href="{{route('admin.rekap_payment')}}"><i class="fa fa-fw fa-money"></i> Rekap Pembayaran</a></li>

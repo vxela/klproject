@@ -38,6 +38,10 @@ Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('use
 Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
 Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
 
+Route::post('/admin/grade_champ/delete', 'AdminController@gradeChampionDelete')->name('admin.delete_grade_champion');
+Route::post('/admin/grade_champ', 'AdminController@gradeChampionStore')->name('admin.store_grade');
+Route::get('/admin/grade_champ/{grade}', 'AdminController@gradeChampiongetFish');
+Route::get('/admin/grade_champ', 'AdminController@gradeChampion')->name('admin.grade');
 Route::post('/admin/best_in_size/delete', 'AdminController@bisChampionDelete')->name('admin.delete_bis_champion');
 Route::post('/admin/best_in_size', 'AdminController@bisChampionStore')->name('admin.store_best_in_size');
 Route::get('/admin/best_in_size/{cat_id}', 'AdminController@bisChampiongetFish');

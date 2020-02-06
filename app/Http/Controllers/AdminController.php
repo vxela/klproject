@@ -868,4 +868,66 @@ class AdminController extends Controller
         }
     }
 
+    public function gradeChampion() {
+        $cat = \App\Models\Tbl_cat::all()->unique('grade');
+        $fbis = \App\Models\Tbl_grade_champion::all();
+        return view('backend.admin.grade_champ', [
+            'data_cat' => $cat,
+            'data_bis' => $fbis,
+        ]);
+    }
+
+    public function gradeChampiongetFish($grade) {
+        $grades = \App\Models\Tbl_cat::where('grade', $grade)->get();
+        $ids = array();
+        foreach ($grades as $grade) {
+            array_push($ids, $grade->id);
+        }
+        $fish = \App\Models\Tbl_user_fish::with(['cat', 'fish'])
+                                            ->whereIn('cat_id', $ids)
+                                            ->get();
+
+        return Response::json($fish);
+        // return Response::json($grade_ids);        
+    }
+
+    public function gradeChampionStore(Request $r) {
+        $trch = \App\Models\Tbl_grade_champion::where('cat_id', $r->cat_id)
+                                                    ->where('position', $r->posisi)
+                                                    ->count();
+        if($trch > 3) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Best Champion Sudah Penuh']);
+            return redirect()->back();
+        } else {
+            $drch = \App\Models\Tbl_grade_champion::where('cat_id', $r->cat_id)
+                                                        ->where('user_fish_id', $r->peserta_id)
+                                                        ->get();
+            $prch = \App\Models\Tbl_grade_champion::where('cat_id', $r->cat_id)
+                                                        ->where('position', $r->posisi)
+                                                        ->get();
+            // echo count($drch);
+            if(count($drch) == 0 && count($prch) == 0) {
+                $data_rc = [
+                    // 'fish_id' => $r->var_id,
+                    'cat_id' => $r->cat_id,
+                    'user_fish_id' => $r->peserta_id,
+                    'position' => $r->posisi
+                ];
+
+                $rc = \App\Models\Tbl_grade_champion::create($data_rc);
+
+                if(!$rc) {
+                    Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menambah Data Regular Champion']);
+                    return redirect()->back();
+                } else {
+                    Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Regular Champion Disimpan']);
+                    return redirect()->back();
+                }
+            } else {
+                Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Posisi Regular Champion Sudah di isi']);
+                return redirect()->back();
+            }
+        }
+    }
+
 }
