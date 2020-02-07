@@ -23,7 +23,16 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <select class="form-control var_id" id="var_id" name="var_id">
                 @foreach ($data_var as $var)
+                @if (isset($var_id))
+                    @if ($var->id == $var_id)
+                        <option value="{{$var->id}}" data-var_id="{{$var->id}}" selected>{{$var->name}}</option>
+                    @else
+                        <option value="{{$var->id}}" data-var_id="{{$var->id}}">{{$var->name}}</option>
+                    @endif
+                @else
                     <option value="{{$var->id}}" data-var_id="{{$var->id}}">{{$var->name}}</option>
+                @endif                
+                    {{-- <option value="{{$var->id}}" data-var_id="{{$var->id}}">{{$var->name}}</option> --}}
                 @endforeach
             </select>
         </div>        
