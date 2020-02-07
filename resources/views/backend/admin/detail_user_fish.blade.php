@@ -132,7 +132,7 @@
                             <label for="inputPassword" class="col-4 col-form-label"></label>
                             <div class="col-8">
                                 <button type="submit" id="btn_submit" class="btn btn-primary">Update</button>
-                                <button type="button" id="btn_delete" class="btn btn-danger">Delete</button>
+                                <button type="button" id="btn_delete" data-rurl="{{route('admin.fish_entry_delete')}}" class="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>
