@@ -30,7 +30,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <select class="form-control cat_id" id="cat_id" name="cat_id">
                 @foreach ($data_cat as $cat)
-                    {{-- @if (isset($cat_id))
+                    @if (isset($cat_id))
                         @if ($cat->id == $cat_id)
                             <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}" selected>{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
                         @else
@@ -38,8 +38,8 @@
                         @endif
                     @else
                         <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
-                        @endif --}}
-                    <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                    @endif
+                    {{-- <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option> --}}
                 @endforeach
             </select>
         </div>
@@ -103,22 +103,15 @@
 
                 var reg_url = $("#reg_url").val();
                 var rlink = reg_url+'/'+var_id+'/'+cat_id;
-                    
-                // console.log(rlink);
-                // var rurl = $('option:selected',this).data("url_r");
-
                 $(location).attr('href', rlink);
             });
+
             $('.var_id').on('change', function() {
                 var var_id = $(this).val();
                 var cat_id = $("#cat_id").val();
 
                 var reg_url = $("#reg_url").val();
                 var rlink = reg_url+'/'+var_id+'/'+cat_id;
-                    
-                // console.log(rlink);
-                // var rurl = $('option:selected',this).data("url_r");
-
                 $(location).attr('href', rlink);
             });
         });
