@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     {{-- <a href="{{route('admin.fish_sticker', ['id' => $fish->id])}}" class="btn btn-sm btn-primary">Sticker</a> --}}
-                                    <form action="{{route('admin.fish_entry_delete')}}" method="post">
+                                    <form action="{{route('admin.fish_entry_delete')}}" method="post" class="form-inline">
                                         @csrf
                                         <input type="hidden" name="fish_id" value="{{$fish->id}}">
                                         <a href="{{route('admin.detail_user_fish', ['id' => $fish->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
