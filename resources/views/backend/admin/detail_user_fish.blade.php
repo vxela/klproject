@@ -181,7 +181,7 @@
                                     <input type="hidden" name="fish_id" value="{{$fish->id}}">
                                 </div>
                                 <label for="" class="col-4 text-right">
-                                    <button type="submit" id="btn_submit_pict" class="btn btn-primary">Upload</button>
+                                    <button type="submit" id="btn_submit_resi" class="btn btn-primary">Upload</button>
                                 </label>
                             </div>
                         </form>
@@ -243,6 +243,7 @@
         });
 
         $('#btn_delete').click(function(){
+            var url = $(this).data('rurl');
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -253,11 +254,11 @@
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.value) {
-                        Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        )
+                        // $.ajax({
+                        //     type : 'POST',
+                        //     url : 
+                        // });
+                        console.log(url);
                     }
                 })
         });
