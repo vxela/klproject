@@ -37,7 +37,7 @@
                         <input type="hidden" name="url_path" id="url_path" value="{{route('admin.grade')}}">
                         <div class="card mb-4">
                             <div class="card-header bg-white font-weight-bold">
-                                Form Tambah Best In Size
+                                Form Tambah Grade Champion
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
@@ -81,7 +81,7 @@
                 <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-header bg-white font-weight-bold">
-                            Data Best In Size
+                            Data Grade Champion
                         </div>
                         <div class="card-body">
                             <table class="table" id="rc_table">
