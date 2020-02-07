@@ -20,7 +20,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <select class="form-control cat_id" id="cat_id" name="cat_id">
+            <select class="form-control var_id" id="var_id" name="var_id">
                 @foreach ($data_var as $var)
                     <option value="{{$var->id}}" data-var_id="{{$var->id}}">{{$var->name}}</option>
                 @endforeach
@@ -97,9 +97,13 @@
         <script>
         $(document).ready(function() {
             $('.cat_id').on('change', function() {
-                var rurl = $('option:selected',this).data("url_r");
+                var cat_id = $(this).val();
+                var var_id = $("#var_id").val();
 
-                $(location).attr('href', rurl);
+                console.log(var_id+'/'+cat_id);
+                // var rurl = $('option:selected',this).data("url_r");
+
+                // $(location).attr('href', rurl);
             });
         });
         </script>
