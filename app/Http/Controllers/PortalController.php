@@ -110,4 +110,18 @@ class PortalController extends Controller
         ]);
     }
 
+    public function RegularChampionByVarByCat($var_id, $cat_id) {
+        $cats = \App\Models\Tbl_cat::all();
+        $vars = \App\Models\Tbl_fish::all();
+        $rcm = \App\Models\Tbl_regular_champion::where('fish_id', $var_id)
+                                                ->where('cat_id', $cat_id)
+                                                ->orderBy('position', 'ASC')->get();
+        
+        return view('portal.page.regular', [
+            'data_cat' => $cats,
+            'data_var' => $vars,
+            'data_champion' => $rcm,
+        ]);
+    }
+
 }
