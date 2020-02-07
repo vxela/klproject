@@ -264,7 +264,7 @@
                                 '_token' : token,
                             },
                             success : function (response) {
-                                console.log('success');
+                                console.log(url);
                             }
                         });
                         // console.log(url);
