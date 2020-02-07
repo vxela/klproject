@@ -930,4 +930,17 @@ class AdminController extends Controller
         }
     }
 
+    public function gradeChampionDelete(Request $r) {
+        $rc = \App\Models\Tbl_grade_champion::find($r->ch_id);
+        $delete = $rc->forceDelete();
+        
+        if(!$delete) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Menghapus Data Best In Size']);
+            return redirect()->back();
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Berhasil, Data Best In Size']);
+            return redirect()->back();            
+        }
+    }
+
 }

@@ -130,7 +130,7 @@
                                                     {{Mush::no_reg($bis->user_fish_id)}}
                                                 </td>
                                                 <td>
-                                                    <form action="{{route('admin.delete_bis_champion')}}" method="post">
+                                                    <form action="{{route('admin.delete_grade_champion')}}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="ch_id" value="{{$bis->id}}">
                                                         <button type="submit" class="btn btn-danger btn-sm">
