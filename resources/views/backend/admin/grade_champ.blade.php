@@ -199,7 +199,7 @@
                 $('#cat_id').val(ukuran_id);
                 $.getFish();
                 if(ukuran_id == 8)  {
-                    $('#posisi').append('<option value="Runner Up" disabled># Ruenner Up</option>');
+                    $('#posisi').append('<option value="Runner Up"># Ruenner Up</option>');
                 }
             }
         });
