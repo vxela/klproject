@@ -25,14 +25,14 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <select class="form-control cat_id" id="cat_id" name="cat_id">
                 @foreach ($data_cat as $cat)
-                    @if (isset($grade))
+                    @if (isset($cat_id))
                         @if ($cat->id == $cat_id)
-                            <option value="{{$cat->grade}}" data-url_r="{{route('grade_champ', ['grade' => $cat->grade])}}" selected>{{$cat->grade}}</option>
+                            <option value="{{$cat->id}}" data-url_r="{{route('grade_champ', ['grade_id' => $cat->id])}}" selected>{{$cat->grade}}</option>
                         @else
-                            <option value="{{$cat->grade}}" data-url_r="{{route('grade_champ', ['grade' => $cat->grade])}}">{{$cat->grade}}</option>
+                            <option value="{{$cat->id}}" data-url_r="{{route('grade_champ', ['grade_id' => $cat->id])}}">{{$cat->grade}}</option>
                         @endif
                     @else
-                        <option value="{{$cat->grade}}" data-url_r="{{route('grade_champ', ['grade' => $cat->grade])}}">{{$cat->grade}}</option>
+                        <option value="{{$cat->id}}" data-url_r="{{route('grade_champ', ['grade_id' => $cat->id])}}">{{$cat->grade}}</option>
                     @endif
                 @endforeach
             </select>
