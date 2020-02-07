@@ -199,7 +199,9 @@
                 var ukuran_id = $('#ukuran_id').children('option:selected').data('id');
                 $('#cat_id').val(ukuran_id);
                 $.getFish();
-                console.log($('#cat_id').val());    
+                if(ukuran_id == 8)  {
+                    $('#posisi option').prop('disabled', 'false');
+                }
             }
         });
 
