@@ -19,6 +19,7 @@
 
 @section('content')
     <div class="row mb-3">
+        <input type="hidden" name="reg_url" id="reg_url" value="{{route('regular')}}">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <select class="form-control var_id" id="var_id" name="var_id">
                 @foreach ($data_var as $var)
@@ -99,7 +100,7 @@
             $('.cat_id').on('change', function() {
                 var cat_id = $(this).val();
                 var var_id = $("#var_id").val();
-
+                    
                 console.log(var_id+'/'+cat_id);
                 // var rurl = $('option:selected',this).data("url_r");
 

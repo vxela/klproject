@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PortalController@index')->name('/');
-Route::get('/regular/{var_id}/{cat_id}', 'PortalController@RegularChampionByVarByCat')->name('regular');
+Route::get('/regular/{var_id}/{cat_id}', 'PortalController@RegularChampionByVarByCat');
 Route::get('/regular', 'PortalController@RegularChampion')->name('regular');
 Route::get('/champion/{grade_id}', 'PortalController@GradeChampionbyGrade')->name('grade_champ');
 Route::get('/champion', 'PortalController@GradeChampion')->name('champion');
