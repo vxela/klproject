@@ -75,7 +75,7 @@
                                         @csrf
                                         <input type="hidden" name="fish_id" value="{{$fish->id}}">
                                         <a href="{{route('admin.detail_user_fish', ['id' => $fish->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
-                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
