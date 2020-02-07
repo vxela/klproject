@@ -104,10 +104,10 @@
                 var reg_url = $("#reg_url").val();
                 var rlink = reg_url+'/'+var_id+'/'+cat_id;
                     
-                console.log(rlink);
+                // console.log(rlink);
                 // var rurl = $('option:selected',this).data("url_r");
 
-                // $(location).attr('href', rurl);
+                $(location).attr('href', rlink);
             });
             $('.var_id').on('change', function() {
                 var var_id = $(this).val();
@@ -116,10 +116,10 @@
                 var reg_url = $("#reg_url").val();
                 var rlink = reg_url+'/'+var_id+'/'+cat_id;
                     
-                console.log(rlink);
+                // console.log(rlink);
                 // var rurl = $('option:selected',this).data("url_r");
 
-                // $(location).attr('href', rurl);
+                $(location).attr('href', rlink);
             });
         });
         </script>
