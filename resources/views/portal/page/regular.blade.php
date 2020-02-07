@@ -105,6 +105,15 @@
 
                 // $(location).attr('href', rurl);
             });
+            $('.var_id').on('change', function() {
+                var var_id = $("#var_id").val();
+                var cat_id = $(this).val();
+
+                console.log(var_id+'/'+cat_id);
+                // var rurl = $('option:selected',this).data("url_r");
+
+                // $(location).attr('href', rurl);
+            });
         });
         </script>
     @endsection
