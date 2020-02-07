@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     {{-- <a href="{{route('admin.fish_sticker', ['id' => $fish->id])}}" class="btn btn-sm btn-primary">Sticker</a> --}}
-                                    <a href="{{route('admin.detail_user_fish', ['id' => $fs->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
+                                    <a href="{{route('admin.detail_user_fish', ['id' => $fish->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
                                 </td>
                             </tr>
                         @endforeach
