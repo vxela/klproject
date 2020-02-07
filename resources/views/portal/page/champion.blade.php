@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    <div class="row justify-content-md-center mb-3">
+    <div class="row mb-3">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         </div>
         
@@ -40,7 +40,7 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-md-center">
         @php
             $n = 1;
         @endphp
