@@ -264,7 +264,10 @@
                                 '_token' : token,
                             },
                             success : function (response) {
-                                console.log(url);
+                                console.log(data);
+                            },
+                            error : function (xhr) {
+                                console.log(data);
                             }
                         });
                         // console.log(url);
