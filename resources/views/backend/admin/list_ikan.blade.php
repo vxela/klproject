@@ -44,7 +44,6 @@
                             <th>Nama Handler</th>
                             <th>Jenis Ikan</th>
                             <th>Ukuran Ikan</th>
-                            <th>Grade</th>
                             <th>Status</th>
                             <th>-</th>
                         </tr>
@@ -61,7 +60,6 @@
                                 <td>{{$fish->handler_name}}</td>
                                 <td>{{$fish->fish->name}}</td>
                                 <td>{{$fish->fish_size}}</td>
-                                <td>{{$fish->cat->grade}}</td>
                                 <td>
                                 @if ($fish->status == 'BELUM LUNAS')
                                     <span class="badge badge-warning">{{$fish->status}}</span>
