@@ -41,12 +41,12 @@
                 @foreach ($data_cat as $cat)
                     @if (isset($cat_id))
                         @if ($cat->id == $cat_id)
-                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}" selected>{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                            <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}" selected>{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
                         @else
-                            <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                            <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
                         @endif
                     @else
-                        <option value="{{$cat->id}}" data-url_r="{{route('bis_cat', ['cat_id' => $cat->id])}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
+                        <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option>
                     @endif
                     {{-- <option value="{{$cat->id}}" data-cat_id="{{$cat->id}}">{{$cat->min_size.' - '.$cat->max_size.' cm'}}</option> --}}
                 @endforeach
