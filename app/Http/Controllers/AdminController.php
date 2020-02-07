@@ -749,7 +749,7 @@ class AdminController extends Controller
                                                     ->where('cat_id', $r->ukuran_id)
                                                     ->where('position', $r->posisi)
                                                     ->count();
-        if($trch > 4) {
+        if($trch > 5) {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Slot Regular Champion Sudah Penuh']);
             return redirect()->back();
         } else {

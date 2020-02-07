@@ -15,7 +15,6 @@
                     <tr>
                         <th>Owner</th>
                         <th>Asal</th>
-                        <th>Handler</th>
                         <th>Point</th>
                     </tr>
                 </thead>
@@ -24,7 +23,6 @@
                         <tr>
                             <td>{{$point->user->bio->nama}}</td>
                             <td>{{$point->user->bio->prov.', '.$point->user->bio->kota}}</td>
-                            <td>{{$point->user_fish->handler_name}}</td>
                             <td>{{$point->point}}</td>
                         </tr>
                     @endforeach
