@@ -91,7 +91,7 @@ class PortalController extends Controller
         return view('portal.page.champion', [
             'data_cat' => $champ,
             'data_grade' => $fchamp,
-            'grade' => $grade_id
+            'cat_id' => $grade_id
         ]);
     }
 
