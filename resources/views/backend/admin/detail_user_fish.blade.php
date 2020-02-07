@@ -244,6 +244,8 @@
 
         $('#btn_delete').click(function(){
             var url = $(this).data('rurl');
+            var token = $("input[name=_token]").val();
+            var id = $("input[name=fish_id]").val();
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -254,11 +256,15 @@
                 confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.value) {
-                        // $.ajax({
-                        //     type : 'POST',
-                        //     url : 
-                        // });
-                        console.log(url);
+                        $.ajax({
+                            type : 'POST',
+                            url : url,
+                            data : {
+                                'id' : id,
+                                '_token' : token,
+                            }
+                        });
+                        // console.log(url);
                     }
                 })
         });
