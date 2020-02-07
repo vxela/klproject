@@ -39,13 +39,13 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>REG NUMBER</th>
-                            <th>Nama Pemilik</th>
-                            <th>Nama Handler</th>
-                            <th>Jenis Ikan</th>
-                            <th>Ukuran Ikan</th>
+                            <th>ID</th>
+                            <th>Pemilik</th>
+                            <th>Handler</th>
+                            <th>Varietas</th>
+                            <th>Ukuran</th>
                             <th>Status</th>
-                            <th>-</th>
+                            <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
