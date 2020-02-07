@@ -84,9 +84,14 @@ class PortalController extends Controller
 
     }
 
-    public function GradeChampionByCatId($cat_id) {
-        $champ = \App\Models\Tbl_cat_champion::all()->unique('grade');
+    public function GradeChampionbyGrade($grade) {
+        $champ = \App\Models\Tbl_cat::all()->unique('grade');
+        $fchamp = \App\Models\Tbl_grade_champion::where('cat_id', 1)->orderBy('position', 'ASC')->get();
 
+        return view('portal.page.champion', [
+            'data_cat' => $champ,
+            'data_grade' => $fchamp
+        ]);
     }
 
     public function RegularChampion() {
