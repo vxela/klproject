@@ -49,7 +49,7 @@
                 <div class="card">
                     <img class="card-img-top" src="{{$grd->user_fish->fish_picture}}" alt="Card image cap" style="height: 300px; width: auto;">
                     <div class="card-body text-center p-1">
-                        <h5 class="font-card mb-1">Grade {{ucwords(strtolower($grd->user_fish->cat->grade))}} {{$grd->position}}</h5>
+                        <h5 class="font-card mb-1">{{ucwords(strtolower($grd->user_fish->cat->grade))}} {{$grd->position}}</h5>
                         <h5 class="font-card mb-1">{{Mush::no_reg($grd->user_fish->id)}}</h5>
                         <p class="card-text mb-1">{{ucwords(strtolower($grd->user_fish->fish->name))}} {{$grd->user_fish->fish_size.' cm'}}</p>
                         <h5 class="font-card">Owner</h5>
