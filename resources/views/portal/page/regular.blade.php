@@ -100,8 +100,11 @@
             $('.cat_id').on('change', function() {
                 var cat_id = $(this).val();
                 var var_id = $("#var_id").val();
+
+                var reg_url = $("#reg_url").val();
+                var rlink = reg_url+'/'+var_id+'/'+cat_id;
                     
-                console.log(var_id+'/'+cat_id);
+                console.log(rlink);
                 // var rurl = $('option:selected',this).data("url_r");
 
                 // $(location).attr('href', rurl);
@@ -110,7 +113,10 @@
                 var var_id = $(this).val();
                 var cat_id = $("#cat_id").val();
 
-                console.log(var_id+'/'+cat_id);
+                var reg_url = $("#reg_url").val();
+                var rlink = reg_url+'/'+var_id+'/'+cat_id;
+                    
+                console.log(rlink);
                 // var rurl = $('option:selected',this).data("url_r");
 
                 // $(location).attr('href', rurl);
