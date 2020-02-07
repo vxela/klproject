@@ -45,8 +45,8 @@
                             <th>Jenis Ikan</th>
                             <th>Ukuran Ikan</th>
                             <th>Grade</th>
-                            <th>Tanggal Daftar</th>
                             <th>Status</th>
+                            <th>-</th>
                         </tr>
                     </thead>
                     <tbody>
