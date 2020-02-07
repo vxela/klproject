@@ -200,6 +200,8 @@
                 $.getFish();
                 if(ukuran_id == 8)  {
                     $('#posisi').append('<option value="Runner Up"># Ruenner Up</option>');
+                } else {
+                    $("#posisi option[value='Runner Up']").remove();
                 }
             }
         });
