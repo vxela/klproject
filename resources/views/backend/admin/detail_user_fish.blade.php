@@ -261,12 +261,10 @@
                             url : url,
                             data : {
                                 'id' : id,
+                                '_method' : 'post',
                                 '_token' : token,
                             },
                             success : function (response) {
-                                console.log(data);
-                            },
-                            error : function (xhr) {
                                 console.log(data);
                             }
                         });
