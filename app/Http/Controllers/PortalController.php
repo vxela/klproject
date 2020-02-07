@@ -84,7 +84,7 @@ class PortalController extends Controller
 
     }
 
-    public function GradeChampionbyGrade($grade) {
+    public function GradeChampionbyGrade($grade_id) {
         $champ = \App\Models\Tbl_cat::all()->unique('grade');
         $fchamp = \App\Models\Tbl_grade_champion::where('cat_id', 1)->orderBy('position', 'ASC')->get();
 
