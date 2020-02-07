@@ -68,7 +68,6 @@
                                             <option value="A"># A</option>
                                             <option value="B"># B</option>
                                             <option value="C"># C</option>
-                                            <option value="Runner Up" disabled># Ruenner Up</option>
                                         </select>
                                     </div>
                                 </div>
@@ -200,7 +199,7 @@
                 $('#cat_id').val(ukuran_id);
                 $.getFish();
                 if(ukuran_id == 8)  {
-                    $('#posisi option').prop('disabled', 'false');
+                    $('#posisi').append('<option value="Runner Up" disabled># Ruenner Up</option>');
                 }
             }
         });
