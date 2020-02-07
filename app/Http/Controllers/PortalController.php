@@ -121,6 +121,8 @@ class PortalController extends Controller
             'data_cat' => $cats,
             'data_var' => $vars,
             'data_champion' => $rcm,
+            'var_id' => $var_id,
+            'cat_id' => $cat_id
         ]);
     }
 
