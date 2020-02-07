@@ -260,7 +260,7 @@
                             type : 'POST',
                             url : url,
                             data : {
-                                'id' : id,
+                                'fish_id' : id,
                                 '_method' : 'post',
                                 '_token' : token,
                             },
