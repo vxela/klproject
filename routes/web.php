@@ -84,6 +84,7 @@ Route::get('/admin/pass_setup', 'AdminController@setupPass')->name('admin.setup_
 Route::get('/admin/user_pass_setup', 'AdminController@setupUserPass')->name('admin.setup_user_pass');
 Route::get('/admin/data_ikan/{id}', 'AdminController@printStickerFish')->name('admin.fish_sticker');
 Route::get('/admin/data_ikan', 'AdminController@dataFish')->name('admin.fish_entry');
+Route::post('/admin/data_ikan/delete', 'AdminController@deleteFishbyId')->name('admin.fish_entry_delete');
 Route::post('/admin/store_admin', 'AdminController@storeAdmin')->name('admin.store_admin');
 Route::get('/admin/add_admin', 'AdminController@addAdmin')->name('admin.add_admin');
 Route::post('/admin/update_resi_ikan', 'AdminController@updateFishResiReg')->name('admin.update_user_resi_register');

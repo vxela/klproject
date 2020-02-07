@@ -71,7 +71,12 @@
                                 </td>
                                 <td>
                                     {{-- <a href="{{route('admin.fish_sticker', ['id' => $fish->id])}}" class="btn btn-sm btn-primary">Sticker</a> --}}
-                                    <a href="{{route('admin.detail_user_fish', ['id' => $fish->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
+                                    <form action="{{route('admin.fish_entry_delete')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="fish_id" value="{{$fish->id}}">
+                                        <a href="{{route('admin.detail_user_fish', ['id' => $fish->id])}}" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></a>
+                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -94,8 +99,21 @@
 @endsection
 
 @section('pagejs')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
     $(document).ready(function(){
+        $.ajaxSetup({ cache: false });
+        if($('#flash_data').length) {
+            let type = $('#flash_data').data('type');
+            let msg = $('#flash_data').data('msg');
+        
+            Swal.fire({
+                icon: type,
+                text: msg,
+                showConfirmButton: true,
+            });
+        };
+
         $('#data_fish').DataTable();
     });
     </script>

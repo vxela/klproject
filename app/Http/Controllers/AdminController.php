@@ -324,6 +324,23 @@ class AdminController extends Controller
         return view('backend.admin.list_ikan', ['data_fish' => $fishs]);
     }
 
+    public function deleteFishbyId(Request $r) {
+
+        $fish = \App\Models\Tbl_user_fish::find($r->fish_id);
+
+        $delete = $fish->forceDelete();
+
+        if(!$delete) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Data Ikan Gagal di Hapus']);
+            return redirect()->back();            
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Ikan Berhasil di Hapus']);
+            return redirect()->back();
+        }
+
+
+    }
+
     public function printStickerFish($id){
         $fish = \App\Models\Tbl_user_fish::find($id);
         // dd($fish);
