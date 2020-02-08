@@ -97,11 +97,11 @@ class UserController extends Controller
             $img = Image::make($oripath)->resize(500, null, function($constraint) {
                 $constraint->aspectRatio();
             });
-            $img->save($oripath);
+            // $img->save($oripath);
             $img = Image::make($thumbnailpath)->fit(100, 100, function($constraint) {
                 $constraint->aspectRatio();
             });
-            $img->save($thumbnailpath);
+            // $img->save($thumbnailpath);
 
             $img_path = '/storage/fish/'.$filenametostore;
             $img_thumb_path = '/storage/fish/thumbnail/'.$filenametostore;
@@ -127,19 +127,20 @@ class UserController extends Controller
             'time_reg'           => Carbon::now()->format('H:i:s')
         ];
 
-        $fish = \App\Models\Tbl_user_fish::create($user_fish);
+        // $fish = \App\Models\Tbl_user_fish::create($user_fish);
 
-        if(!$fish) {
-            Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Daftar, Ulangi Lagi']);
-            DB::rollBack();
-        }
-        else {
-            DB::commit();
-            Session::flash('notif', ['type' => 'success', 'msg' => 'Ikan Berhasil Di daftarkan']);
-    
-            return redirect()->route('user.fish', ['id'=> auth()->user()->id]);
-        }
+        // if(!$fish) {
+        //     Session::flash('notif', ['type' => 'error', 'msg' => 'Gagal Daftar, Ulangi Lagi']);
+        //     DB::rollBack();
+        // }
+        // else {
+        //     DB::commit();
+        //     Session::flash('notif', ['type' => 'success', 'msg' => 'Ikan Berhasil Di daftarkan']);
+        //     return redirect()->route('user.fish', ['id'=> auth()->user()->id]);
+        // }
         
+        Session::flash('notif', ['type' => 'error', 'msg' => 'Sesi Pendaftaran telah selesai']);
+        return redirect()->back();
 
     }
 
