@@ -684,7 +684,7 @@ class AdminController extends Controller
             $pdf->setPaper('A4', 'potrait');
     
             $file_name = Carbon::now()->format('YmdHis').'_'.$user->bio->id.'_'.$user->bio->nama;
-            return $pdf->stream($file_name.'all_fish_bill.pdf');
+            return $pdf->download($file_name.'all_fish_bill.pdf');
             // dd($fishs);
         } else {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);
