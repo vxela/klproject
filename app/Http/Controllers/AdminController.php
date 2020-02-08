@@ -348,9 +348,9 @@ class AdminController extends Controller
         $delete = $fish->forceDelete();
 
         if(!$delete) {
-            return true;       
+            return 'success';       
         } else {
-            return false;
+            return 'gagal';
         }
 
 
