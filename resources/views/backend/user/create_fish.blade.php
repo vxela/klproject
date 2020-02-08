@@ -242,6 +242,14 @@
                     $('#btn_submit').removeAttr('disabled', false);
                 }
             });
+
+            $('#btn_alert').click(function(){
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Maaf...',
+                    text: 'Pendaftaran ditutup!!'
+                })
+            });
         });
     </script>
 @endsection
