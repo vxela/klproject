@@ -113,7 +113,7 @@
                                 </td>
                                 <td class="text-right">
                                     <strong>
-                                        {{$x}}                                        
+                                        Rp. {{number_format($x)}},00
                                     </strong>
                                 </td>
                             </tr>
