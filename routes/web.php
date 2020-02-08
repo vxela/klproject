@@ -28,6 +28,10 @@ Route::get('/register', 'LoginController@register')->name('register');
 
 Route::post('/guest/register', 'RegisterController@register')->name('user_register');
 
+Route::group(['middleware' => 'auth'], function () {
+    
+
+
 Route::get('/user/report/all_fish_nota/{id}', 'UserController@printAllFishNota')->name('user.report_all_fish_nota');
 Route::get('/user/payment/recipe/{id}', 'UserController@userBillFish')->name('user.detail_nota_fish');
 Route::get('/user/payment', 'UserController@userPaymentFish')->name('user.payment_fish');
@@ -99,3 +103,5 @@ Route::get('/admin/list_peserta', 'AdminController@listPeserta')->name('admin.li
 Route::post('/admin/store_peserta', 'AdminController@storePeserta')->name('admin.store_peserta');
 Route::get('/admin/add_peserta', 'AdminController@addPeserta')->name('admin.add_peserta');
 Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+
+});
