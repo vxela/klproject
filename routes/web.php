@@ -29,7 +29,7 @@ Route::get('/register', 'LoginController@register')->name('register');
 Route::post('/guest/register', 'RegisterController@register')->name('user_register');
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'checkRole:user']], function () {
     
     Route::get('/user/report/all_fish_nota/{id}', 'UserController@printAllFishNota')->name('user.report_all_fish_nota');
     Route::get('/user/payment/recipe/{id}', 'UserController@userBillFish')->name('user.detail_nota_fish');
@@ -43,7 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/personal_data/{id}', 'UserController@personalData')->name('user.personal');
     Route::get('/user/fish_data/{id}', 'UserController@fishData')->name('user.fish');
     Route::get('/user/dashboard', 'UserController@index')->name('user.dashboard');
+});
 
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+    
     Route::post('/admin/grade_champ/delete', 'AdminController@gradeChampionDelete')->name('admin.delete_grade_champion');
     Route::post('/admin/grade_champ', 'AdminController@gradeChampionStore')->name('admin.store_grade');
     Route::get('/admin/grade_champ/{grade}', 'AdminController@gradeChampiongetFish');
