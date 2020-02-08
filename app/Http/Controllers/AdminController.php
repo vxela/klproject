@@ -348,9 +348,11 @@ class AdminController extends Controller
         $delete = $fish->forceDelete();
 
         if(!$delete) {
-            return 'success';       
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Data Ikan Gagal di Hapus']);
+            return redirect()->route('admin.fish_entry');            
         } else {
-            return 'gagal';
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Ikan Berhasil di Hapus']);
+            return redirect()->route('admin.fish_entry');
         }
 
 
