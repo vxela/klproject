@@ -679,7 +679,7 @@ class AdminController extends Controller
         $l_fishs = count($fishs);
 
         if ($l_fishs != 0) {
-            return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
+            return view('backend.user.print_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
             // $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
             // $pdf->setPaper('A4', 'potrait');
     
