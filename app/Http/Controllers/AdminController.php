@@ -341,6 +341,23 @@ class AdminController extends Controller
 
     }
 
+    public function AjaxDeleteFishbyId(Request $r) {
+
+        $fish = \App\Models\Tbl_user_fish::find($r->fish_id);
+
+        $delete = $fish->forceDelete();
+
+        if(!$delete) {
+            Session::flash('notif', ['type' => 'error', 'msg' => 'Data Ikan Gagal di Hapus']);
+            return redirect()->route('admin.fish_entry');            
+        } else {
+            Session::flash('notif', ['type' => 'success', 'msg' => 'Data Ikan Berhasil di Hapus']);
+            return redirect()->route('admin.fish_entry');
+        }
+
+
+    }
+
     public function printStickerFish($id){
         $fish = \App\Models\Tbl_user_fish::find($id);
         // dd($fish);
