@@ -76,7 +76,7 @@
                     <thead>
                         <tr>
                             <th>
-                                #
+                                No.
                             </th>
                             <th>
                                 REG_ID
