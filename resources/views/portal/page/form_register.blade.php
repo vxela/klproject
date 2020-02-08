@@ -150,7 +150,8 @@
                                     <button type="reset" class="btn btn-secondary">Reset</button>
                                 </div>
                                 <div class="col-sm-8 col-xs-12">
-                                    <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button>
+                                    {{-- <button type="submit" class="btn btn-primary" id="btn_submit">Daftar</button> --}}
+                                    <button type="button" class="btn btn-primary" id="btn_alert">Daftar</button>
                                 </div>
                             </div>                                                                                                                                                                                                                        
                         </form>
@@ -311,7 +312,14 @@
                     $('#password').removeClass('is-invalid');
                     $('#password2').removeClass('is-invalid');
                 }
-            });            
+            }); 
+            $('#btn_alert').click(function(){
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Maaf...',
+                    text: 'Pendaftaran ditutup!!'
+                })
+            });           
         });
     </script>
 @endsection
