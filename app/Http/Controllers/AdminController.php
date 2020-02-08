@@ -679,12 +679,12 @@ class AdminController extends Controller
         $l_fishs = count($fishs);
 
         if ($l_fishs != 0) {
-            $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
-            // return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs]);
-            $pdf->setPaper('A4', 'potrait');
+            return view('backend.user.print_all_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
+            // $pdf = PDF::loadView('backend.admin.print_fish_nota', ['data_fish' => $fishs, 'user' => $user]);
+            // $pdf->setPaper('A4', 'potrait');
     
-            $file_name = Carbon::now()->format('YmdHis').'_'.$user->bio->id.'_'.$user->bio->nama;
-            return $pdf->stream($file_name.'all_fish_bill.pdf');
+            // $file_name = Carbon::now()->format('YmdHis').'_'.$user->bio->id.'_'.$user->bio->nama;
+            // return $pdf->stream($file_name.'all_fish_bill.pdf');
             // dd($fishs);
         } else {
             Session::flash('notif', ['type' => 'error', 'msg' => 'Belum Ada Ikan Terdaftar']);
